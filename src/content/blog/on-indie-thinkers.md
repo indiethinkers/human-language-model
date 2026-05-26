@@ -12,13 +12,20 @@ heroImage: '../../assets/on-indie-thinkers/indie-thinkers-home.png'
 
 We've moved Indie Thinkers to a new home.
 
-[Substack](https://substack.com/) gave writers distribution. It made publishing more approachable for thousands of writers. And for that, I tip my hat. But Substack also flattened the presentation layer.
+[Substack](https://substack.com/) gave writers a place to live and they made publishing more approachable for thousands of writers. For that, I am forever appreciative and I tip my cap.
+
+But Substack also flattened the presentation layer.
 
 Everything kind of looks the same.
 
+- ![Substack screenshot of Untelling Things](../../assets/on-indie-thinkers/substack-01-paper.png)
+- ![Substack screenshot of Derek Thompson](../../assets/on-indie-thinkers/substack-02-paper.png)
+- ![Substack screenshot of Not Boring](../../assets/on-indie-thinkers/substack-03-paper.png)
+- ![Substack screenshot of Kyla's Newsletter](../../assets/on-indie-thinkers/substack-04-paper.png)
+
 When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create myself, and eventually for other writers. I wanted to elevate the written word to a level that demanded its own space to breathe in.
 
-It's funny, [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is having a renaissance moment.
+Why now? [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is having a renaissance moment.
 
 Tariq rocked the internet when he made the assertion:
 
@@ -29,7 +36,7 @@ Tariq rocked the internet when he made the assertion:
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-The beauty, and opportunity, of having full control over HTML is that it allows writers to be far more expressive than they could be in a [Markdown](https://daringfireball.net/projects/markdown/) document or a traditional blogging and newsletter platform like Substack. Some ideas need a stretch into the margins.
+The beauty, and opportunity, of having full control over HTML is that it allows writers to be far more expressive than they could be in a [Markdown](https://daringfireball.net/projects/markdown/) document or a traditional blogging and newsletter platform like Substack. Some ideas need to stretch well into the margins.
 
 **Every.**
 
@@ -63,9 +70,7 @@ The more I thought about this, the more I realized that building a human languag
 
 Indie Thinkers can be a modern-day human language model. A community building a body of work that helps chronicle the human condition and leaves behind evidence of life long after robots roam the earth.
 
-A digital lab for writers to explore ideas and present them in unique ways.
-
-In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we do want to pay contributors consistently.
+A digital lab for writers to explore ideas and present them in unique ways. In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we do want to pay contributors consistently.
 
 ## Joysticks in Multi-Player Mode
 
@@ -111,11 +116,9 @@ Indie Thinkers sits somewhere in the middle there. Timely enough to matter now. 
 
 ## Fin
 
-I want my life's work to be centered around elevating the work of others.
-
 We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short at times. I have conviction that my role in this world is centered around servant leadership.
 
-That sounds lofty, but it's also practical. I am happiest when I am helping someone clarify an idea, package it, and get it in front of the right people.
+I want my life's work to be centered around elevating the work of others. That sounds lofty, but it's also practical. I am happiest when I am helping someone clarify an idea, package it, and get it in front of the right people.
 
 I like the feeling of building a container that makes other people's work more legible and more likely to travel. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea and don't know where to start, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com) or join the community.
 

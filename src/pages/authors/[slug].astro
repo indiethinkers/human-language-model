@@ -29,10 +29,6 @@ const posts = (await getCollection('blog'))
 	<body class="shiny-dimes-home">
 		<main class="dime-page author-page">
 			<div class="nav-actions">
-				<a href="/essays" class="muted-link">
-					essays
-				</a>
-				<span class="muted-text">//</span>
 				<a
 					href="https://indiethinkers.dfos.com/"
 					target="_blank"
@@ -80,7 +76,7 @@ const posts = (await getCollection('blog'))
 									<ul>
 										{posts.map((post) => (
 											<li>
-												<a href={`/essays/${post.id}/`}>{post.data.title.toLowerCase()}</a>
+												<a href={`/essays/${post.id}`}>{post.data.title.toLowerCase()}</a>
 											</li>
 										))}
 									</ul>
@@ -88,6 +84,12 @@ const posts = (await getCollection('blog'))
 							)
 						}
 					</article>
+				</div>
+
+				<div class="credit">
+					<a href="/essays" class="credit-link">
+						view all essays
+					</a>
 				</div>
 			</div>
 		</main>

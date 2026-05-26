@@ -1,6 +1,7 @@
 ---
 title: 'On Indie Thinkers'
 description: 'Why Indie Thinkers is moving beyond the default newsletter template and becoming a human language model for independent writers.'
+quote: 'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 pubDate: 'May 25 2026'
@@ -11,13 +12,13 @@ heroImage: '../../assets/on-indie-thinkers/indie-thinkers-home.png'
 
 We've moved Indie Thinkers to a new home.
 
-Substack gave writers distribution. It made publishing more approachable for thousands of writers. And for that, I tip my hat. But Substack also flattened the presentation layer.
+[Substack](https://substack.com/) gave writers distribution. It made publishing more approachable for thousands of writers. And for that, I tip my hat. But Substack also flattened the presentation layer.
 
 Everything kind of looks the same.
 
 When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create myself, and eventually for other writers. I wanted to elevate the written word to a level that demanded its own space to breathe in.
 
-It's funny, HTML is having a renaissance moment.
+It's funny, [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is having a renaissance moment.
 
 Tariq rocked the internet when he made the assertion:
 
@@ -28,7 +29,7 @@ Tariq rocked the internet when he made the assertion:
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-The beauty, and opportunity, of having full control over HTML is that it allows writers to be far more expressive than they could be in a Markdown document or a traditional blogging and newsletter platform like Substack. Some ideas need a stretch into the margins.
+The beauty, and opportunity, of having full control over HTML is that it allows writers to be far more expressive than they could be in a [Markdown](https://daringfireball.net/projects/markdown/) document or a traditional blogging and newsletter platform like Substack. Some ideas need a stretch into the margins.
 
 **Every.**
 
@@ -46,7 +47,7 @@ The beauty, and opportunity, of having full control over HTML is that it allows 
 
 ![Indie Thinkers homepage](../../assets/on-indie-thinkers/indie-thinkers-home.png)
 
-Writers need more platforms that allow them to publish writing on the internet that pushes the boundaries of what we're accustomed to seeing. This is the type of experience that is just not possible to create on Substack. We're not leaving the platform completely. We'll still leverage the newsletter platform and notes.
+Writers need more platforms that allow them to publish writing on the internet that pushes the boundaries of what we're accustomed to seeing. This is the type of experience that is just not possible to create on Substack. We're not leaving the platform completely. We'll still leverage the newsletter platform and [Notes](https://support.substack.com/hc/en-us/articles/14564821756308-Getting-started-on-Substack-Notes).
 
 ## A Human Language Model
 
@@ -76,7 +77,7 @@ The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweig
 
 ![DFOS community treasury screenshot](../../assets/on-indie-thinkers/dfos-community-treasury.png)
 
-DFOS is the brainchild of Yancey Strickler, Metalabel founder.
+DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), [Metalabel](https://www.metalabel.com/about) founder.
 
 After a bit of a rocky start, they're hitting a stride.
 
@@ -92,7 +93,7 @@ This won't be a vague community wallet or crypto gimmick. It'll be a real pool o
 
 ## What We're Not Doing
 
-We are not trying to become The Atlantic.
+We are not trying to become [The Atlantic](https://www.theatlantic.com/).
 
 Like I said earlier, we're not hiring staff writers, building a giant editorial machine, or pretending that getting 10,000 subscribers is a meaningful milestone. We'd much rather have 1,000 that are engaged. We're not trying to become another content treadmill.
 
@@ -102,9 +103,9 @@ The goal is not to publish more.
 
 The goal is to publish work that feels worth returning to.
 
-In my own freewriting sessions, I kept comparing the shape of Indie Thinkers to a mix of Farnam Street, Indie Hackers, Every, and Stripe Press. That still feels directionally right.
+In my own freewriting sessions, I kept comparing the shape of Indie Thinkers to a mix of [Farnam Street](https://fs.blog/), [Indie Hackers](https://www.indiehackers.com/), [Every](https://every.to/), and [Stripe Press](https://press.stripe.com/). That still feels directionally right.
 
-Every has a sense of timeliness and intellectual range. Farnam Street has a library quality, the feeling that an essay might still be useful years from now. Stripe Press treats ideas like designed objects. The books, pages, and interfaces all communicate that the work has been cared for. Indie Hacker interviews were legendary and created a powerful sense of identity and community.
+[Every](https://every.to/) has a sense of timeliness and intellectual range. [Farnam Street](https://fs.blog/) has a library quality, the feeling that an essay might still be useful years from now. [Stripe Press](https://press.stripe.com/) treats ideas like designed objects. The books, pages, and interfaces all communicate that the work has been cared for. [Indie Hackers interviews](https://www.indiehackers.com/interviews) were legendary and created a powerful sense of identity and community.
 
 Indie Thinkers sits somewhere in the middle there. Timely enough to matter now. Timeless enough to matter later. Designed well enough to feel like the medium respects the idea. And open enough to be trusted.
 

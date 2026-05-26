@@ -1,21 +1,20 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
-const quote =
-	'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.';
-const essayUrl = 'https://indiethinkers.com';
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead
-			title="Indie Thinkers"
-			description="A curated collection of quotes from the brightest minds on the internet."
-		/>
+		<BaseHead title={title} description={description} />
 	</head>
+
 	<body class="shiny-dimes-home">
-		<main class="dime-page">
+		<main class="dime-page essay-detail-page">
 			<div class="nav-actions">
 				<a href="/essays" class="muted-link">
 					essays
@@ -40,22 +39,32 @@ const essayUrl = 'https://indiethinkers.com';
 				</a>
 			</div>
 
-			<div class="card-shell">
+			<div class="card-shell essay-detail-shell">
 				<div class="site-label">
 					<a href="/" class="muted-link">indie thinkers</a>
 				</div>
 
-				<div class="quote-frame">
-					<div class="quote-card" data-quote-card>
-						<div class="quote-text" data-quote={quote}>
-							<span data-quote-text></span><span class="type-cursor" data-type-cursor>&nbsp;</span>
+				<div class="quote-frame essay-detail-frame">
+					<article class="quote-card essay-detail">
+						<header class="essay-header">
+							<div class="essay-date">
+								<FormattedDate date={pubDate} />
+								{
+									updatedDate && (
+										<span>
+											{' '}
+											/ updated <FormattedDate date={updatedDate} />
+										</span>
+									)
+								}
+							</div>
+							<h1 class="essay-title">{title}</h1>
+						</header>
+
+						<div class="essay-body">
+							<slot />
 						</div>
-						<div class="essay-row">
-							<a href={essayUrl} target="_blank" rel="noopener noreferrer" class="essay-link">
-								(view essay)
-							</a>
-						</div>
-					</div>
+					</article>
 				</div>
 
 				<div class="credit">
@@ -65,114 +74,7 @@ const essayUrl = 'https://indiethinkers.com';
 					</a>
 				</div>
 			</div>
-
-			<div class="shortcut-hint">
-				<span class="desktop-hint">hit the spacebar for another essay</span>
-				<span class="mobile-hint">double tap for another dime</span>
-			</div>
 		</main>
-
-		<script>
-			const quoteCard = document.querySelector('[data-quote-card]');
-			const quoteElement = document.querySelector('[data-quote]');
-			const quoteText = document.querySelector('[data-quote-text]');
-			const cursor = document.querySelector('[data-type-cursor]');
-			const essayLink = document.querySelector('.essay-link');
-			const quote = quoteElement?.getAttribute('data-quote') ?? '';
-
-			let typeTimeout = 0;
-			let blinkInterval = 0;
-			let cursorVisible = true;
-			let isTransitioning = false;
-			let lastTap = 0;
-
-			const setCursorVisible = (visible) => {
-				cursorVisible = visible;
-				if (!cursor) return;
-				cursor.style.backgroundColor = visible ? 'currentColor' : 'transparent';
-				cursor.style.opacity = visible ? '0.7' : '0';
-			};
-
-			const stopBlinking = () => {
-				if (blinkInterval) {
-					window.clearInterval(blinkInterval);
-					blinkInterval = 0;
-				}
-			};
-
-			const startBlinking = () => {
-				stopBlinking();
-				blinkInterval = window.setInterval(() => {
-					setCursorVisible(!cursorVisible);
-				}, 530);
-			};
-
-			const resetEssayAnimation = () => {
-				if (!essayLink) return;
-				essayLink.classList.remove('essay-link');
-				void essayLink.getBoundingClientRect();
-				essayLink.classList.add('essay-link');
-			};
-
-			const typeQuote = () => {
-				window.clearTimeout(typeTimeout);
-				stopBlinking();
-				setCursorVisible(true);
-				if (quoteElement) quoteElement.style.opacity = '0';
-				if (quoteText) quoteText.textContent = '';
-				resetEssayAnimation();
-
-				typeTimeout = window.setTimeout(() => {
-					if (quoteElement) quoteElement.style.opacity = '1';
-					let currentIndex = 0;
-
-					const typeChar = () => {
-						if (currentIndex < quote.length) {
-							if (quoteText) quoteText.textContent = quote.slice(0, currentIndex + 1);
-							currentIndex += 1;
-							typeTimeout = window.setTimeout(typeChar, 70);
-							return;
-						}
-
-						startBlinking();
-					};
-
-					typeChar();
-				}, 50);
-			};
-
-			const replayQuote = () => {
-				if (isTransitioning || !quoteCard) return;
-				isTransitioning = true;
-				quoteCard.style.opacity = '0';
-
-				window.setTimeout(() => {
-					typeQuote();
-					quoteCard.style.opacity = '1';
-					isTransitioning = false;
-				}, 300);
-			};
-
-			window.addEventListener('keydown', (event) => {
-				if (event.code !== 'Space') return;
-				event.preventDefault();
-				replayQuote();
-			});
-
-			window.addEventListener('touchend', (event) => {
-				const currentTime = Date.now();
-				const tapLength = currentTime - lastTap;
-
-				if (tapLength < 300 && tapLength > 0) {
-					event.preventDefault();
-					replayQuote();
-				}
-
-				lastTap = currentTime;
-			});
-
-			typeQuote();
-		</script>
 	</body>
 </html>
 
@@ -356,67 +258,89 @@ const essayUrl = 'https://indiethinkers.com';
 		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.quote-text {
+	.essay-detail-page {
+		align-items: flex-start;
+		padding: 7rem 1rem 6rem;
+	}
+
+	.essay-detail-shell,
+	.essay-detail-frame {
 		width: 100%;
-		white-space: pre-wrap;
-		text-align: center;
-		font-family: var(--font-geist-mono);
-		line-height: 1.625;
-		opacity: 0;
-		transition: opacity 1s ease-in-out;
+		max-width: 42rem;
 	}
 
-	.type-cursor {
-		position: relative;
-		top: -2px;
-		display: inline-block;
-		width: 0.4em;
-		height: 1.2em;
-		margin-bottom: -1px;
-		margin-left: 1px;
-		background-color: currentColor;
-		vertical-align: middle;
-		opacity: 0.7;
-		transition: opacity 0.1s ease-in-out;
+	.essay-detail {
+		min-height: auto;
+		align-items: stretch;
+		gap: 2.25rem;
+		font-size: 0.9375rem;
+		line-height: 1.8;
 	}
 
-	.essay-row {
-		margin-top: 1.5rem;
+	.essay-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 	}
 
-	.essay-link {
+	.essay-date {
+		margin: 0;
+		color: var(--shiny-gray-500);
 		font-size: 0.875rem;
 		line-height: calc(1.25 / 0.875);
-		opacity: 0;
-		animation: fadeIn 2s ease-in-out forwards;
-		animation-delay: 0.5s;
 	}
 
-	.desktop-hint {
-		display: none;
+	.essay-title {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		line-height: 1.4;
 	}
 
-	.mobile-hint {
-		display: inline;
+	.essay-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-		}
+	.essay-body :where(h2, h3, h4, p, blockquote, ul, ol, figure) {
+		margin: 0;
 	}
 
-	@media (min-width: 48rem) {
-		.desktop-hint {
-			display: inline;
-		}
+	.essay-body :where(h2, h3, h4) {
+		margin-top: 1.75rem;
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: 0;
+		line-height: 1.5;
+	}
 
-		.mobile-hint {
-			display: none;
-		}
+	.essay-body a {
+		color: var(--shiny-gray-800);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.18em;
+	}
+
+	.essay-body a:hover {
+		color: var(--shiny-foreground);
+	}
+
+	.essay-body img {
+		width: 100%;
+		height: auto;
+		margin-block: 0.5rem;
+		border-radius: 0;
+	}
+
+	.essay-body blockquote {
+		padding-left: 1rem;
+		border-left: 1px solid var(--shiny-gray-500);
+		color: var(--shiny-gray-700);
+	}
+
+	.essay-body :where(ul, ol) {
+		padding-left: 1.25rem;
 	}
 </style>

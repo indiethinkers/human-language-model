@@ -1,18 +1,17 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
-const quote =
-	'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.';
-const essayUrl = 'https://indiethinkers.com';
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead
-			title="Indie Thinkers"
-			description="A curated collection of quotes from the brightest minds on the internet."
-		/>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body class="shiny-dimes-home">
 		<main class="dime-page">
@@ -46,16 +45,17 @@ const essayUrl = 'https://indiethinkers.com';
 				</div>
 
 				<div class="quote-frame">
-					<div class="quote-card" data-quote-card>
-						<div class="quote-text" data-quote={quote}>
-							<span data-quote-text></span><span class="type-cursor" data-type-cursor>&nbsp;</span>
-						</div>
-						<div class="essay-row">
-							<a href={essayUrl} target="_blank" rel="noopener noreferrer" class="essay-link">
-								(view essay)
-							</a>
-						</div>
-					</div>
+					<ul class="quote-card essay-list" aria-label="Essays">
+						{
+							posts.map((post) => (
+								<li>
+									<a href={`/essays/${post.id}/`} class="essay-list-link">
+										{post.data.title.toLowerCase()}
+									</a>
+								</li>
+							))
+						}
+					</ul>
 				</div>
 
 				<div class="credit">
@@ -65,114 +65,7 @@ const essayUrl = 'https://indiethinkers.com';
 					</a>
 				</div>
 			</div>
-
-			<div class="shortcut-hint">
-				<span class="desktop-hint">hit the spacebar for another essay</span>
-				<span class="mobile-hint">double tap for another dime</span>
-			</div>
 		</main>
-
-		<script>
-			const quoteCard = document.querySelector('[data-quote-card]');
-			const quoteElement = document.querySelector('[data-quote]');
-			const quoteText = document.querySelector('[data-quote-text]');
-			const cursor = document.querySelector('[data-type-cursor]');
-			const essayLink = document.querySelector('.essay-link');
-			const quote = quoteElement?.getAttribute('data-quote') ?? '';
-
-			let typeTimeout = 0;
-			let blinkInterval = 0;
-			let cursorVisible = true;
-			let isTransitioning = false;
-			let lastTap = 0;
-
-			const setCursorVisible = (visible) => {
-				cursorVisible = visible;
-				if (!cursor) return;
-				cursor.style.backgroundColor = visible ? 'currentColor' : 'transparent';
-				cursor.style.opacity = visible ? '0.7' : '0';
-			};
-
-			const stopBlinking = () => {
-				if (blinkInterval) {
-					window.clearInterval(blinkInterval);
-					blinkInterval = 0;
-				}
-			};
-
-			const startBlinking = () => {
-				stopBlinking();
-				blinkInterval = window.setInterval(() => {
-					setCursorVisible(!cursorVisible);
-				}, 530);
-			};
-
-			const resetEssayAnimation = () => {
-				if (!essayLink) return;
-				essayLink.classList.remove('essay-link');
-				void essayLink.getBoundingClientRect();
-				essayLink.classList.add('essay-link');
-			};
-
-			const typeQuote = () => {
-				window.clearTimeout(typeTimeout);
-				stopBlinking();
-				setCursorVisible(true);
-				if (quoteElement) quoteElement.style.opacity = '0';
-				if (quoteText) quoteText.textContent = '';
-				resetEssayAnimation();
-
-				typeTimeout = window.setTimeout(() => {
-					if (quoteElement) quoteElement.style.opacity = '1';
-					let currentIndex = 0;
-
-					const typeChar = () => {
-						if (currentIndex < quote.length) {
-							if (quoteText) quoteText.textContent = quote.slice(0, currentIndex + 1);
-							currentIndex += 1;
-							typeTimeout = window.setTimeout(typeChar, 70);
-							return;
-						}
-
-						startBlinking();
-					};
-
-					typeChar();
-				}, 50);
-			};
-
-			const replayQuote = () => {
-				if (isTransitioning || !quoteCard) return;
-				isTransitioning = true;
-				quoteCard.style.opacity = '0';
-
-				window.setTimeout(() => {
-					typeQuote();
-					quoteCard.style.opacity = '1';
-					isTransitioning = false;
-				}, 300);
-			};
-
-			window.addEventListener('keydown', (event) => {
-				if (event.code !== 'Space') return;
-				event.preventDefault();
-				replayQuote();
-			});
-
-			window.addEventListener('touchend', (event) => {
-				const currentTime = Date.now();
-				const tapLength = currentTime - lastTap;
-
-				if (tapLength < 300 && tapLength > 0) {
-					event.preventDefault();
-					replayQuote();
-				}
-
-				lastTap = currentTime;
-			});
-
-			typeQuote();
-		</script>
 	</body>
 </html>
 
@@ -356,67 +249,23 @@ const essayUrl = 'https://indiethinkers.com';
 		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.quote-text {
+	.essay-list {
 		width: 100%;
-		white-space: pre-wrap;
-		text-align: center;
-		font-family: var(--font-geist-mono);
-		line-height: 1.625;
-		opacity: 0;
-		transition: opacity 1s ease-in-out;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 0.625rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
 	}
 
-	.type-cursor {
-		position: relative;
-		top: -2px;
-		display: inline-block;
-		width: 0.4em;
-		height: 1.2em;
-		margin-bottom: -1px;
-		margin-left: 1px;
-		background-color: currentColor;
-		vertical-align: middle;
-		opacity: 0.7;
-		transition: opacity 0.1s ease-in-out;
+	.essay-list-link {
+		color: var(--shiny-foreground);
+		transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.essay-row {
-		margin-top: 1.5rem;
-	}
-
-	.essay-link {
-		font-size: 0.875rem;
-		line-height: calc(1.25 / 0.875);
-		opacity: 0;
-		animation: fadeIn 2s ease-in-out forwards;
-		animation-delay: 0.5s;
-	}
-
-	.desktop-hint {
-		display: none;
-	}
-
-	.mobile-hint {
-		display: inline;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-		}
-	}
-
-	@media (min-width: 48rem) {
-		.desktop-hint {
-			display: inline;
-		}
-
-		.mobile-hint {
-			display: none;
-		}
+	.essay-list-link:hover {
+		color: var(--shiny-gray-700);
 	}
 </style>

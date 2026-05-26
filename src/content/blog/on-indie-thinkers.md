@@ -1,6 +1,8 @@
 ---
 title: 'On Indie Thinkers'
 description: 'Why Indie Thinkers is moving beyond the default newsletter template and becoming a human language model for independent writers.'
+author: 'Daniel Hunter'
+authorSlug: 'daniel-hunter'
 pubDate: 'May 25 2026'
 heroImage: '../../assets/on-indie-thinkers/indie-thinkers-home.png'
 ---
@@ -21,7 +23,10 @@ Tariq rocked the internet when he made the assertion:
 
 > **HTML** is the new markdown.
 
-[See the post on X.](https://x.com/trq212/status/2052811606032269638?s=20)
+<blockquote class="twitter-tweet" data-dnt="true">
+	<a href="https://x.com/trq212/status/2052811606032269638?s=20">View this post on X</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The beauty, and opportunity, of having full control over HTML is that it allows writers to be far more expressive than they could be in a Markdown document or a traditional blogging and newsletter platform like Substack. Some ideas need a stretch into the margins.
 

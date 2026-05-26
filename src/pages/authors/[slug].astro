@@ -1,31 +1,33 @@
 ---
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import { authors } from '../data/authors';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import { authors, type Author } from '../../data/authors';
 
-type Props = CollectionEntry<'blog'>['data'];
+export function getStaticPaths() {
+	return Object.values(authors).map((author) => ({
+		params: { slug: author.slug },
+		props: { author },
+	}));
+}
 
-const {
-	title,
-	description,
-	author = 'Daniel Hunter',
-	authorSlug = 'daniel-hunter',
-	pubDate,
-	updatedDate,
-} = Astro.props;
-const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
-const authorName = authorInfo?.name ?? author;
+interface Props {
+	author: Author;
+}
+
+const { author } = Astro.props;
+const posts = (await getCollection('blog'))
+	.filter((post) => (post.data.authorSlug ?? 'daniel-hunter') === author.slug)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
+<!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={`${author.name} - Indie Thinkers`} description={author.bio} />
 	</head>
-
 	<body class="shiny-dimes-home">
-		<main class="dime-page essay-detail-page">
+		<main class="dime-page author-page">
 			<div class="nav-actions">
 				<a href="/essays" class="muted-link">
 					essays
@@ -50,46 +52,43 @@ const authorName = authorInfo?.name ?? author;
 				</a>
 			</div>
 
-			<div class="card-shell essay-detail-shell">
+			<div class="card-shell author-shell">
 				<div class="site-label">
 					<a href="/" class="muted-link">indie thinkers</a>
 				</div>
 
-				<div class="quote-frame essay-detail-frame">
-					<article class="quote-card essay-detail">
-						<header class="essay-header">
-							<h1 class="essay-title">{title}</h1>
-							<a href={`/authors/${authorInfo.slug}/`} class="essay-byline">
-								<Image
-									src={authorInfo.avatar}
-									alt=""
-									width={72}
-									height={72}
-									class="essay-author-avatar"
-								/>
-								<span class="essay-byline-copy">
-									<span class="essay-author">{authorName}</span>
-									<span class="essay-date">
-										<FormattedDate date={pubDate} />
-										{
-											updatedDate && (
-												<span>
-													{' '}
-													/ updated <FormattedDate date={updatedDate} />
-												</span>
-											)
-										}
-									</span>
-								</span>
-							</a>
+				<div class="quote-frame author-frame">
+					<article class="quote-card author-detail">
+						<header class="author-hero">
+							<Image
+								src={author.avatar}
+								alt={author.name}
+								width={160}
+								height={160}
+								class="author-avatar"
+							/>
+							<div class="author-copy">
+								<h1>{author.name}</h1>
+								<p>{author.bio}</p>
+							</div>
 						</header>
 
-						<div class="essay-body">
-							<slot />
-						</div>
+						{
+							posts.length > 0 && (
+								<section class="author-essays" aria-label={`${author.name} essays`}>
+									<h2>essays</h2>
+									<ul>
+										{posts.map((post) => (
+											<li>
+												<a href={`/essays/${post.id}/`}>{post.data.title.toLowerCase()}</a>
+											</li>
+										))}
+									</ul>
+								</section>
+							)
+						}
 					</article>
 				</div>
-
 			</div>
 		</main>
 	</body>
@@ -275,150 +274,101 @@ const authorName = authorInfo?.name ?? author;
 		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.essay-detail-page {
+	.author-page {
 		align-items: flex-start;
 		padding: 7rem 1rem 6rem;
 	}
 
-	.essay-detail-shell,
-	.essay-detail-frame {
+	.author-shell,
+	.author-frame {
 		width: 100%;
 		max-width: 42rem;
 	}
 
-	.essay-detail {
+	.author-detail {
 		min-height: auto;
 		align-items: stretch;
 		gap: 2rem;
-		font-size: 0.9375rem;
-		line-height: 1.8;
 	}
 
-	.essay-header {
+	.author-hero {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.author-avatar {
+		width: 5rem;
+		height: 5rem;
+		flex: 0 0 5rem;
+		border-radius: 999px;
+		object-fit: cover;
+	}
+
+	.author-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.author-copy h1,
+	.author-copy p,
+	.author-essays h2,
+	.author-essays ul {
+		margin: 0;
+	}
+
+	.author-copy h1 {
+		font-size: 1.5rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		line-height: 1.3;
+	}
+
+	.author-copy p {
+		color: var(--shiny-gray-700);
+		font-size: 0.9375rem;
+		line-height: 1.7;
+	}
+
+	.author-essays {
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
 	}
 
-	.essay-byline {
-		display: inline-flex;
-		align-items: center;
-		align-self: flex-start;
-		gap: 0.625rem;
+	.author-essays h2 {
 		color: var(--shiny-gray-500);
 		font-family: var(--font-geist-sans);
-		line-height: 1.25;
-		text-decoration: none;
-		text-transform: uppercase;
-	}
-
-	.essay-author-avatar {
-		width: 2.375rem;
-		height: 2.375rem;
-		flex: 0 0 2.375rem;
-		border-radius: 999px;
-		object-fit: cover;
-	}
-
-	.essay-byline-copy {
-		display: flex;
-		flex-direction: column;
-		gap: 0.1875rem;
-	}
-
-	.essay-author {
-		margin: 0;
-		color: var(--shiny-gray-800);
 		font-size: 0.75rem;
 		font-weight: 600;
 		letter-spacing: 0.075em;
+		line-height: 1.25;
+		text-transform: uppercase;
 	}
 
-	.essay-date {
-		display: block;
-		margin: 0;
-		color: var(--shiny-gray-500);
-		font-size: 0.6875rem;
-		font-weight: 500;
-		letter-spacing: 0.075em;
-		line-height: calc(1.25 / 0.875);
-	}
-
-	.essay-byline:hover .essay-author {
-		color: var(--shiny-foreground);
-	}
-
-	.essay-title {
-		margin: 0;
-		font-size: 2rem;
-		font-weight: 500;
-		letter-spacing: 0;
-		line-height: 1.4;
-	}
-
-	.essay-body {
+	.author-essays ul {
 		display: flex;
 		flex-direction: column;
-		gap: 1.25rem;
+		gap: 0.625rem;
+		list-style: none;
+		padding: 0;
 	}
 
-	.essay-body :where(h2, h3, h4, p, blockquote, ul, ol, figure) {
-		margin: 0;
-	}
-
-	.essay-body :where(h2, h3, h4) {
-		margin-top: 1.75rem;
-		font-weight: 700;
-		letter-spacing: 0;
-		line-height: 1.5;
-	}
-
-	.essay-body h2 {
-		font-size: 1.5rem;
-		line-height: 1.35;
-	}
-
-	.essay-body :where(h3, h4) {
-		font-size: 1.125rem;
-	}
-
-	.essay-body > :first-child {
-		margin-top: 0;
-	}
-
-	.essay-body .twitter-tweet {
-		max-width: 100%;
-		margin-block: 0.25rem;
-		padding-left: 0;
-		border-left: 0;
-		color: inherit;
-	}
-
-	.essay-body a {
-		color: var(--shiny-gray-800);
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-		text-underline-offset: 0.18em;
-	}
-
-	.essay-body a:hover {
+	.author-essays a {
 		color: var(--shiny-foreground);
+		text-decoration: none;
+		transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.essay-body img {
-		width: 100%;
-		height: auto;
-		margin-block: 0.5rem;
-		border-radius: 0;
-	}
-
-	.essay-body blockquote {
-		padding-left: 1rem;
-		border-left: 1px solid var(--shiny-gray-500);
+	.author-essays a:hover {
 		color: var(--shiny-gray-700);
 	}
 
-	.essay-body :where(ul, ol) {
-		padding-left: 1.25rem;
+	@media (max-width: 38rem) {
+		.author-hero {
+			align-items: flex-start;
+			flex-direction: column;
+		}
 	}
 </style>

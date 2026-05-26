@@ -1,6 +1,8 @@
 # Indie Thinkers
 
-Indie Thinkers is an Astro site with a minimal quote-style homepage inspired by the Shiny Dimes interface. The homepage renders a single hardcoded quote with a typewriter effect, fixed corner navigation, and local favicon/font assets.
+Indie Thinkers is an Astro site with a minimal quote-style homepage and essay reading experience inspired by the Shiny Dimes interface. The homepage renders a single hardcoded quote with a typewriter effect, fixed corner navigation, and local favicon/font assets.
+
+The public writing routes live under `/essays`. The essays index renders a simple lowercase list of essay links in the same visual shell as the homepage, and individual essay pages use the same fixed-corner layout without a featured hero image.
 
 ## Requirements
 
@@ -36,6 +38,12 @@ bun run preview
 ## Project Notes
 
 - Homepage route: `src/pages/index.astro`
+- Essays index route: `src/pages/essays/index.astro`
+- Essay detail route: `src/pages/essays/[...slug].astro`
+- Essay detail layout: `src/layouts/EssayPost.astro`
+- Essay content collection: `src/content/blog/`
+- Author detail route: `src/pages/authors/[slug].astro`
+- Author metadata: `src/data/authors.ts`
 - Shared metadata and favicon tags: `src/components/BaseHead.astro`
 - Site title constants: `src/consts.ts`
 - Public favicon assets: `public/favicon.ico`, `public/favicon-16x16.png`, `public/favicon-32x32.png`, `public/apple-touch-icon.png`, `public/android-chrome-192x192.png`, `public/android-chrome-512x512.png`, `public/site.webmanifest`
@@ -43,8 +51,11 @@ bun run preview
 
 The homepage does not fetch quote data from Google Sheets. The current quote and essay URL are defined directly in `src/pages/index.astro`.
 
+The old Astro starter blog routes and boilerplate posts have been removed. The current essay content is `src/content/blog/on-indie-thinkers.md`; Astro still uses the collection name `blog` internally, but the public URLs are `/essays` and `/essays/:slug/`. Author pages live at `/authors/:slug/`; the first author profile is `/authors/daniel-hunter/`.
+
 ## Links
 
+- Essays: `/essays`
 - Submit: `https://indiethinkers.dfos.com/`
 - Subscribe: `http://indiethinkers.substack.com/subscribe`
 - Essay placeholder: `https://indiethinkers.com`

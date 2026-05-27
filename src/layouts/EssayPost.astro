@@ -10,6 +10,7 @@ type Props = CollectionEntry<'blog'>['data'];
 const {
 	title,
 	description,
+	deck,
 	author = 'Daniel Hunter',
 	authorSlug = 'daniel-hunter',
 	pubDate,
@@ -55,6 +56,7 @@ const authorName = authorInfo?.name ?? author;
 					<article class="quote-card essay-detail">
 						<header class="essay-header">
 							<h1 class="essay-title">{title}</h1>
+							{deck && <p class="essay-deck">{deck}</p>}
 							<a href={`/authors/${authorInfo.slug}`} class="essay-byline">
 								<Image
 									src={authorInfo.avatar}
@@ -355,6 +357,19 @@ const authorName = authorInfo?.name ?? author;
 		font-weight: 500;
 		letter-spacing: 0;
 		line-height: 1.4;
+	}
+
+	.essay-header .essay-deck {
+		width: 100%;
+		margin: 0;
+		padding: 0.875rem 0;
+		border-top: 1px solid oklch(88% 0.01 264.364);
+		border-bottom: 1px solid oklch(88% 0.01 264.364);
+		color: var(--shiny-gray-500);
+		font-size: 0.9375rem;
+		font-weight: 400;
+		letter-spacing: 0;
+		line-height: 1.55;
 	}
 
 	.essay-body {

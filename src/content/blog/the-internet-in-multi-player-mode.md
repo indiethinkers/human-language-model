@@ -1,11 +1,12 @@
 ---
-title: 'On Indie Thinkers'
-description: 'Why Indie Thinkers is moving beyond the default newsletter template and becoming a human language model for independent writers.'
+title: 'The internet in multi-player mode'
+description: 'Indie Thinkers isn’t a media company, or collective, it’s an open source project. Each author, a contributor. Each essay, a pull request.'
+deck: 'Indie Thinkers isn’t a media company, or collective, it’s an open source project. Each author, a contributor. Each essay, a pull request.'
 quote: 'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 pubDate: 'May 25 2026'
-heroImage: '../../assets/on-indie-thinkers/indie-thinkers-home.png'
+heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
 ---
 
 ## Code & Prose
@@ -18,10 +19,10 @@ But Substack also flattened the presentation layer.
 
 Everything kind of looks the same.
 
-- ![Substack screenshot of Untelling Things](../../assets/on-indie-thinkers/substack-01-paper.png)
-- ![Substack screenshot of Derek Thompson](../../assets/on-indie-thinkers/substack-02-paper.png)
-- ![Substack screenshot of Not Boring](../../assets/on-indie-thinkers/substack-03-paper.png)
-- ![Substack screenshot of Kyla's Newsletter](../../assets/on-indie-thinkers/substack-04-paper.png)
+- ![Substack screenshot of Untelling Things](../../assets/the-internet-in-multi-player-mode/substack-01-paper.png)
+- ![Substack screenshot of Derek Thompson](../../assets/the-internet-in-multi-player-mode/substack-02-paper.png)
+- ![Substack screenshot of Not Boring](../../assets/the-internet-in-multi-player-mode/substack-03-paper.png)
+- ![Substack screenshot of Kyla's Newsletter](../../assets/the-internet-in-multi-player-mode/substack-04-paper.png)
 
 When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create myself, and eventually for other writers. I wanted to elevate the written word to a level that demanded its own space to breathe in.
 
@@ -40,19 +41,19 @@ The beauty, and opportunity, of having full control over HTML is that it allows 
 
 **Every.**
 
-[![Every After Automation essay page](../../assets/on-indie-thinkers/every-after-automation.png)](https://every.to/p/after-automation)
+[![Every After Automation essay page](../../assets/the-internet-in-multi-player-mode/every-after-automation.png)](https://every.to/p/after-automation)
 
 **Cleartext.**
 
-[![Cleartext homepage](../../assets/on-indie-thinkers/cleartext.png)](https://cleartxt.xyz/)
+[![Cleartext homepage](../../assets/the-internet-in-multi-player-mode/cleartext.png)](https://cleartxt.xyz/)
 
 **Lit in Colour.**
 
-[![Lit in Colour homepage](../../assets/on-indie-thinkers/lit-in-colour.png)](https://litincolour.penguin.co.uk/)
+[![Lit in Colour homepage](../../assets/the-internet-in-multi-player-mode/lit-in-colour.png)](https://litincolour.penguin.co.uk/)
 
 **Indie Thinkers.**
 
-![Indie Thinkers homepage](../../assets/on-indie-thinkers/indie-thinkers-home.png)
+![Indie Thinkers homepage](../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png)
 
 Writers need more platforms that allow them to publish writing on the internet that pushes the boundaries of what we're accustomed to seeing. This is the type of experience that is just not possible to create on Substack. We're not leaving the platform completely. We'll still leverage the newsletter platform and [Notes](https://support.substack.com/hc/en-us/articles/14564821756308-Getting-started-on-Substack-Notes).
 
@@ -80,11 +81,11 @@ Okay, well, how and where will we collaborate?
 
 We planted a tree in the dark forest.
 
-![Dark Forest Operating System preview](../../assets/on-indie-thinkers/dfos-preview.gif)
+![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
 
 The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweight Discord with some blog and newsletter features baked in, but there are some powerful community primitives that are worth paying attention to, like community treasuries.
 
-![DFOS community treasury screenshot](../../assets/on-indie-thinkers/dfos-community-treasury.png)
+![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
 
 DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), [Metalabel](https://www.metalabel.com/about) founder.
 
@@ -92,11 +93,11 @@ After a bit of a rocky start, they're hitting a stride.
 
 Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm Arcade Game era energy I didn't realize I was missing.
 
-![New Creative Era DFOS space](../../assets/on-indie-thinkers/new-creative-era.png)
+![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
 
 You can [join our space here](https://app.dfos.com/j/fa8zvev86e36crcrhke3a3).
 
-![Dark Forest Operating System homepage](../../assets/on-indie-thinkers/dfos-dark-forest.png)
+![Dark Forest Operating System homepage](../../assets/the-internet-in-multi-player-mode/dfos-dark-forest.png)
 
 Eventually, Indie Thinkers will open a community treasury that will be used to launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and it deserves the same packaging given to a feature release at a venture-backed startup.
 

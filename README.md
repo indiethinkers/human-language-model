@@ -51,7 +51,7 @@ bun run preview
 
 The homepage does not fetch quote data from Google Sheets. Homepage quotes come from each essay's required `quote` frontmatter field, sorted chronologically by `pubDate`, and each quote links to its essay route.
 
-The old Astro starter blog routes and boilerplate posts have been removed. The current essay content is `src/content/blog/on-indie-thinkers.md`; Astro still uses the collection name `blog` internally, but the public URLs are `/essays` and `/essays/:slug`. Author pages live at `/authors/:slug`; the first author profile is `/authors/daniel-hunter`.
+The old Astro starter blog routes and boilerplate posts have been removed. The current essay content is `src/content/blog/the-internet-in-multi-player-mode.md`; Astro still uses the collection name `blog` internally, but the public URLs are `/essays` and `/essays/:slug`. Author pages live at `/authors/:slug`; the first author profile is `/authors/daniel-hunter`.
 
 ## Links
 

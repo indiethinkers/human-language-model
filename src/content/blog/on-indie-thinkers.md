@@ -74,9 +74,13 @@ A digital lab for writers to explore ideas and present them in unique ways. In t
 
 ## Joysticks in Multi-Player Mode
 
-Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. How and where will we collaborate?
+Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
-![Dark Forest Operating System homepage](../../assets/on-indie-thinkers/dfos-dark-forest.png)
+Okay, well, how and where will we collaborate?
+
+We planted a tree in the dark forest.
+
+![Dark Forest Operating System preview](../../assets/on-indie-thinkers/dfos-preview.gif)
 
 The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweight Discord with some blog and newsletter features baked in, but there are some powerful community primitives that are worth paying attention to, like community treasuries.
 
@@ -91,6 +95,8 @@ Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives m
 ![New Creative Era DFOS space](../../assets/on-indie-thinkers/new-creative-era.png)
 
 You can [join our space here](https://app.dfos.com/j/fa8zvev86e36crcrhke3a3).
+
+![Dark Forest Operating System homepage](../../assets/on-indie-thinkers/dfos-dark-forest.png)
 
 Eventually, Indie Thinkers will open a community treasury that will be used to launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and it deserves the same packaging given to a feature release at a venture-backed startup.
 

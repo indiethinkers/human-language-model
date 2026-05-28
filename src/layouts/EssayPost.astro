@@ -180,12 +180,42 @@ const authorName = authorInfo?.name ?? author;
 						deck.style.setProperty('--deck-tilt-y', `${y * -3}deg`);
 					};
 
-					const flip = (direction = 1) => {
-						resetDrag();
-						renderStack(activeIndex + direction);
+					let isAnimatingExit = false;
+
+					const flip = (direction = 1, exitDirection = 0) => {
+						if (isAnimatingExit) return;
+
+						const dismissed = cards[activeIndex];
+
+						if (exitDirection === 0 || !dismissed) {
+							resetDrag();
+							renderStack(activeIndex + direction);
+							return;
+						}
+
+						isAnimatingExit = true;
+						const flightDistance = Math.max(deck.offsetWidth, window.innerWidth) * 0.85;
+						dismissed.dataset.exiting = 'true';
+						dismissed.style.setProperty('--active-drag-x', `${exitDirection * flightDistance}px`);
+						dismissed.style.setProperty('--active-drag-rotation', `${exitDirection * 22}deg`);
+
+						setTimeout(() => {
+							dismissed.dataset.snapping = 'true';
+							delete dismissed.dataset.exiting;
+							dismissed.style.setProperty('--active-drag-x', '0px');
+							dismissed.style.setProperty('--active-drag-rotation', '0deg');
+							renderStack(activeIndex + direction);
+							requestAnimationFrame(() => {
+								requestAnimationFrame(() => {
+									delete dismissed.dataset.snapping;
+									isAnimatingExit = false;
+								});
+							});
+						}, 360);
 					};
 
 					deck.addEventListener('pointerdown', (event) => {
+						if (isAnimatingExit) return;
 						pointerStart = { x: event.clientX, y: event.clientY };
 						deck.dataset.dragging = 'true';
 						deck.setPointerCapture?.(event.pointerId);
@@ -215,12 +245,12 @@ const authorName = authorInfo?.name ?? author;
 						delete deck.dataset.dragging;
 
 						if (shouldSwipe) {
-							flip(dragX < 0 ? 1 : -1);
+							flip(dragX > 0 ? 1 : -1, dragX > 0 ? 1 : -1);
 							return;
 						}
 
 						if (shouldClick) {
-							flip(1);
+							flip(1, 1);
 							return;
 						}
 
@@ -235,12 +265,12 @@ const authorName = authorInfo?.name ?? author;
 					deck.addEventListener('keydown', (event) => {
 						if (event.key === 'ArrowRight' || event.key === 'Enter' || event.key === ' ') {
 							event.preventDefault();
-							flip(1);
+							flip(1, 1);
 						}
 
 						if (event.key === 'ArrowLeft') {
 							event.preventDefault();
-							flip(-1);
+							flip(-1, -1);
 						}
 					});
 
@@ -748,6 +778,18 @@ const authorName = authorInfo?.name ?? author;
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) li.is-active {
 		pointer-events: auto;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li[data-exiting='true'] {
+		z-index: 99;
+		opacity: 0;
+		transition:
+			opacity 280ms ease 80ms,
+			transform 360ms cubic-bezier(0.32, 0, 0.67, 0);
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li[data-snapping='true'] {
+		transition: none !important;
 	}
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) img {

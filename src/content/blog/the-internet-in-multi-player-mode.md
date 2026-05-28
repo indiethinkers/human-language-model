@@ -13,7 +13,7 @@ heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.p
 
 Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
-Okay, well, how and where will we collaborate?
+Okay, well, how and where should people collaborate?
 
 We planted a tree in the dark forest.
 

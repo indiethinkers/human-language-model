@@ -9,6 +9,36 @@ pubDate: 'May 25 2026'
 heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
 ---
 
+## Joysticks
+
+Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
+
+Okay, well, how and where will we collaborate?
+
+We planted a tree in the dark forest.
+
+![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
+
+The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweight Discord with some blog and newsletter features baked in, but there are some community primitives that are worth paying attention to, like community treasuries.
+
+![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
+
+DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), [Metalabel](https://www.metalabel.com/about) founder.
+
+After a bit of a rocky start, they're hitting a stride.
+
+Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm Arcade Game era energy I didn't realize I was missing.
+
+![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
+
+You can [join our space here](https://app.dfos.com/j/fa8zvev86e36crcrhke3a3).
+
+![Dark Forest Operating System homepage](../../assets/the-internet-in-multi-player-mode/dfos-dark-forest.png)
+
+Eventually, Indie Thinkers will open a community treasury that will be used to launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and it deserves the same packaging given to a feature release at a venture-backed startup.
+
+This won't be a vague community wallet or crypto gimmick. It'll be a real pool of money used to pay writers. If someone has a dope idea but not the time, resources, marketing, or design sense to turn it into something bigger, Indie Thinkers should be able to help.
+
 ## Code & Prose
 
 We've moved Indie Thinkers to a new home.
@@ -72,36 +102,6 @@ The more I thought about this, the more I realized that building a human languag
 Indie Thinkers can be a modern-day human language model. A community building a body of work that helps chronicle the human condition and leaves behind evidence of life long after robots roam the earth.
 
 A digital lab for writers to explore ideas and present them in unique ways. In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we want to pay contributors.
-
-## Joysticks in Multi-Player Mode
-
-Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
-
-Okay, well, how and where will we collaborate?
-
-We planted a tree in the dark forest.
-
-![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
-
-The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweight Discord with some blog and newsletter features baked in, but there are some community primitives that are worth paying attention to, like community treasuries.
-
-![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
-
-DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), [Metalabel](https://www.metalabel.com/about) founder.
-
-After a bit of a rocky start, they're hitting a stride.
-
-Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm Arcade Game era energy I didn't realize I was missing.
-
-![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
-
-You can [join our space here](https://app.dfos.com/j/fa8zvev86e36crcrhke3a3).
-
-![Dark Forest Operating System homepage](../../assets/the-internet-in-multi-player-mode/dfos-dark-forest.png)
-
-Eventually, Indie Thinkers will open a community treasury that will be used to launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and it deserves the same packaging given to a feature release at a venture-backed startup.
-
-This won't be a vague community wallet or crypto gimmick. It'll be a real pool of money used to pay writers. If someone has a dope idea but not the time, resources, marketing, or design sense to turn it into something bigger, Indie Thinkers should be able to help.
 
 ## What We're Not Doing
 

@@ -624,28 +624,28 @@ const authorName = authorInfo?.name ?? author;
 	}
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) {
-		--substack-stack-width: min(56rem, calc(100vw - 2rem));
-		--substack-card-width: min(44rem, calc(100vw - 3rem));
-		--substack-active-x: 0px;
-		--substack-active-y: 0px;
+		--substack-stack-width: min(48rem, calc(100vw - 2rem));
+		--substack-card-width: min(34rem, calc(100vw - 3rem));
+		--substack-active-x: 7rem;
+		--substack-active-y: -0.5rem;
 		--substack-active-z: 48px;
-		--substack-active-rotation: 0deg;
-		--substack-second-x: 32px;
-		--substack-second-y: 24px;
-		--substack-second-rotation: 4deg;
-		--substack-third-x: -30px;
-		--substack-third-y: 42px;
+		--substack-active-rotation: 16deg;
+		--substack-second-x: 2rem;
+		--substack-second-y: 1rem;
+		--substack-second-rotation: 7deg;
+		--substack-third-x: -4rem;
+		--substack-third-y: 2.5rem;
 		--substack-third-rotation: -5deg;
-		--substack-fourth-x: 8px;
-		--substack-fourth-y: 58px;
-		--substack-fourth-rotation: 7deg;
+		--substack-fourth-x: -7rem;
+		--substack-fourth-y: 4rem;
+		--substack-fourth-rotation: 4deg;
 		--deck-tilt-x: 0deg;
 		--deck-tilt-y: 0deg;
 
 		position: relative;
 		display: block;
 		width: var(--substack-stack-width);
-		height: clamp(20rem, 52vw, 34rem);
+		height: clamp(16rem, 36vw, 24rem);
 		max-width: none;
 		margin-block: 0.5rem 2.5rem;
 		margin-inline: calc((100% - var(--substack-stack-width)) / 2);
@@ -769,33 +769,36 @@ const authorName = authorInfo?.name ?? author;
 
 	@media (min-width: 64rem) {
 		.essay-body ul:has(img[alt^='Substack screenshot']) {
-			--substack-stack-width: min(76rem, calc(100vw - 2rem));
-			--substack-card-width: clamp(44rem, 46vw, 52rem);
-			--substack-active-x: clamp(7rem, 13vw, 15rem);
-			--substack-active-y: -2rem;
+			--substack-stack-width: min(68rem, calc(100vw - 2rem));
+			--substack-card-width: clamp(36rem, 34vw, 42rem);
+			--substack-active-x: clamp(10rem, 14vw, 18rem);
+			--substack-active-y: -1.25rem;
 			--substack-active-z: 72px;
-			--substack-active-rotation: 8deg;
-			--substack-second-x: clamp(-8rem, -8vw, -4rem);
-			--substack-second-y: 2.75rem;
-			--substack-second-rotation: -3deg;
-			--substack-third-x: clamp(-12rem, -12vw, -6rem);
-			--substack-third-y: 5rem;
-			--substack-third-rotation: 5deg;
-			--substack-fourth-x: clamp(-16rem, -16vw, -8rem);
-			--substack-fourth-y: 6.5rem;
-			--substack-fourth-rotation: -6deg;
+			--substack-active-rotation: 18deg;
+			--substack-second-x: clamp(3rem, 5vw, 7rem);
+			--substack-second-y: 1.75rem;
+			--substack-second-rotation: 8deg;
+			--substack-third-x: clamp(-6rem, -5vw, -3rem);
+			--substack-third-y: 3.5rem;
+			--substack-third-rotation: -5deg;
+			--substack-fourth-x: clamp(-11rem, -10vw, -6rem);
+			--substack-fourth-y: 5rem;
+			--substack-fourth-rotation: 4deg;
 
-			height: clamp(28rem, 54vw, 44rem);
+			height: clamp(20rem, 32vw, 28rem);
 			margin-block: 1rem 3rem;
 		}
 	}
 
 	@media (min-width: 90rem) {
 		.essay-body ul:has(img[alt^='Substack screenshot']) {
-			--substack-card-width: clamp(52rem, 48vw, 62rem);
-			--substack-active-x: clamp(13rem, 18vw, 28rem);
-			--substack-active-y: -3.25rem;
-			--substack-active-rotation: 9deg;
+			--substack-stack-width: min(80rem, calc(100vw - 2rem));
+			--substack-card-width: clamp(40rem, 36vw, 48rem);
+			--substack-active-x: clamp(14rem, 18vw, 24rem);
+			--substack-active-y: -2rem;
+			--substack-active-rotation: 20deg;
+			--substack-second-x: clamp(5rem, 7vw, 10rem);
+			--substack-second-rotation: 9deg;
 		}
 	}
 
@@ -806,17 +809,20 @@ const authorName = authorInfo?.name ?? author;
 			--substack-active-x: 0px;
 			--substack-active-y: 0px;
 			--substack-active-z: 48px;
-			--substack-active-rotation: 0deg;
+			--substack-active-rotation: 3deg;
+			--substack-second-x: -10px;
+			--substack-second-y: 14px;
+			--substack-second-rotation: -3deg;
+			--substack-third-x: 14px;
+			--substack-third-y: 24px;
+			--substack-third-rotation: 2deg;
+			--substack-fourth-x: -18px;
+			--substack-fourth-y: 34px;
+			--substack-fourth-rotation: -4deg;
 
 			height: clamp(14rem, 66vw, 21rem);
 			margin-block: 0.25rem 1.25rem;
 			margin-inline: 0;
-		}
-
-		.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(n + 2) {
-			--stack-offset-x: 12px;
-			--stack-offset-y: 18px;
-			--stack-rotation: 3deg;
 		}
 	}
 

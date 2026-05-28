@@ -88,6 +88,166 @@ const authorName = authorInfo?.name ?? author;
 				</div>
 			</div>
 		</main>
+
+		<script is:inline>
+			(() => {
+				const decks = document.querySelectorAll(
+					".essay-body ul:has(img[alt^='Substack screenshot'])",
+				);
+				const stackLayouts = [
+					{
+						x: 'var(--substack-active-x)',
+						y: 'var(--substack-active-y)',
+						z: 'var(--substack-active-z)',
+						rotate: 'var(--substack-active-rotation)',
+						scale: '1',
+						opacity: '1',
+					},
+					{
+						x: 'var(--substack-second-x)',
+						y: 'var(--substack-second-y)',
+						z: '24px',
+						rotate: 'var(--substack-second-rotation)',
+						scale: '0.965',
+						opacity: '0.94',
+					},
+					{
+						x: 'var(--substack-third-x)',
+						y: 'var(--substack-third-y)',
+						z: '0px',
+						rotate: 'var(--substack-third-rotation)',
+						scale: '0.93',
+						opacity: '0.88',
+					},
+					{
+						x: 'var(--substack-fourth-x)',
+						y: 'var(--substack-fourth-y)',
+						z: '-22px',
+						rotate: 'var(--substack-fourth-rotation)',
+						scale: '0.895',
+						opacity: '0.8',
+					},
+				];
+
+				decks.forEach((deck) => {
+					const cards = Array.from(deck.querySelectorAll(':scope > li')).filter((card) =>
+						card.querySelector("img[alt^='Substack screenshot']"),
+					);
+
+					if (cards.length < 2) return;
+
+					let activeIndex = 0;
+					let pointerStart = null;
+
+					deck.classList.add('substack-card-stack');
+					deck.tabIndex = 0;
+					deck.setAttribute('role', 'button');
+					deck.setAttribute('aria-label', 'Flip through Substack screenshots');
+
+					const resetDrag = () => {
+						cards.forEach((card) => {
+							card.style.setProperty('--active-drag-x', '0px');
+							card.style.setProperty('--active-drag-rotation', '0deg');
+						});
+					};
+
+					const renderStack = (nextIndex = activeIndex) => {
+						activeIndex = (nextIndex + cards.length) % cards.length;
+
+						cards.forEach((card, cardIndex) => {
+							const stackPosition = (cardIndex - activeIndex + cards.length) % cards.length;
+							const layout =
+								stackLayouts[stackPosition] ??
+								stackLayouts[stackLayouts.length - 1];
+
+							card.classList.toggle('is-active', stackPosition === 0);
+							card.style.setProperty('--stack-layer', `${cards.length - stackPosition}`);
+							card.style.setProperty('--stack-offset-x', layout.x);
+							card.style.setProperty('--stack-offset-y', layout.y);
+							card.style.setProperty('--stack-z', layout.z);
+							card.style.setProperty('--stack-rotation', layout.rotate);
+							card.style.setProperty('--stack-scale', layout.scale);
+							card.style.setProperty('--stack-opacity', layout.opacity);
+						});
+					};
+
+					const updateTilt = (event) => {
+						const rect = deck.getBoundingClientRect();
+						const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+						const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+
+						deck.style.setProperty('--deck-tilt-x', `${x * 4}deg`);
+						deck.style.setProperty('--deck-tilt-y', `${y * -3}deg`);
+					};
+
+					const flip = (direction = 1) => {
+						resetDrag();
+						renderStack(activeIndex + direction);
+					};
+
+					deck.addEventListener('pointerdown', (event) => {
+						pointerStart = { x: event.clientX, y: event.clientY };
+						deck.dataset.dragging = 'true';
+						deck.setPointerCapture?.(event.pointerId);
+					});
+
+					deck.addEventListener('pointermove', (event) => {
+						updateTilt(event);
+
+						if (!pointerStart) return;
+
+						const dragX = event.clientX - pointerStart.x;
+						const activeCard = cards[activeIndex];
+
+						activeCard?.style.setProperty('--active-drag-x', `${dragX * 0.55}px`);
+						activeCard?.style.setProperty('--active-drag-rotation', `${dragX / 18}deg`);
+					});
+
+					deck.addEventListener('pointerup', (event) => {
+						if (!pointerStart) return;
+
+						const dragX = event.clientX - pointerStart.x;
+						const dragY = event.clientY - pointerStart.y;
+						const shouldSwipe = Math.abs(dragX) > 28 && Math.abs(dragX) > Math.abs(dragY);
+						const shouldClick = Math.abs(dragX) < 8 && Math.abs(dragY) < 8;
+
+						pointerStart = null;
+						delete deck.dataset.dragging;
+
+						if (shouldSwipe) {
+							flip(dragX < 0 ? 1 : -1);
+							return;
+						}
+
+						if (shouldClick) {
+							flip(1);
+							return;
+						}
+
+						resetDrag();
+					});
+
+					deck.addEventListener('pointerleave', () => {
+						deck.style.setProperty('--deck-tilt-x', '0deg');
+						deck.style.setProperty('--deck-tilt-y', '0deg');
+					});
+
+					deck.addEventListener('keydown', (event) => {
+						if (event.key === 'ArrowRight' || event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault();
+							flip(1);
+						}
+
+						if (event.key === 'ArrowLeft') {
+							event.preventDefault();
+							flip(-1);
+						}
+					});
+
+					renderStack();
+				});
+			})();
+		</script>
 	</body>
 </html>
 
@@ -464,30 +624,200 @@ const authorName = authorInfo?.name ?? author;
 	}
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) {
-		--substack-grid-width: min(56rem, calc(100vw - 2rem));
+		--substack-stack-width: min(56rem, calc(100vw - 2rem));
+		--substack-card-width: min(44rem, calc(100vw - 3rem));
+		--substack-active-x: 0px;
+		--substack-active-y: 0px;
+		--substack-active-z: 48px;
+		--substack-active-rotation: 0deg;
+		--substack-second-x: 32px;
+		--substack-second-y: 24px;
+		--substack-second-rotation: 4deg;
+		--substack-third-x: -30px;
+		--substack-third-y: 42px;
+		--substack-third-rotation: -5deg;
+		--substack-fourth-x: 8px;
+		--substack-fourth-y: 58px;
+		--substack-fourth-rotation: 7deg;
+		--deck-tilt-x: 0deg;
+		--deck-tilt-y: 0deg;
 
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: clamp(0.5rem, 1vw, 0.875rem);
-		width: var(--substack-grid-width);
+		position: relative;
+		display: block;
+		width: var(--substack-stack-width);
+		height: clamp(20rem, 52vw, 34rem);
 		max-width: none;
-		margin-block: 0.25rem 0.875rem;
-		margin-inline: calc((100% - var(--substack-grid-width)) / 2);
+		margin-block: 0.5rem 2.5rem;
+		margin-inline: calc((100% - var(--substack-stack-width)) / 2);
 		padding: 0;
+		perspective: 1400px;
+		perspective-origin: center;
+		cursor: grab;
+		isolation: isolate;
 		list-style: none;
+		touch-action: pan-y;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']):focus-visible {
+		outline: 2px solid oklch(64% 0.07 238);
+		outline-offset: 0.35rem;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot'])[data-dragging='true'] {
+		cursor: grabbing;
 	}
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) li {
+		--active-drag-rotation: 0deg;
+		--active-drag-x: 0px;
+		--stack-layer: 1;
+		--stack-offset-x: 0px;
+		--stack-offset-y: 0px;
+		--stack-opacity: 1;
+		--stack-rotation: 0deg;
+		--stack-scale: 1;
+		--stack-z: 0px;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: var(--stack-layer);
+		width: var(--substack-card-width);
 		min-width: 0;
 		margin: 0;
 		background: transparent;
+		opacity: var(--stack-opacity);
+		pointer-events: none;
+		transform:
+			translate3d(-50%, -50%, 0)
+			translate3d(
+				calc(var(--stack-offset-x) + var(--active-drag-x)),
+				var(--stack-offset-y),
+				var(--stack-z)
+			)
+			rotateX(var(--deck-tilt-y))
+			rotateY(var(--deck-tilt-x))
+			rotateZ(calc(var(--stack-rotation) + var(--active-drag-rotation)))
+			scale(var(--stack-scale));
+		transform-origin: 50% 80%;
+		transition:
+			opacity 260ms ease,
+			filter 260ms ease,
+			transform 520ms cubic-bezier(0.2, 0.85, 0.22, 1);
+		will-change: transform;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(1) {
+		--stack-layer: 4;
+		--stack-offset-x: var(--substack-active-x);
+		--stack-offset-y: var(--substack-active-y);
+		--stack-z: var(--substack-active-z);
+		--stack-rotation: var(--substack-active-rotation);
+		--stack-scale: 1;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(2) {
+		--stack-layer: 3;
+		--stack-offset-x: var(--substack-second-x);
+		--stack-offset-y: var(--substack-second-y);
+		--stack-z: 24px;
+		--stack-rotation: var(--substack-second-rotation);
+		--stack-scale: 0.965;
+		--stack-opacity: 0.94;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(3) {
+		--stack-layer: 2;
+		--stack-offset-x: var(--substack-third-x);
+		--stack-offset-y: var(--substack-third-y);
+		--stack-z: 0px;
+		--stack-rotation: var(--substack-third-rotation);
+		--stack-scale: 0.93;
+		--stack-opacity: 0.88;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(4) {
+		--stack-layer: 1;
+		--stack-offset-x: var(--substack-fourth-x);
+		--stack-offset-y: var(--substack-fourth-y);
+		--stack-z: -22px;
+		--stack-rotation: var(--substack-fourth-rotation);
+		--stack-scale: 0.895;
+		--stack-opacity: 0.8;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li.is-active {
+		pointer-events: auto;
 	}
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) img {
 		width: 100%;
 		margin: 0;
 		background: transparent;
-		filter: drop-shadow(0 0.875rem 1.75rem oklch(14.5% 0 0 / 12%));
+		filter:
+			drop-shadow(0 1rem 2.25rem oklch(14.5% 0 0 / 14%))
+			drop-shadow(0 0.25rem 0.75rem oklch(14.5% 0 0 / 8%));
+		user-select: none;
+		-webkit-user-drag: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) li {
+			transition-duration: 1ms;
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			--substack-stack-width: min(76rem, calc(100vw - 2rem));
+			--substack-card-width: clamp(44rem, 46vw, 52rem);
+			--substack-active-x: clamp(7rem, 13vw, 15rem);
+			--substack-active-y: -2rem;
+			--substack-active-z: 72px;
+			--substack-active-rotation: 8deg;
+			--substack-second-x: clamp(-8rem, -8vw, -4rem);
+			--substack-second-y: 2.75rem;
+			--substack-second-rotation: -3deg;
+			--substack-third-x: clamp(-12rem, -12vw, -6rem);
+			--substack-third-y: 5rem;
+			--substack-third-rotation: 5deg;
+			--substack-fourth-x: clamp(-16rem, -16vw, -8rem);
+			--substack-fourth-y: 6.5rem;
+			--substack-fourth-rotation: -6deg;
+
+			height: clamp(28rem, 54vw, 44rem);
+			margin-block: 1rem 3rem;
+		}
+	}
+
+	@media (min-width: 90rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			--substack-card-width: clamp(52rem, 48vw, 62rem);
+			--substack-active-x: clamp(13rem, 18vw, 28rem);
+			--substack-active-y: -3.25rem;
+			--substack-active-rotation: 9deg;
+		}
+	}
+
+	@media (max-width: 42rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			--substack-stack-width: min(100%, calc(100vw - 2rem));
+			--substack-card-width: min(100%, calc(100vw - 2rem));
+			--substack-active-x: 0px;
+			--substack-active-y: 0px;
+			--substack-active-z: 48px;
+			--substack-active-rotation: 0deg;
+
+			height: clamp(14rem, 66vw, 21rem);
+			margin-block: 0.25rem 1.25rem;
+			margin-inline: 0;
+		}
+
+		.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(n + 2) {
+			--stack-offset-x: 12px;
+			--stack-offset-y: 18px;
+			--stack-rotation: 3deg;
+		}
 	}
 
 	@media (max-width: 42rem) {

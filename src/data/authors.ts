@@ -12,7 +12,7 @@ export const authors: Record<string, Author> = {
 	'daniel-hunter': {
 		slug: 'daniel-hunter',
 		name: 'Daniel Hunter',
-		bio: 'Founder of Indie Thinkers',
+		bio: 'Daniel Hunter is the founder of Indie Thinkers, Post in Black, and a Software Engineer at Crossbeam.',
 		avatar: DanielHunterAvatar,
 	},
 };

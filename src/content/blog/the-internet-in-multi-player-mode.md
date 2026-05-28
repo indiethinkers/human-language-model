@@ -71,7 +71,7 @@ The more I thought about this, the more I realized that building a human languag
 
 Indie Thinkers can be a modern-day human language model. A community building a body of work that helps chronicle the human condition and leaves behind evidence of life long after robots roam the earth.
 
-A digital lab for writers to explore ideas and present them in unique ways. In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we do want to pay contributors consistently.
+A digital lab for writers to explore ideas and present them in unique ways. In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we want to pay contributors.
 
 ## Joysticks in Multi-Player Mode
 
@@ -83,7 +83,7 @@ We planted a tree in the dark forest.
 
 ![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
 
-The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweight Discord with some blog and newsletter features baked in, but there are some powerful community primitives that are worth paying attention to, like community treasuries.
+The [Dark Forest Operating System](https://dfos.com/) is essentially a lightweight Discord with some blog and newsletter features baked in, but there are some community primitives that are worth paying attention to, like community treasuries.
 
 ![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
 
@@ -117,7 +117,7 @@ The goal is to publish work that feels worth returning to.
 
 In my own freewriting sessions, I kept comparing the shape of Indie Thinkers to a mix of [Farnam Street](https://fs.blog/), [Indie Hackers](https://www.indiehackers.com/), [Every](https://every.to/), and [Stripe Press](https://press.stripe.com/). That still feels directionally right.
 
-[Every](https://every.to/) has a sense of timeliness and intellectual range. [Farnam Street](https://fs.blog/) has a library quality, the feeling that an essay might still be useful years from now. [Stripe Press](https://press.stripe.com/) treats ideas like designed objects. The books, pages, and interfaces all communicate that the work has been cared for. [Indie Hackers interviews](https://www.indiehackers.com/interviews) were legendary and created a powerful sense of identity and community.
+[Every](https://every.to/) has a sense of timeliness and intellectual range. [Farnam Street](https://fs.blog/) has a library quality, the feeling that an essay might still be useful years from now. [Stripe Press](https://press.stripe.com/) treats ideas like designed objects. The books, pages, and interfaces all communicate that the work has been cared for. [Indie Hackers interviews](https://www.indiehackers.com/interviews) were legendary and created a sense of identity and community.
 
 Indie Thinkers sits somewhere in the middle there. Timely enough to matter now. Timeless enough to matter later. Designed well enough to feel like the medium respects the idea. And open enough to be trusted.
 
@@ -125,7 +125,7 @@ Indie Thinkers sits somewhere in the middle there. Timely enough to matter now. 
 
 We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short at times. I have conviction that my role in this world is centered around servant leadership.
 
-I want my life's work to be centered around elevating the work of others. That sounds lofty, but it's also practical. I am happiest when I am helping someone clarify an idea, package it, and get it in front of the right people.
+I want my life's work to be centered around elevating the work of others. That sounds lofty, but it's practical. I get the most joy from helping someone clarify an idea and get it in front of the right people.
 
 I like the feeling of building a container that makes other people's work more legible and more likely to travel. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea and don't know where to start, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com) or join the community.
 

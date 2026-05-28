@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import FormattedDate from '../components/FormattedDate.astro';
@@ -56,30 +55,24 @@ const authorName = authorInfo?.name ?? author;
 					<article class="quote-card essay-detail">
 						<header class="essay-header">
 							<h1 class="essay-title">{title}</h1>
-							{deck && <p class="essay-deck">{deck}</p>}
-							<a href={`/authors/${authorInfo.slug}`} class="essay-byline">
-								<Image
-									src={authorInfo.avatar}
-									alt=""
-									width={72}
-									height={72}
-									class="essay-author-avatar"
-								/>
-								<span class="essay-byline-copy">
-									<span class="essay-author">{authorName}</span>
-									<span class="essay-date">
-										<FormattedDate date={pubDate} />
-										{
-											updatedDate && (
-												<span>
-													{' '}
-													/ updated <FormattedDate date={updatedDate} />
-												</span>
-											)
-										}
-									</span>
+							<div class="essay-meta">
+								<a href={`/authors/${authorInfo.slug}`} class="essay-byline">
+									{authorName}
+								</a>
+								<span class="essay-meta-separator" aria-hidden="true">/</span>
+								<span class="essay-date">
+									<FormattedDate date={pubDate} />
+									{
+										updatedDate && (
+											<span>
+												{' '}
+												/ updated <FormattedDate date={updatedDate} />
+											</span>
+										)
+									}
 								</span>
-							</a>
+							</div>
+							{deck && <p class="essay-deck">{deck}</p>}
 						</header>
 
 						<div class="essay-body">
@@ -140,6 +133,7 @@ const authorName = authorInfo?.name ?? author;
 	}
 
 	:root {
+		--essay-content-width: 728px;
 		--font-geist-sans: Geist, 'Geist Fallback', Arial, sans-serif;
 		--font-geist-mono: 'Geist Mono', 'Geist Mono Fallback', Arial, monospace;
 		--shiny-gray-50: oklch(98.5% 0.002 247.839);
@@ -286,10 +280,11 @@ const authorName = authorInfo?.name ?? author;
 	.essay-detail-shell,
 	.essay-detail-frame {
 		width: 100%;
-		max-width: 42rem;
+		max-width: calc(var(--essay-content-width) + 2rem);
 	}
 
 	.essay-detail {
+		position: relative;
 		min-height: auto;
 		align-items: stretch;
 		gap: 2rem;
@@ -303,37 +298,27 @@ const authorName = authorInfo?.name ?? author;
 		gap: 0.75rem;
 	}
 
-	.essay-byline {
-		display: inline-flex;
+	.essay-meta {
+		display: flex;
 		align-items: center;
-		align-self: flex-start;
 		gap: 0.5rem;
 		color: var(--shiny-gray-500);
 		font-family: var(--font-geist-sans);
 		line-height: 1.25;
+	}
+
+	.essay-byline {
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0;
 		text-decoration: none;
-		text-transform: uppercase;
 	}
 
-	.essay-author-avatar {
-		width: 2.125rem;
-		height: 2.125rem;
-		flex: 0 0 2.125rem;
-		border-radius: 999px;
-		object-fit: cover;
-	}
-
-	.essay-byline-copy {
-		display: flex;
-		flex-direction: column;
-		gap: 0.125rem;
-	}
-
-	.essay-author {
-		margin: 0;
-		color: var(--shiny-gray-800);
-		font-size: 0.6875rem;
-		font-weight: 600;
+	.essay-meta-separator {
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		font-weight: 500;
 		letter-spacing: 0.075em;
 	}
 
@@ -341,19 +326,19 @@ const authorName = authorInfo?.name ?? author;
 		display: block;
 		margin: 0;
 		color: var(--shiny-gray-500);
-		font-size: 0.625rem;
+		font-size: 0.875rem;
 		font-weight: 500;
 		letter-spacing: 0.075em;
-		line-height: calc(1.25 / 0.875);
+		line-height: 1.25;
 	}
 
-	.essay-byline:hover .essay-author {
+	.essay-byline:hover {
 		color: var(--shiny-foreground);
 	}
 
 	.essay-title {
 		margin: 0;
-		font-size: 1.875rem;
+		font-size: 2.25rem;
 		font-weight: 500;
 		letter-spacing: 0;
 		line-height: 1.4;
@@ -367,6 +352,7 @@ const authorName = authorInfo?.name ?? author;
 		border-bottom: 1px solid oklch(88% 0.01 264.364);
 		color: var(--shiny-gray-500);
 		font-size: 0.9375rem;
+		font-style: italic;
 		font-weight: 400;
 		letter-spacing: 0;
 		line-height: 1.55;
@@ -376,6 +362,8 @@ const authorName = authorInfo?.name ?? author;
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
+		font-size: 1rem;
+		line-height: 1.7;
 	}
 
 	.essay-body :where(h2, h3, h4, p, blockquote, ul, ol, figure) {
@@ -500,5 +488,12 @@ const authorName = authorInfo?.name ?? author;
 		margin: 0;
 		background: transparent;
 		filter: drop-shadow(0 0.875rem 1.75rem oklch(14.5% 0 0 / 12%));
+	}
+
+	@media (max-width: 42rem) {
+		.essay-meta {
+			align-items: flex-start;
+			flex-wrap: wrap;
+		}
 	}
 </style>

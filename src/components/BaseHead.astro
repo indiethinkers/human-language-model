@@ -39,6 +39,21 @@ const { title, description, image = FallbackImage } = Astro.props;
 
 <Font cssVariable="--font-atkinson" preload />
 
+<link
+	rel="preload"
+	href="/fonts/geist-latin.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/fonts/geist-mono-latin.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 

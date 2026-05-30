@@ -276,6 +276,34 @@ const authorName = authorInfo?.name ?? author;
 
 					renderStack();
 				});
+
+				const scrollPlayVideos = document.querySelectorAll('.scroll-play-video');
+
+				if ('IntersectionObserver' in window) {
+					const videoObserver = new IntersectionObserver(
+						(entries) => {
+							entries.forEach((entry) => {
+								const video = entry.target;
+
+								if (!(video instanceof HTMLVideoElement)) return;
+
+								if (entry.isIntersecting) {
+									video.play().catch(() => {});
+									return;
+								}
+
+								video.pause();
+							});
+						},
+						{ threshold: 0.35 },
+					);
+
+					scrollPlayVideos.forEach((video) => videoObserver.observe(video));
+				} else {
+					scrollPlayVideos.forEach((video) => {
+						if (video instanceof HTMLVideoElement) video.play().catch(() => {});
+					});
+				}
 			})();
 		</script>
 	</body>
@@ -623,6 +651,26 @@ const authorName = authorInfo?.name ?? author;
 		border-radius: 0;
 	}
 
+	.essay-body video {
+		width: calc(100% - 32px);
+		height: auto;
+		margin-block: 0.5rem;
+		margin-inline: auto;
+		border-radius: 0.5rem;
+		filter:
+			drop-shadow(0 1rem 2.25rem oklch(14.5% 0 0 / 14%))
+			drop-shadow(0 0.25rem 0.75rem oklch(14.5% 0 0 / 8%));
+		overflow: hidden;
+	}
+
+	.essay-body .image-caption {
+		margin-block: -0.75rem 0.75rem;
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		line-height: 1.45;
+		text-align: center;
+	}
+
 	.essay-body blockquote {
 		position: relative;
 		margin-block: 0.125rem 0.375rem;
@@ -650,7 +698,7 @@ const authorName = authorInfo?.name ?? author;
 	}
 
 	.essay-body :where(ul, ol) {
-		padding-left: 1.25rem;
+		padding-left: 2rem;
 	}
 
 	.essay-body ul:has(img[alt^='Substack screenshot']) {
@@ -677,7 +725,7 @@ const authorName = authorInfo?.name ?? author;
 		width: var(--substack-stack-width);
 		height: clamp(16rem, 36vw, 24rem);
 		max-width: none;
-		margin-block: 0.5rem 2.5rem;
+		margin-block: 3rem 4rem;
 		margin-inline: calc((100% - var(--substack-stack-width)) / 2);
 		padding: 0;
 		perspective: 1400px;
@@ -828,7 +876,7 @@ const authorName = authorInfo?.name ?? author;
 			--substack-fourth-rotation: 4deg;
 
 			height: clamp(20rem, 32vw, 28rem);
-			margin-block: 1rem 3rem;
+			margin-block: 3rem 4rem;
 		}
 	}
 
@@ -863,7 +911,7 @@ const authorName = authorInfo?.name ?? author;
 			--substack-fourth-rotation: -4deg;
 
 			height: clamp(14rem, 66vw, 21rem);
-			margin-block: 0.25rem 1.25rem;
+			margin-block: 2rem 2.75rem;
 			margin-inline: 0;
 		}
 	}

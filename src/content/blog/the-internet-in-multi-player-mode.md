@@ -5,7 +5,7 @@ deck: 'Indie Thinkers isn’t a media company, or collective, it’s an open sou
 quote: 'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
-pubDate: 'May 25 2026'
+pubDate: 'June 1, 2026'
 heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
 ---
 
@@ -19,7 +19,9 @@ Plant a tree in the dark forest.
 
 ![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
 
-At first glance, the [Dark Forest Operating System](https://dfos.com/) might appear to be simply a lightweight version of Discord with a blog baked in, but there are unique primitives that stand out, like community treasuries.
+<p class="image-caption"><em>a collection of DFOS spaces, courtesy of Yancey Strickler</em></p>
+
+At first glance, the [Dark Forest Operating System](https://dfos.com/) might appear to be just a lightweight version of Discord with a tiny blog baked in, but there are unique primitives that stand out here, like community treasuries.
 
 When you launch a space, you can install the following native apps:
 
@@ -28,12 +30,13 @@ When you launch a space, you can install the following native apps:
 - Newsletter
 - Groups
 - Treasury
+- Custom Apps (soon)
 
 ![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
 
 DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a concious decision to support it nonetheless. I see the vision and want everyone involved to succeed. 
 
-After a bit of a rocky start, they're hitting their stride. I find some solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), [Metalabel](https://www.metalabel.com/about) founder. It won't just dissapear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm Arcade Game era energy I didn't realize I was missing.
+I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about), and ages ago, the crowdfunding giant Kickstarter. The Dark Forest won't just dissapear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing.
 
 ![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
 
@@ -43,9 +46,9 @@ The treasury won't be a vague community wallet or crypto gimmick. It'll be a rea
 
 ## Code & Prose
 
-We've moved Indie Thinkers dot com to a new home.
+You may have noticed, we moved Indie Thinkers dot com to a new home.
 
-I'm not here to dunk on Substack. They gave writers a place to live and they made publishing more approachable for thousands of writers. It's still home to some of the best writing on the internet, full stop. But platforms like Substack and Medium flattened the presentation layer. 
+I'm not here to dunk on Substack. They gave writers a beautiful place to live and collaborate. Recommendations and guest posts were huge deal when they first launched. Substack made publishing more approachable and it's still home to some of the best writing on the internet, full stop. But platforms like Substack and Medium flattened the presentation layer. 
 
 Everything kind of looks the same now.
 
@@ -54,11 +57,15 @@ Everything kind of looks the same now.
 - ![Substack screenshot of Not Boring](../../assets/the-internet-in-multi-player-mode/substack-03-paper.png)
 - ![Substack screenshot of Kyla's Newsletter](../../assets/the-internet-in-multi-player-mode/substack-04-paper.png)
 
-When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn't seen a web domain dedicated to one essay like this before and was inspired to elevate the written word to a level that demanded its own space to breathe in.
+When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn't seen a web domain dedicated to one essay like this before. I was inspired to elevate the written word to a level that demanded its own space to breathe in.
 
-Timing is everything so why move now? [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is having a renaissance moment.
+Timing is everything so why move Indie Thinkers now? 
 
-Tariq reminded everyone that Hypertext Markup Language is pretty dope. He also rocked the internet when he made the assertion:
+1. Substack is hard to leave and DFOS literally just launched last week
+
+2. [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is having a renaissance moment.
+
+Tariq from Anthropic reminded everyone that HyperText Markup Language is pretty dope. He rocked the internet with the following assertion:
 
 > **HTML** is the new markdown.
 
@@ -67,27 +74,35 @@ Tariq reminded everyone that Hypertext Markup Language is pretty dope. He also r
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-The beauty, and opportunity, of having full control over a HTML document is that it allows writers to be far more expressive than they could be in a [Markdown](https://daringfireball.net/projects/markdown/) file or a traditional blogging and newsletter platform like Substack. Some ideas need to stretch well into the margins.
+The beauty, and opportunity, of having full control over an HTML document is that it allows writers to be far more expressive than they could be in a [Markdown](https://daringfireball.net/projects/markdown/) file or a traditional blogging / newsletter platform like Substack. Some ideas need to stretch well into the margins.
 
 **Every.**
 
 [![Every After Automation essay page](../../assets/the-internet-in-multi-player-mode/every-after-automation.png)](https://every.to/p/after-automation)
 
+<p class="image-caption"><em><a href="https://every.to/p/after-automation">https://every.to/p/after-automation</a></em></p>
+
 **Cleartext.**
 
 [![Cleartext homepage](../../assets/the-internet-in-multi-player-mode/cleartext.png)](https://cleartxt.xyz/)
+
+<p class="image-caption"><em><a href="https://cleartxt.xyz">https://cleartxt.xyz</a></em></p>
 
 **Lit in Colour.**
 
 [![Lit in Colour homepage](../../assets/the-internet-in-multi-player-mode/lit-in-colour.png)](https://litincolour.penguin.co.uk/)
 
+<p class="image-caption"><em><a href="https://litincolour.penguin.co.uk">https://litincolour.penguin.co.uk</a></em></p>
+
 **Indie Thinkers.**
 
-![Indie Thinkers homepage](../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png)
+<video class="scroll-play-video" muted loop playsinline preload="metadata" aria-label="Indie Thinkers demo video">
+	<source src="/media/the-internet-in-multi-player-mode/indie-thinkers-demo-v4.mp4" type="video/mp4" />
+</video>
 
-Writers need more platforms that allow them to publish writing on the internet that pushes the boundaries of what we're accustomed to seeing. This is the type of experience that is just not possible to create on Substack. 
+<p class="image-caption"><em><a href="https://www.indiethinkers.com">https://www.indiethinkers.com</a></em></p>
 
-We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and Notes.
+Writers need more platforms that allow them to publish writing on the internet that pushes the boundaries of what we're accustomed to seeing. This is the type of experience that is just not possible to create on Substack. We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
 
 ## A Human Language Model
 

@@ -13,9 +13,8 @@ heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.p
 
 Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
-Everyone [keeps yelling](https://x.com/gregisenberg/status/2038706332119797894?s=20) about how important distribution is in the agentic age. We get it. We know that slop is a plague covering the earth and trying to out-post everyone is a fool’s errand. You can try to brute-force attention capture but the cost of eyeballs has gone up. 
-
-Yesterday's price is not today's price. 
+Everyone [keeps yelling](https://x.com/gregisenberg/status/2038706332119797894?s=20) about how important distribution is. We get it. We know that slop is a plague covering the earth with no Moses to save us and trying to out-post everyone is a fool’s errand. 
+You can try and brute-force attention capture but the cost of human eyeballs has gone up and you'll ultimately look like a clown. Yesterday's price is not today's price. 
 
 Please listen to [George Mack](https://x.com/george__mack/status/2060154109974679825) here:
 
@@ -62,9 +61,9 @@ When you launch a space, you can install the following native apps:
 
 ![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
 
-DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a concious decision to support it. I see the vision and want everyone involved to succeed. 
+DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a conscious decision to support it. I see the vision and want everyone involved to succeed. 
 
-I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and the crowdfunding giant Kickstarter. The Dark Forest won't just dissapear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing in my life.
+I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and the crowdfunding giant Kickstarter. The Dark Forest won't just disappear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing in my life.
 
 ![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
 
@@ -154,7 +153,7 @@ A digital lab for writers to explore ideas and present them in unique ways. In t
 
 We are not trying to become [The Atlantic](https://www.theatlantic.com/).
 
-Like I said, we're not hiring staff writers, building a giant editorial machine, or pretending that getting a specific number of subscribers will grant us a wish. We'd much rather have smaller group of readers who are actually engaged. We're not trying to become another content treadmill. The internet already has enough feeds. Enough takes. Enough growth hacks. Enough writing optimized to be glanced at between notifications.
+Like I said, we're not hiring staff writers, building a giant editorial machine, or pretending that getting a specific number of subscribers will grant us a wish. We'd much rather have a smaller group of readers who are actually engaged. We're not trying to become another content treadmill. The internet already has enough feeds. Enough takes. Enough growth hacks. Enough writing optimized to be glanced at between notifications.
 
 The goal is not to publish more.
 
@@ -169,7 +168,7 @@ We're opting out of the slop zone.
 
 In my own freewriting sessions, I kept comparing the shape of Indie Thinkers to a mix of [Farnam Street](https://fs.blog/), [Indie Hackers](https://www.indiehackers.com/), and [Stripe Press](https://press.stripe.com/) for essays. That still feels directionally right.
 
-Farnam Street is a timeless digitial library. After you read Brain Food, what your mind consumed will be useful years from now. The interviews on Indie Hackers were honest and the name itself became an identifier for thousands of builders. Stripe Press treats ideas like works of art. The packaging for their books arrive at your doorstep with great care. 
+Farnam Street is a timeless digital library. After you read Brain Food, what your mind consumed will be useful years from now. The interviews on Indie Hackers were honest and the name itself became an identifier for thousands of builders. Stripe Press treats ideas like works of art. The packaging for their books arrive at your doorstep with great care. 
 
 ## Fin
 

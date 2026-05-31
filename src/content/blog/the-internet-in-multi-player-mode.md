@@ -94,7 +94,9 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 We need more platforms that allow writers to publish prose on the internet that pushes the boundaries of what we're accustomed to seeing. This type of experience is just not possible on Substack. 
 
-That kind of singular vision and full control used to mean going it alone. The bet behind Indie Thinkers is that it doesn't have to anymore. We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
+That kind of singular vision and full control used to mean going it alone. The bet behind Indie Thinkers is that it doesn't have to anymore.
+
+We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
 
 ## A Human Language Model
 
@@ -114,11 +116,11 @@ Indie Thinkers can be a modern-day human language model. We'll build a body of w
 
 A digital lab for writers to explore ideas and present them in unique ways. In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we want to pay contributors.
 
-## Joysticks
+## Joysticks in the Dark Forest
 
 Okay, well, how and where should people collaborate?
 
-Plant a tree in the dark forest.
+First, one must plant a tree.
 
 ![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
 
@@ -167,7 +169,7 @@ Farnam Street is a timeless digital library. After you read Brain Food, what you
 
 I want my life's work to be centered around elevating others. Sounds lofty, but it's real. I get the most joy from helping someone clarify an idea and get it out into the world. I want to build a vehicle that makes other people's work more likely to travel. I have conviction that my role in this world is rooted in servant leadership.
 
-We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. The essays we leave behind are evidence of life. The words can be read long after our clock stops.
+We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. The essays we leave behind are evidence of life. The words can still be read after the clock stops.
 
 There's still so much to figure out, but I'd love to have you be a part of this journey and contribute. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea and don't know where to start, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com).
 

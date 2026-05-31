@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "indie-thinkers",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "dev"],
       "port": 4321
     }

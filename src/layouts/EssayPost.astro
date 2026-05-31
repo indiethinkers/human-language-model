@@ -634,6 +634,26 @@ const authorName = authorInfo?.name ?? author;
 		text-decoration-color: currentColor;
 	}
 
+	.essay-body .author-links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		margin-top: -0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.45;
+	}
+
+	.essay-body .author-links a:not(:has(img)) {
+		color: var(--shiny-gray-500);
+		font-weight: 500;
+		text-decoration-color: currentColor;
+	}
+
+	.essay-body .author-links a:not(:has(img)):hover {
+		background-color: transparent;
+		color: var(--shiny-gray-700);
+	}
+
 	.essay-body a:focus-visible {
 		outline: 2px solid oklch(64% 0.07 238);
 		outline-offset: 0.18em;
@@ -651,6 +671,14 @@ const authorName = authorInfo?.name ?? author;
 		border-radius: 0;
 	}
 
+	.essay-body img[alt='Drafts in GitHub'],
+	.essay-body img[alt='High Agency essay micro-site'] {
+		border-radius: 0.5rem;
+		filter:
+			drop-shadow(0 0.75rem 1.5rem oklch(14.5% 0 0 / 8%))
+			drop-shadow(0 0.2rem 0.55rem oklch(14.5% 0 0 / 5%));
+	}
+
 	.essay-body video {
 		width: calc(100% - 32px);
 		height: auto;
@@ -658,8 +686,8 @@ const authorName = authorInfo?.name ?? author;
 		margin-inline: auto;
 		border-radius: 0.5rem;
 		filter:
-			drop-shadow(0 1rem 2.25rem oklch(14.5% 0 0 / 14%))
-			drop-shadow(0 0.25rem 0.75rem oklch(14.5% 0 0 / 8%));
+			drop-shadow(0 0.75rem 1.5rem oklch(14.5% 0 0 / 8%))
+			drop-shadow(0 0.2rem 0.55rem oklch(14.5% 0 0 / 5%));
 		overflow: hidden;
 	}
 

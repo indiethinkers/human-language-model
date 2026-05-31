@@ -38,7 +38,7 @@ Please listen to [George Mack](https://x.com/george__mack/status/206015410997467
   </blockquote>
 </figure>
 
-It's kind of wild to think about only posting 4 times a year, but if you were a part of something bigger than yourself and you helped ship 24 essays in a year, that would still be gratifying and probably more impactful.
+It's kind of wild to think about only posting 4 times a year, but if you were a part of something bigger than yourself and you helped ship 24 essays in a year, that would still be gratifying and more impactful.
 
 Okay, well, how and where should people collaborate?
 
@@ -63,7 +63,7 @@ When you launch a space, you can install the following native apps:
 
 DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a conscious decision to support it. I see the vision and want everyone involved to succeed. 
 
-I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and the crowdfunding giant Kickstarter. The Dark Forest won't just disappear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing in my life.
+I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and a co-founder of the crowdfunding giant Kickstarter. The Dark Forest won't just disappear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing.
 
 ![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
 
@@ -135,7 +135,7 @@ What is Indie Thinkers?
 
 I spent a lot of time the past few weeks mulling over the future. I kept circling around this concept: **Human Language Model**.
 
-Before LLMs we had HLMs. Libraries, magazines, newspapers, etc.
+Before LLMs we had HLMs. Libraries, literary magazines, and newspapers.
 
 To be clear, I'm not anti-AI. I'm just pro human-in-the-loop. AI makes language more powerful. Indie Thinkers exists to explore the human side of that power. Things like decision-making, lived experiences, conviction, risk, and spiky points of view. A willingness to say, "This is what I think, and I am willing to be seen thinking it."
 
@@ -160,11 +160,6 @@ The goal is not to publish more.
 The goal is to publish work that feels worth returning to.
 
 We're opting out of the slop zone.
-
-<blockquote class="twitter-tweet" data-dnt="true">
-	<a href="https://x.com/george__mack/status/2060154109974679825?s=20">View this post on X</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 In my own freewriting sessions, I kept comparing the shape of Indie Thinkers to a mix of [Farnam Street](https://fs.blog/), [Indie Hackers](https://www.indiehackers.com/), and [Stripe Press](https://press.stripe.com/) for essays. That still feels directionally right.
 

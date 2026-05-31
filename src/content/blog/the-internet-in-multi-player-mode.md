@@ -9,7 +9,7 @@ pubDate: 'June 1, 2026'
 heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
 ---
 
-## Joysticks
+## Hungry Golden Hippos
 
 Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
@@ -38,38 +38,7 @@ Please listen to [George Mack](https://x.com/george__mack/status/206015410997467
   </blockquote>
 </figure>
 
-It's kind of wild to think about only posting 4 times a year, but if you were a part of something bigger than yourself and you helped ship 24 essays in a year, that would still be gratifying and more impactful.
-
-Okay, well, how and where should people collaborate?
-
-Plant a tree in the dark forest.
-
-![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
-
-<p class="image-caption"><em>A collection of DFOS spaces, courtesy of Yancey Strickler</em></p>
-
-At first glance, the [Dark Forest Operating System](https://dfos.com/) might appear to be just a lightweight version of Discord with a tiny blog baked in, but there are unique primitives that stand out here, like community treasuries.
-
-When you launch a space, you can install the following native apps:
-
-- Chat
-- Blog
-- Newsletter
-- Groups
-- Treasury
-- Custom Apps (soon)
-
-![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
-
-DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a conscious decision to support it. I see the vision and want everyone involved to succeed. 
-
-I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and a co-founder of the crowdfunding giant Kickstarter. The Dark Forest won't just disappear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing.
-
-![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
-
-Eventually, Indie Thinkers will open a community treasury on DFOS that will be used to fund and launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and deserves the same packaging given to a feature release at a venture-backed startup.
-
-The treasury won't be a vague community wallet or crypto gimmick. It'll be a real pool of money used to pay writers and artists. If someone has a dope idea but not the time, marketing resources, or design sense to turn it into something bigger, Indie Thinkers will be able to support them.
+It's kind of wild to think about only posting 4 times a year, but if you were a part of something bigger than yourself and you helped a community ship 24 essays in a year, that would still be gratifying and impactful.
 
 ## Code & Prose
 
@@ -127,15 +96,13 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 We need more platforms that allow writers to publish prose on the internet that pushes the boundaries of what we're accustomed to seeing. This type of experience is just not possible on Substack. 
 
-We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
+That kind of singular vision and full control used to mean going it alone. The bet behind Indie Thinkers is that it doesn't have to anymore. We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
 
 ## A Human Language Model
 
 What is Indie Thinkers?
 
-I spent a lot of time the past few weeks mulling over the future. I kept circling around this concept: **Human Language Model**.
-
-Before LLMs we had HLMs. Libraries, literary magazines, and newspapers.
+I spent a lot of time the past few weeks mulling over the future. I kept circling around this concept: **Human Language Model**. Before LLMs we had HLMs. You know, libraries, literary magazines, newspapers. Useful things.
 
 To be clear, I'm not anti-AI. I'm just pro human-in-the-loop. AI makes language more powerful. Indie Thinkers exists to explore the human side of that power. Things like decision-making, lived experiences, conviction, risk, and spiky points of view. A willingness to say, "This is what I think, and I am willing to be seen thinking it."
 
@@ -148,6 +115,39 @@ This type of project is well suited to be run like an open source project. Each 
 Indie Thinkers can be a modern-day human language model. We'll build a body of work that helps chronicle the human condition and leaves behind evidence of life long after our robot friends roam the earth.
 
 A digital lab for writers to explore ideas and present them in unique ways. In the most simple terms, Indie Thinkers is both community and publisher. We'll elevate the work of others and support independent writers directly. We're not trying to hire staff writers, but we want to pay contributors.
+
+## Joysticks
+
+Okay, well, how and where should people collaborate?
+
+Plant a tree in the dark forest.
+
+![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
+
+<p class="image-caption"><em>A collection of DFOS spaces, courtesy of Yancey Strickler</em></p>
+
+At first glance, the [Dark Forest Operating System](https://dfos.com/) might appear to be just a lightweight version of Discord with a tiny blog baked in, but there are unique primitives that stand out here, like community treasuries.
+
+When you launch a space, you can install the following native apps:
+
+- Chat
+- Blog
+- Newsletter
+- Groups
+- Treasury
+- Custom Apps (soon)
+
+![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
+
+DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a conscious decision to support it. I see the vision and want everyone involved to succeed. 
+
+I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and a co-founder of the crowdfunding giant Kickstarter. The Dark Forest won't just disappear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing.
+
+![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
+
+Eventually, Indie Thinkers will open a community treasury on DFOS that will be used to fund and launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and deserves the same packaging given to a feature release at a venture-backed startup.
+
+The treasury won't be a vague community wallet or crypto gimmick. It'll be a real pool of money used to pay writers and artists. If someone has a dope idea but not the time, marketing resources, or design sense to turn it into something bigger, Indie Thinkers will be able to support them.
 
 ## What We're Not Doing
 
@@ -167,9 +167,9 @@ Farnam Street is a timeless digital library. After you read Brain Food, what you
 
 ## Fin
 
-I want my life's work to be centered around elevating others. Sounds lofty, but it's real. I get the most joy from helping someone clarify an idea and get it out into the world. I want to build a vehicle that makes other people's work more likely to travel.
+I want my life's work to be centered around elevating others. Sounds lofty, but it's real. I get the most joy from helping someone clarify an idea and get it out into the world. I want to build a vehicle that makes other people's work more likely to travel. I have conviction that my role in this world is centered around servant leadership.
 
-We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. I have conviction that my role in this world is centered around servant leadership.
+We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. The essays we leave behind are evidence of life. The words can be read long after our clock stops.
 
 There's still so much to figure out, but I'd love to have you be a part of this journey and contribute. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea and don't know where to start, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com).
 

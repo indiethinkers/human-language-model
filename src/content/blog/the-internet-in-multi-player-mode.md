@@ -51,13 +51,11 @@ I'm not here to dunk on Substack. They gave writers a beautiful place to live an
 - ![Substack screenshot of Not Boring](../../assets/the-internet-in-multi-player-mode/substack-03-paper.png)
 - ![Substack screenshot of Kyla's Newsletter](../../assets/the-internet-in-multi-player-mode/substack-04-paper.png)
 
-When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn’t seen someone give a single essay its own domain before. At the time I didn't quite know what do with the idea though, so I bookmarked it in my brain and moved on.
+When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn’t seen someone give a single essay its own domain before. At the time I didn't quite know what to do with the idea though, so I bookmarked it in my brain and moved on.
 
 ![High Agency essay micro-site](../../assets/the-internet-in-multi-player-mode/high-agency.png)
 
-Then Tariq reminded me and everyone else that HTML is incredible. 
-
-He rocked the internet with the following assertion:
+Then Thariq from Anthropic reminded me and everyone else that HTML is incredible. He rocked the internet with the following assertion:
 
 > **HTML** is the new markdown.
 
@@ -163,11 +161,11 @@ We're opting out of the slop zone.
 
 In my own freewriting sessions, I kept comparing the shape of Indie Thinkers to a mix of [Farnam Street](https://fs.blog/), [Indie Hackers](https://www.indiehackers.com/), and [Stripe Press](https://press.stripe.com/) for essays. That still feels directionally right.
 
-Farnam Street is a timeless digital library. After you read Brain Food, what your mind consumed will be useful years from now. The interviews on Indie Hackers were honest and the name itself became an identifier for thousands of builders. Stripe Press treats ideas like works of art. The packaging for their books arrive at your doorstep with great care. 
+Farnam Street is a timeless digital library. After you read Brain Food, what your mind consumed will be useful years from now. The interviews on Indie Hackers were honest and the name itself became an identifier for thousands of builders. Stripe Press treats ideas like works of art. The packaging for a new book arrives at your doorstep with great care. 
 
 ## Fin
 
-I want my life's work to be centered around elevating others. Sounds lofty, but it's real. I get the most joy from helping someone clarify an idea and get it out into the world. I want to build a vehicle that makes other people's work more likely to travel. I have conviction that my role in this world is centered around servant leadership.
+I want my life's work to be centered around elevating others. Sounds lofty, but it's real. I get the most joy from helping someone clarify an idea and get it out into the world. I want to build a vehicle that makes other people's work more likely to travel. I have conviction that my role in this world is rooted in servant leadership.
 
 We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. The essays we leave behind are evidence of life. The words can be read long after our clock stops.
 

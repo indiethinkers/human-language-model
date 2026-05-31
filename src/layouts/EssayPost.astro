@@ -91,6 +91,28 @@ const authorName = authorInfo?.name ?? author;
 
 		<script is:inline>
 			(() => {
+				document.querySelectorAll('a[href]').forEach((link) => {
+					const href = link.getAttribute('href');
+
+					if (!href) return;
+
+					try {
+						const url = new URL(href, window.location.href);
+
+						if (!['http:', 'https:'].includes(url.protocol)) return;
+						if (url.origin === window.location.origin) return;
+
+						link.target = '_blank';
+
+						const relValues = new Set((link.rel || '').split(/\s+/).filter(Boolean));
+						relValues.add('noopener');
+						relValues.add('noreferrer');
+						link.rel = Array.from(relValues).join(' ');
+					} catch {
+						// Ignore malformed hrefs and leave the original link behavior intact.
+					}
+				});
+
 				const decks = document.querySelectorAll(
 					".essay-body ul:has(img[alt^='Substack screenshot'])",
 				);
@@ -726,70 +748,134 @@ const authorName = authorInfo?.name ?? author;
 	}
 
 	.essay-body .george-mack-quote {
-		width: min(48rem, calc(100vw - 2rem));
-		margin-block: 0.25rem 0.75rem;
+		width: min(46rem, calc(100vw - 2rem));
+		margin-block: 0.625rem 1.1rem;
 		margin-inline: 50%;
 		padding: 0;
 		transform: translateX(-50%);
 	}
 
 	.essay-body .george-mack-quote blockquote {
+		position: relative;
 		display: grid;
-		gap: 0.75rem;
+		grid-template-columns: 1fr;
+		gap: 0;
 		margin: 0;
-		padding: 1rem;
-		border: 1px solid oklch(86% 0.018 247);
-		border-radius: 0.5rem;
-		background:
-			linear-gradient(180deg, oklch(99% 0.003 247), oklch(96.5% 0.008 247)),
-			var(--shiny-background);
-		box-shadow:
-			0 1rem 2rem oklch(14.5% 0 0 / 5%),
-			0 0.125rem 0.4rem oklch(14.5% 0 0 / 4%);
+		padding: 0;
+		border-block: 1px solid oklch(86% 0.014 247);
+		border-inline: 0;
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
 		color: var(--shiny-foreground);
-		font-size: 0.9375rem;
+		font-size: 0.875rem;
 		font-weight: 400;
-		line-height: 1.6;
+		line-height: 1.58;
 	}
 
 	.essay-body .george-mack-quote blockquote::before {
 		content: none;
 	}
 
-	.essay-body .george-mack-quote .quote-lede {
+	.essay-body .george-mack-quote blockquote::after {
+		content: none;
+	}
+
+	.essay-body .george-mack-quote .quote-kicker {
+		margin: 0;
+		padding: 0.9rem 0 0.65rem;
+		border-bottom: 1px solid oklch(90% 0.01 247);
 		color: var(--shiny-gray-600);
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1.5;
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1.25;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
 	}
 
 	.essay-body .george-mack-quote .quote-path {
+		position: relative;
 		display: grid;
-		grid-template-columns: 2rem minmax(0, 1fr);
-		gap: 0.75rem;
+		grid-template-columns: 2.5rem minmax(0, 1fr);
+		gap: 1rem;
+		align-content: start;
 		align-items: start;
-		padding: 0.875rem;
-		border: 1px solid oklch(89% 0.012 247);
-		border-radius: 0.375rem;
-		background-color: oklch(100% 0 0 / 72%);
+		min-height: 0;
+		padding: 1rem 0;
+		border: 0;
+		border-bottom: 1px solid oklch(90% 0.01 247);
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+		overflow: hidden;
+	}
+
+	.essay-body .george-mack-quote .quote-path::before {
+		content: '';
+		position: absolute;
+		top: 1.15rem;
+		bottom: 1.15rem;
+		left: 2.25rem;
+		width: 1px;
+		background-color: oklch(84% 0.018 247);
+	}
+
+	.essay-body .george-mack-quote .quote-path:nth-of-type(2)::before {
+		background-color: oklch(84% 0.018 247);
 	}
 
 	.essay-body .george-mack-quote .quote-number {
 		display: grid;
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-top: 0.05rem;
 		place-items: center;
-		border: 1px solid oklch(82% 0.035 238);
-		border-radius: 999px;
-		background-color: oklch(96% 0.022 238);
-		color: oklch(42% 0.075 238);
-		font-size: 0.8rem;
+		border: 1px solid oklch(78% 0.018 247);
+		border-radius: 0;
+		background-color: var(--shiny-background);
+		color: var(--shiny-gray-600);
+		font-size: 0.75rem;
 		font-weight: 700;
 		line-height: 1;
+		box-shadow: none;
+	}
+
+	.essay-body .george-mack-quote .quote-path:nth-of-type(2) .quote-number {
+		border-color: oklch(78% 0.018 247);
+		background-color: var(--shiny-background);
+		color: var(--shiny-gray-600);
+		box-shadow: none;
+	}
+
+	.essay-body .george-mack-quote .quote-copy {
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	.essay-body .george-mack-quote .quote-title {
+		color: var(--shiny-foreground);
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.3;
 	}
 
 	.essay-body .george-mack-quote strong {
 		font-weight: 700;
+	}
+
+	@media (max-width: 42rem) {
+		.essay-body .george-mack-quote blockquote {
+			font-size: 0.85rem;
+		}
+
+		.essay-body .george-mack-quote .quote-path {
+			grid-template-columns: 2rem minmax(0, 1fr);
+			gap: 0.75rem;
+		}
+
+		.essay-body .george-mack-quote .quote-kicker {
+			font-size: 0.7rem;
+		}
 	}
 
 	.essay-body :where(ul, ol) {

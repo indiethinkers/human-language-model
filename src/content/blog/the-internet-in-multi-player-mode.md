@@ -13,25 +13,33 @@ heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.p
 
 Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
-Everyone keeps yelling about how important distribution is in the agentic age. We all know that slop is a plague covering the earth with no Moses to save us. Yet, We keep trying to grab attention on our own. This is a fool's errand. Yesterday's price is not today's price. 
+Everyone [keeps yelling](https://x.com/gregisenberg/status/2038706332119797894?s=20) about how important distribution is in the agentic age. We get it. We know that slop is a plague covering the earth and trying to out-post everyone is a fool’s errand. You can try to brute-force attention capture but the cost of eyeballs has gone up. 
 
-George Mack said it best:
+Yesterday's price is not today's price. 
+
+Please listen to [George Mack](https://x.com/george__mack/status/2060154109974679825) here:
 
 <figure class="george-mack-quote" aria-label="George Mack quote about two ways to create content">
   <blockquote>
-    <p class="quote-lede">I think there's two ways to create content right now:</p>
+    <p class="quote-kicker">Two ways to create content right now</p>
     <div class="quote-path">
       <span class="quote-number">1</span>
-      <p><strong>The slop zone</strong> - Increase quantity of posts. Post 10-20x per day. Churn out clip farms. Win the war of throwing as much shit at the algorithm. People don't remember what you post, but they remember that you post.</p>
+      <div class="quote-copy">
+        <p class="quote-title">The slop zone</p>
+        <p>Increase quantity of posts. Post 10-20x per day. Churn out clip farms. Win the war of throwing as much shit at the algorithm. People don't remember what you post, but they remember that you post.</p>
+      </div>
     </div>
     <div class="quote-path">
       <span class="quote-number">2</span>
-      <p><strong>The golden hippos on unicycles zone</strong> - Increase quality of posts. Post something awesome 1-4x per year. Whilst everyone is speeding up, slow down, and spend 100x more time on the quality. Focus on making something people remember and share one year later.</p>
+      <div class="quote-copy">
+        <p class="quote-title">The golden hippos on unicycles zone</p>
+        <p>Increase quality of posts. Post something awesome 1-4x per year. Whilst everyone is speeding up, slow down, and spend 100x more time on the quality. Focus on making something people remember and share one year later.</p>
+      </div>
     </div>
   </blockquote>
 </figure>
 
-It's hard to only post 4 times a year, but if you were a part of something bigger than yourself and you helped ship 24 essays in a year, that would still be impactful and rewarding.
+It's kind of wild to think about only posting 4 times a year, but if you were a part of something bigger than yourself and you helped ship 24 essays in a year, that would still be gratifying and probably more impactful.
 
 Okay, well, how and where should people collaborate?
 
@@ -39,7 +47,7 @@ Plant a tree in the dark forest.
 
 ![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
 
-<p class="image-caption"><em>a collection of DFOS spaces, courtesy of Yancey Strickler</em></p>
+<p class="image-caption"><em>A collection of DFOS spaces, courtesy of Yancey Strickler</em></p>
 
 At first glance, the [Dark Forest Operating System](https://dfos.com/) might appear to be just a lightweight version of Discord with a tiny blog baked in, but there are unique primitives that stand out here, like community treasuries.
 
@@ -75,7 +83,7 @@ I'm not here to dunk on Substack. They gave writers a beautiful place to live an
 - ![Substack screenshot of Not Boring](../../assets/the-internet-in-multi-player-mode/substack-03-paper.png)
 - ![Substack screenshot of Kyla's Newsletter](../../assets/the-internet-in-multi-player-mode/substack-04-paper.png)
 
-When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn't seen a web domain dedicated to one essay like this before. I didn't quite know what do with the idea though, I kind of bookmarked in my brain and never came back to it.
+When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn’t seen someone give a single essay its own domain before. At the time I didn't quite know what do with the idea though, so I bookmarked it in my brain and moved on.
 
 ![High Agency essay micro-site](../../assets/the-internet-in-multi-player-mode/high-agency.png)
 
@@ -118,7 +126,7 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 <p class="image-caption"><em><a href="https://www.indiethinkers.com">https://www.indiethinkers.com</a></em></p>
 
-Writers need more platforms that allow them to publish writing on the internet that pushes the boundaries of what we're accustomed to seeing. This type of experience is just not possible on Substack. 
+We need more platforms that allow writers to publish prose on the internet that pushes the boundaries of what we're accustomed to seeing. This type of experience is just not possible on Substack. 
 
 We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
 

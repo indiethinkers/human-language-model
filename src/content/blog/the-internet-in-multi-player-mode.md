@@ -7,6 +7,7 @@ author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 pubDate: 'June 1, 2026'
 heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
+socialImage: '/media/the-internet-in-multi-player-mode/the-internet-in-multi-player-mode-og-image.png'
 ---
 
 ## Hungry Hungry Golden Hippos

@@ -14,6 +14,7 @@ const {
 	authorSlug = 'daniel-hunter',
 	pubDate,
 	updatedDate,
+	socialImage,
 } = Astro.props;
 const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
 const authorName = authorInfo?.name ?? author;
@@ -21,7 +22,7 @@ const authorName = authorInfo?.name ?? author;
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={socialImage} />
 	</head>
 
 	<body class="shiny-dimes-home">

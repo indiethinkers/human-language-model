@@ -1,0 +1,266 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="shiny-dimes-home">
+		<main class="dime-page">
+			<div class="nav-actions">
+				<a
+					href="https://indiethinkers.dfos.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="muted-link"
+				>
+					submit
+				</a>
+				<span class="muted-text">//</span>
+				<a
+					href="http://indiethinkers.substack.com/subscribe"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="muted-link"
+				>
+					subscribe
+				</a>
+			</div>
+
+			<div class="card-shell">
+				<div class="site-label">
+					<a href="/" class="muted-link">indie thinkers</a>
+				</div>
+
+				<div class="quote-frame">
+					<ul class="quote-card essay-list" aria-label="Essays">
+						{
+							posts.map((post) => (
+								<li>
+									<a href={`/essays/${post.id}`} class="essay-list-link">
+										{post.data.title.toLowerCase()}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+
+				<div class="credit">
+					<a href="/essays" class="credit-link">
+						view all essays
+					</a>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	@font-face {
+		font-family: Geist;
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url('/fonts/geist-latin.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+	@font-face {
+		font-family: 'Geist Mono';
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url('/fonts/geist-mono-latin.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+	@font-face {
+		font-family: 'Geist Fallback';
+		src: local('Arial');
+		ascent-override: 95.94%;
+		descent-override: 28.16%;
+		line-gap-override: 0%;
+		size-adjust: 104.76%;
+	}
+
+	@font-face {
+		font-family: 'Geist Mono Fallback';
+		src: local('Arial');
+		ascent-override: 74.67%;
+		descent-override: 21.92%;
+		line-gap-override: 0%;
+		size-adjust: 134.59%;
+	}
+
+	:root {
+		--font-geist-sans: Geist, 'Geist Fallback', Arial, sans-serif;
+		--font-geist-mono: 'Geist Mono', 'Geist Mono Fallback', Arial, monospace;
+		--shiny-gray-50: oklch(98.5% 0.002 247.839);
+		--shiny-gray-500: oklch(55.1% 0.027 264.364);
+		--shiny-gray-700: oklch(37.3% 0.034 259.733);
+		--shiny-gray-800: oklch(27.8% 0.033 256.848);
+		--shiny-foreground: oklch(14.5% 0 0);
+	}
+
+	body.shiny-dimes-home {
+		margin: 0;
+		padding: 0;
+		background: var(--shiny-gray-50);
+		background-size: auto;
+		color: var(--shiny-foreground);
+		font-family: var(--font-geist-sans);
+		font-size: 16px;
+		line-height: 1.5;
+		text-align: left;
+		word-wrap: normal;
+		overflow-wrap: normal;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body.shiny-dimes-home *,
+	body.shiny-dimes-home *::before,
+	body.shiny-dimes-home *::after {
+		box-sizing: border-box;
+		border: 0 solid;
+	}
+
+	body.shiny-dimes-home a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	body.shiny-dimes-home img,
+	body.shiny-dimes-home svg,
+	body.shiny-dimes-home video,
+	body.shiny-dimes-home canvas,
+	body.shiny-dimes-home audio,
+	body.shiny-dimes-home iframe,
+	body.shiny-dimes-home embed,
+	body.shiny-dimes-home object {
+		display: block;
+		vertical-align: middle;
+	}
+
+	.dime-page {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		max-width: none;
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
+		background: var(--shiny-gray-50);
+	}
+
+	.card-shell {
+		position: relative;
+	}
+
+	.site-label,
+	.nav-actions,
+	.shortcut-hint,
+	.credit {
+		position: fixed;
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		line-height: calc(1.25 / 0.875);
+	}
+
+	.site-label {
+		top: 1rem;
+		left: 1rem;
+	}
+
+	.nav-actions {
+		top: 1rem;
+		right: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.shortcut-hint {
+		bottom: 1rem;
+		left: 1rem;
+	}
+
+	.credit {
+		right: 1rem;
+		bottom: 1rem;
+	}
+
+	.muted-link,
+	.credit-link,
+	.essay-link {
+		color: var(--shiny-gray-500);
+		transition-duration: 0.15s;
+		transition-property: color, background-color, border-color, outline-color, text-decoration-color,
+			fill, stroke;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.credit-link {
+		font-weight: 500;
+	}
+
+	.muted-link:hover,
+	.essay-link:hover {
+		color: var(--shiny-gray-700);
+	}
+
+	.credit-link:hover {
+		color: var(--shiny-gray-800);
+	}
+
+	.quote-frame {
+		width: 100%;
+		max-width: 42rem;
+		margin-inline: auto;
+		padding-inline: 1rem;
+	}
+
+	.quote-card {
+		display: flex;
+		min-height: 150px;
+		flex-direction: column;
+		align-items: center;
+		font-family: var(--font-geist-mono);
+		opacity: 1;
+		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.essay-list {
+		width: 100%;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 0.625rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+
+	.essay-list-link {
+		color: var(--shiny-foreground);
+		transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.essay-list-link:hover {
+		color: var(--shiny-gray-700);
+	}
+</style>

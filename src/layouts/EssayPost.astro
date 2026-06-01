@@ -1,0 +1,1106 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { authors } from '../data/authors';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const {
+	title,
+	description,
+	deck,
+	author = 'Daniel Hunter',
+	authorSlug = 'daniel-hunter',
+	pubDate,
+	updatedDate,
+} = Astro.props;
+const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
+const authorName = authorInfo?.name ?? author;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body class="shiny-dimes-home">
+		<main class="dime-page essay-detail-page">
+			<div class="nav-actions">
+				<a
+					href="https://indiethinkers.dfos.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="muted-link"
+				>
+					submit
+				</a>
+				<span class="muted-text">//</span>
+				<a
+					href="http://indiethinkers.substack.com/subscribe"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="muted-link"
+				>
+					subscribe
+				</a>
+			</div>
+
+			<div class="card-shell essay-detail-shell">
+				<div class="site-label">
+					<a href="/" class="muted-link">indie thinkers</a>
+				</div>
+
+				<div class="quote-frame essay-detail-frame">
+					<article class="quote-card essay-detail">
+						<header class="essay-header">
+							<h1 class="essay-title">{title}</h1>
+							<div class="essay-meta">
+								<a href={`/authors/${authorInfo.slug}`} class="essay-byline">
+									{authorName}
+								</a>
+								<span class="essay-meta-separator" aria-hidden="true">/</span>
+								<span class="essay-date">
+									<FormattedDate date={pubDate} />
+									{
+										updatedDate && (
+											<span>
+												{' '}
+												/ updated <FormattedDate date={updatedDate} />
+											</span>
+										)
+									}
+								</span>
+							</div>
+							{deck && <p class="essay-deck">{deck}</p>}
+						</header>
+
+						<div class="essay-body">
+							<slot />
+						</div>
+					</article>
+				</div>
+
+				<div class="credit">
+					<a href="/essays" class="credit-link">
+						view all essays
+					</a>
+				</div>
+			</div>
+		</main>
+
+		<script is:inline>
+			(() => {
+				document.querySelectorAll('a[href]').forEach((link) => {
+					const href = link.getAttribute('href');
+
+					if (!href) return;
+
+					try {
+						const url = new URL(href, window.location.href);
+
+						if (!['http:', 'https:'].includes(url.protocol)) return;
+						if (url.origin === window.location.origin) return;
+
+						link.target = '_blank';
+
+						const relValues = new Set((link.rel || '').split(/\s+/).filter(Boolean));
+						relValues.add('noopener');
+						relValues.add('noreferrer');
+						link.rel = Array.from(relValues).join(' ');
+					} catch {
+						// Ignore malformed hrefs and leave the original link behavior intact.
+					}
+				});
+
+				const decks = document.querySelectorAll(
+					".essay-body ul:has(img[alt^='Substack screenshot'])",
+				);
+				const stackLayouts = [
+					{
+						x: 'var(--substack-active-x)',
+						y: 'var(--substack-active-y)',
+						z: 'var(--substack-active-z)',
+						rotate: 'var(--substack-active-rotation)',
+						scale: '1',
+						opacity: '1',
+					},
+					{
+						x: 'var(--substack-second-x)',
+						y: 'var(--substack-second-y)',
+						z: '24px',
+						rotate: 'var(--substack-second-rotation)',
+						scale: '0.965',
+						opacity: '0.94',
+					},
+					{
+						x: 'var(--substack-third-x)',
+						y: 'var(--substack-third-y)',
+						z: '0px',
+						rotate: 'var(--substack-third-rotation)',
+						scale: '0.93',
+						opacity: '0.88',
+					},
+					{
+						x: 'var(--substack-fourth-x)',
+						y: 'var(--substack-fourth-y)',
+						z: '-22px',
+						rotate: 'var(--substack-fourth-rotation)',
+						scale: '0.895',
+						opacity: '0.8',
+					},
+				];
+
+				decks.forEach((deck) => {
+					const cards = Array.from(deck.querySelectorAll(':scope > li')).filter((card) =>
+						card.querySelector("img[alt^='Substack screenshot']"),
+					);
+
+					if (cards.length < 2) return;
+
+					let activeIndex = 0;
+					let pointerStart = null;
+
+					deck.classList.add('substack-card-stack');
+					deck.tabIndex = 0;
+					deck.setAttribute('role', 'button');
+					deck.setAttribute('aria-label', 'Flip through Substack screenshots');
+
+					const resetDrag = () => {
+						cards.forEach((card) => {
+							card.style.setProperty('--active-drag-x', '0px');
+							card.style.setProperty('--active-drag-rotation', '0deg');
+						});
+					};
+
+					const renderStack = (nextIndex = activeIndex) => {
+						activeIndex = (nextIndex + cards.length) % cards.length;
+
+						cards.forEach((card, cardIndex) => {
+							const stackPosition = (cardIndex - activeIndex + cards.length) % cards.length;
+							const layout =
+								stackLayouts[stackPosition] ??
+								stackLayouts[stackLayouts.length - 1];
+
+							card.classList.toggle('is-active', stackPosition === 0);
+							card.style.setProperty('--stack-layer', `${cards.length - stackPosition}`);
+							card.style.setProperty('--stack-offset-x', layout.x);
+							card.style.setProperty('--stack-offset-y', layout.y);
+							card.style.setProperty('--stack-z', layout.z);
+							card.style.setProperty('--stack-rotation', layout.rotate);
+							card.style.setProperty('--stack-scale', layout.scale);
+							card.style.setProperty('--stack-opacity', layout.opacity);
+						});
+					};
+
+					const updateTilt = (event) => {
+						const rect = deck.getBoundingClientRect();
+						const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+						const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+
+						deck.style.setProperty('--deck-tilt-x', `${x * 4}deg`);
+						deck.style.setProperty('--deck-tilt-y', `${y * -3}deg`);
+					};
+
+					let isAnimatingExit = false;
+
+					const flip = (direction = 1, exitDirection = 0) => {
+						if (isAnimatingExit) return;
+
+						const dismissed = cards[activeIndex];
+
+						if (exitDirection === 0 || !dismissed) {
+							resetDrag();
+							renderStack(activeIndex + direction);
+							return;
+						}
+
+						isAnimatingExit = true;
+						const flightDistance = Math.max(deck.offsetWidth, window.innerWidth) * 0.85;
+						dismissed.dataset.exiting = 'true';
+						dismissed.style.setProperty('--active-drag-x', `${exitDirection * flightDistance}px`);
+						dismissed.style.setProperty('--active-drag-rotation', `${exitDirection * 22}deg`);
+
+						setTimeout(() => {
+							dismissed.dataset.snapping = 'true';
+							delete dismissed.dataset.exiting;
+							dismissed.style.setProperty('--active-drag-x', '0px');
+							dismissed.style.setProperty('--active-drag-rotation', '0deg');
+							renderStack(activeIndex + direction);
+							requestAnimationFrame(() => {
+								requestAnimationFrame(() => {
+									delete dismissed.dataset.snapping;
+									isAnimatingExit = false;
+								});
+							});
+						}, 360);
+					};
+
+					deck.addEventListener('pointerdown', (event) => {
+						if (isAnimatingExit) return;
+						pointerStart = { x: event.clientX, y: event.clientY };
+						deck.dataset.dragging = 'true';
+						deck.setPointerCapture?.(event.pointerId);
+					});
+
+					deck.addEventListener('pointermove', (event) => {
+						updateTilt(event);
+
+						if (!pointerStart) return;
+
+						const dragX = event.clientX - pointerStart.x;
+						const activeCard = cards[activeIndex];
+
+						activeCard?.style.setProperty('--active-drag-x', `${dragX * 0.55}px`);
+						activeCard?.style.setProperty('--active-drag-rotation', `${dragX / 18}deg`);
+					});
+
+					deck.addEventListener('pointerup', (event) => {
+						if (!pointerStart) return;
+
+						const dragX = event.clientX - pointerStart.x;
+						const dragY = event.clientY - pointerStart.y;
+						const shouldSwipe = Math.abs(dragX) > 28 && Math.abs(dragX) > Math.abs(dragY);
+						const shouldClick = Math.abs(dragX) < 8 && Math.abs(dragY) < 8;
+
+						pointerStart = null;
+						delete deck.dataset.dragging;
+
+						if (shouldSwipe) {
+							flip(dragX > 0 ? 1 : -1, dragX > 0 ? 1 : -1);
+							return;
+						}
+
+						if (shouldClick) {
+							flip(1, 1);
+							return;
+						}
+
+						resetDrag();
+					});
+
+					deck.addEventListener('pointerleave', () => {
+						deck.style.setProperty('--deck-tilt-x', '0deg');
+						deck.style.setProperty('--deck-tilt-y', '0deg');
+					});
+
+					deck.addEventListener('keydown', (event) => {
+						if (event.key === 'ArrowRight' || event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault();
+							flip(1, 1);
+						}
+
+						if (event.key === 'ArrowLeft') {
+							event.preventDefault();
+							flip(-1, -1);
+						}
+					});
+
+					renderStack();
+				});
+
+				const scrollPlayVideos = document.querySelectorAll('.scroll-play-video');
+
+				if ('IntersectionObserver' in window) {
+					const videoObserver = new IntersectionObserver(
+						(entries) => {
+							entries.forEach((entry) => {
+								const video = entry.target;
+
+								if (!(video instanceof HTMLVideoElement)) return;
+
+								if (entry.isIntersecting) {
+									video.play().catch(() => {});
+									return;
+								}
+
+								video.pause();
+							});
+						},
+						{ threshold: 0.35 },
+					);
+
+					scrollPlayVideos.forEach((video) => videoObserver.observe(video));
+				} else {
+					scrollPlayVideos.forEach((video) => {
+						if (video instanceof HTMLVideoElement) video.play().catch(() => {});
+					});
+				}
+			})();
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	@font-face {
+		font-family: Geist;
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url('/fonts/geist-latin.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+	@font-face {
+		font-family: 'Geist Mono';
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url('/fonts/geist-mono-latin.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+	@font-face {
+		font-family: 'Geist Fallback';
+		src: local('Arial');
+		ascent-override: 95.94%;
+		descent-override: 28.16%;
+		line-gap-override: 0%;
+		size-adjust: 104.76%;
+	}
+
+	@font-face {
+		font-family: 'Geist Mono Fallback';
+		src: local('Arial');
+		ascent-override: 74.67%;
+		descent-override: 21.92%;
+		line-gap-override: 0%;
+		size-adjust: 134.59%;
+	}
+
+	:root {
+		--essay-content-width: 728px;
+		--font-geist-sans: Geist, 'Geist Fallback', Arial, sans-serif;
+		--font-geist-mono: 'Geist Mono', 'Geist Mono Fallback', Arial, monospace;
+		--shiny-gray-50: oklch(98.5% 0.002 247.839);
+		--shiny-gray-500: oklch(55.1% 0.027 264.364);
+		--shiny-gray-700: oklch(37.3% 0.034 259.733);
+		--shiny-gray-800: oklch(27.8% 0.033 256.848);
+		--shiny-foreground: oklch(14.5% 0 0);
+	}
+
+	body.shiny-dimes-home {
+		margin: 0;
+		padding: 0;
+		background: var(--shiny-gray-50);
+		background-size: auto;
+		color: var(--shiny-foreground);
+		font-family: var(--font-geist-sans);
+		font-size: 16px;
+		line-height: 1.5;
+		text-align: left;
+		word-wrap: normal;
+		overflow-wrap: normal;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body.shiny-dimes-home *,
+	body.shiny-dimes-home *::before,
+	body.shiny-dimes-home *::after {
+		box-sizing: border-box;
+		border: 0 solid;
+	}
+
+	body.shiny-dimes-home a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	body.shiny-dimes-home img,
+	body.shiny-dimes-home svg,
+	body.shiny-dimes-home video,
+	body.shiny-dimes-home canvas,
+	body.shiny-dimes-home audio,
+	body.shiny-dimes-home iframe,
+	body.shiny-dimes-home embed,
+	body.shiny-dimes-home object {
+		display: block;
+		vertical-align: middle;
+	}
+
+	.dime-page {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		max-width: none;
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
+		background: var(--shiny-gray-50);
+	}
+
+	.card-shell {
+		position: relative;
+	}
+
+	.site-label,
+	.nav-actions,
+	.shortcut-hint,
+	.credit {
+		position: fixed;
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		line-height: calc(1.25 / 0.875);
+	}
+
+	.site-label {
+		top: 1rem;
+		left: 1rem;
+	}
+
+	.nav-actions {
+		top: 1rem;
+		right: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.shortcut-hint {
+		bottom: 1rem;
+		left: 1rem;
+	}
+
+	.credit {
+		right: 1rem;
+		bottom: 1rem;
+	}
+
+	.muted-link,
+	.credit-link,
+	.essay-link {
+		color: var(--shiny-gray-500);
+		transition-duration: 0.15s;
+		transition-property: color, background-color, border-color, outline-color, text-decoration-color,
+			fill, stroke;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.credit-link {
+		font-weight: 500;
+	}
+
+	.muted-link:hover,
+	.essay-link:hover {
+		color: var(--shiny-gray-700);
+	}
+
+	.credit-link:hover {
+		color: var(--shiny-gray-800);
+	}
+
+	.quote-frame {
+		width: 100%;
+		max-width: 42rem;
+		margin-inline: auto;
+		padding-inline: 1rem;
+	}
+
+	.quote-card {
+		display: flex;
+		min-height: 150px;
+		flex-direction: column;
+		align-items: center;
+		font-family: var(--font-geist-mono);
+		opacity: 1;
+		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.essay-detail-page {
+		align-items: flex-start;
+		padding: 7rem 1rem 6rem;
+	}
+
+	.essay-detail-shell,
+	.essay-detail-frame {
+		width: 100%;
+		max-width: calc(var(--essay-content-width) + 2rem);
+	}
+
+	.essay-detail {
+		position: relative;
+		min-height: auto;
+		align-items: stretch;
+		gap: 2rem;
+		font-size: 0.9375rem;
+		line-height: 1.8;
+	}
+
+	.essay-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.essay-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--shiny-gray-500);
+		font-family: var(--font-geist-sans);
+		line-height: 1.25;
+	}
+
+	.essay-byline {
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		text-decoration: none;
+	}
+
+	.essay-meta-separator {
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0.075em;
+	}
+
+	.essay-date {
+		display: block;
+		margin: 0;
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0.075em;
+		line-height: 1.25;
+	}
+
+	.essay-byline:hover {
+		color: var(--shiny-foreground);
+	}
+
+	.essay-title {
+		margin: 0;
+		font-size: 2.25rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		line-height: 1.4;
+	}
+
+	.essay-header .essay-deck {
+		width: 100%;
+		margin: 0;
+		padding: 0.875rem 0;
+		border-top: 1px solid oklch(88% 0.01 264.364);
+		border-bottom: 1px solid oklch(88% 0.01 264.364);
+		color: var(--shiny-gray-500);
+		font-size: 0.9375rem;
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: 0;
+		line-height: 1.55;
+	}
+
+	.essay-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.essay-body :where(h2, h3, h4, p, blockquote, ul, ol, figure) {
+		margin: 0;
+	}
+
+	.essay-body :where(h2, h3, h4) {
+		margin-top: 1.75rem;
+		font-weight: 700;
+		letter-spacing: 0;
+		line-height: 1.5;
+	}
+
+	.essay-body h2 {
+		font-size: 1.5rem;
+		line-height: 1.35;
+	}
+
+	.essay-body :where(h3, h4) {
+		font-size: 1.125rem;
+	}
+
+	.essay-body > :first-child {
+		margin-top: 0;
+	}
+
+	.essay-body .twitter-tweet {
+		max-width: 100%;
+		margin-block: 0.25rem;
+		padding-left: 0;
+		border-left: 0;
+		color: inherit;
+	}
+
+	.essay-body a:not(:has(img)) {
+		color: oklch(41% 0.08 238);
+		font-weight: 600;
+		text-decoration-line: underline;
+		text-decoration-color: oklch(64% 0.07 238);
+		text-decoration-thickness: 0.08em;
+		text-underline-offset: 0.2em;
+		transition-duration: 0.15s;
+		transition-property: color, text-decoration-color, background-color;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.essay-body a:not(:has(img)):hover {
+		background-color: oklch(94% 0.03 238);
+		color: var(--shiny-foreground);
+		text-decoration-color: currentColor;
+	}
+
+	.essay-body .author-links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-top: -0.25rem;
+		font-size: 0.8rem;
+		line-height: 1.35;
+	}
+
+	.essay-body .author-links a:not(:has(img)) {
+		color: var(--shiny-gray-500);
+		font-weight: 500;
+		text-decoration-color: currentColor;
+	}
+
+	.essay-body .author-links a:not(:has(img)):hover {
+		background-color: transparent;
+		color: var(--shiny-gray-700);
+	}
+
+	.essay-body a:focus-visible {
+		outline: 2px solid oklch(64% 0.07 238);
+		outline-offset: 0.18em;
+	}
+
+	.essay-body a:has(img) {
+		display: block;
+		text-decoration: none;
+	}
+
+	.essay-body img {
+		width: 100%;
+		height: auto;
+		margin-block: 0.5rem;
+		border-radius: 0;
+	}
+
+	.essay-body img[alt='Drafts in GitHub'],
+	.essay-body img[alt='High Agency essay micro-site'] {
+		border-radius: 0.5rem;
+		filter:
+			drop-shadow(0 0.75rem 1.5rem oklch(14.5% 0 0 / 8%))
+			drop-shadow(0 0.2rem 0.55rem oklch(14.5% 0 0 / 5%));
+	}
+
+	.essay-body video {
+		width: calc(100% - 32px);
+		height: auto;
+		margin-block: 0.5rem;
+		margin-inline: auto;
+		border-radius: 0.5rem;
+		filter:
+			drop-shadow(0 0.75rem 1.5rem oklch(14.5% 0 0 / 8%))
+			drop-shadow(0 0.2rem 0.55rem oklch(14.5% 0 0 / 5%));
+		overflow: hidden;
+	}
+
+	.essay-body .image-caption {
+		margin-block: -0.75rem 0.75rem;
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		line-height: 1.45;
+		text-align: center;
+	}
+
+	.essay-body blockquote {
+		position: relative;
+		margin-block: 0.125rem 0.375rem;
+		padding: 0.85rem 0 0.9rem 2rem;
+		border-block: 1px solid oklch(86% 0.018 247);
+		border-left: 0;
+		color: var(--shiny-foreground);
+		font-size: 1.1875rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		line-height: 1.55;
+	}
+
+	.essay-body blockquote::before {
+		content: '>';
+		position: absolute;
+		top: 0.85rem;
+		left: 0;
+		color: oklch(48% 0.06 238);
+		font-weight: 700;
+	}
+
+	.essay-body blockquote :where(p) {
+		margin: 0;
+	}
+
+	.essay-body .george-mack-quote {
+		width: min(46rem, calc(100vw - 2rem));
+		margin-block: 0.625rem 1.1rem;
+		margin-inline: 50%;
+		padding: 0;
+		transform: translateX(-50%);
+	}
+
+	.essay-body .george-mack-quote blockquote {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0;
+		margin: 0;
+		padding: 0;
+		border-block: 1px solid oklch(86% 0.014 247);
+		border-inline: 0;
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+		color: var(--shiny-foreground);
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.58;
+	}
+
+	.essay-body .george-mack-quote blockquote::before {
+		content: none;
+	}
+
+	.essay-body .george-mack-quote blockquote::after {
+		content: none;
+	}
+
+	.essay-body .george-mack-quote .quote-kicker {
+		margin: 0;
+		padding: 0.9rem 0 0.65rem;
+		border-bottom: 1px solid oklch(90% 0.01 247);
+		color: var(--shiny-gray-600);
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1.25;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.essay-body .george-mack-quote .quote-path {
+		position: relative;
+		display: grid;
+		grid-template-columns: 2.5rem minmax(0, 1fr);
+		gap: 1rem;
+		align-content: start;
+		align-items: start;
+		min-height: 0;
+		padding: 1rem 0;
+		border: 0;
+		border-bottom: 1px solid oklch(90% 0.01 247);
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+		overflow: hidden;
+	}
+
+	.essay-body .george-mack-quote .quote-path::before {
+		content: '';
+		position: absolute;
+		top: 1.15rem;
+		bottom: 1.15rem;
+		left: 2.25rem;
+		width: 1px;
+		background-color: oklch(84% 0.018 247);
+	}
+
+	.essay-body .george-mack-quote .quote-path:nth-of-type(2)::before {
+		background-color: oklch(84% 0.018 247);
+	}
+
+	.essay-body .george-mack-quote .quote-number {
+		display: grid;
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-top: 0.05rem;
+		place-items: center;
+		border: 1px solid oklch(78% 0.018 247);
+		border-radius: 0;
+		background-color: var(--shiny-background);
+		color: var(--shiny-gray-600);
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1;
+		box-shadow: none;
+	}
+
+	.essay-body .george-mack-quote .quote-path:nth-of-type(2) .quote-number {
+		border-color: oklch(78% 0.018 247);
+		background-color: var(--shiny-background);
+		color: var(--shiny-gray-600);
+		box-shadow: none;
+	}
+
+	.essay-body .george-mack-quote .quote-copy {
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	.essay-body .george-mack-quote .quote-title {
+		color: var(--shiny-foreground);
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.3;
+	}
+
+	.essay-body .george-mack-quote strong {
+		font-weight: 700;
+	}
+
+	@media (max-width: 42rem) {
+		.essay-body .george-mack-quote blockquote {
+			font-size: 0.85rem;
+		}
+
+		.essay-body .george-mack-quote .quote-path {
+			grid-template-columns: 2rem minmax(0, 1fr);
+			gap: 0.75rem;
+		}
+
+		.essay-body .george-mack-quote .quote-kicker {
+			font-size: 0.7rem;
+		}
+	}
+
+	.essay-body :where(ul, ol) {
+		padding-left: 2rem;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) {
+		--substack-stack-width: min(48rem, calc(100vw - 2rem));
+		--substack-card-width: min(34rem, calc(100vw - 3rem));
+		--substack-active-x: 7rem;
+		--substack-active-y: 0.75rem;
+		--substack-active-z: 48px;
+		--substack-active-rotation: 16deg;
+		--substack-second-x: 2rem;
+		--substack-second-y: 1rem;
+		--substack-second-rotation: 7deg;
+		--substack-third-x: -4rem;
+		--substack-third-y: 2.5rem;
+		--substack-third-rotation: -5deg;
+		--substack-fourth-x: -7rem;
+		--substack-fourth-y: 4rem;
+		--substack-fourth-rotation: 4deg;
+		--deck-tilt-x: 0deg;
+		--deck-tilt-y: 0deg;
+
+		position: relative;
+		display: block;
+		width: var(--substack-stack-width);
+		height: clamp(16rem, 36vw, 24rem);
+		max-width: none;
+		margin-block: 3rem 4rem;
+		margin-inline: calc((100% - var(--substack-stack-width)) / 2);
+		padding: 0;
+		perspective: 1400px;
+		perspective-origin: center;
+		cursor: grab;
+		isolation: isolate;
+		list-style: none;
+		touch-action: pan-y;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']):focus-visible {
+		outline: 2px solid oklch(64% 0.07 238);
+		outline-offset: 0.35rem;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot'])[data-dragging='true'] {
+		cursor: grabbing;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li {
+		--active-drag-rotation: 0deg;
+		--active-drag-x: 0px;
+		--stack-layer: 1;
+		--stack-offset-x: 0px;
+		--stack-offset-y: 0px;
+		--stack-opacity: 1;
+		--stack-rotation: 0deg;
+		--stack-scale: 1;
+		--stack-z: 0px;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: var(--stack-layer);
+		width: var(--substack-card-width);
+		min-width: 0;
+		margin: 0;
+		background: transparent;
+		opacity: var(--stack-opacity);
+		pointer-events: none;
+		transform:
+			translate3d(-50%, -50%, 0)
+			translate3d(
+				calc(var(--stack-offset-x) + var(--active-drag-x)),
+				var(--stack-offset-y),
+				var(--stack-z)
+			)
+			rotateX(var(--deck-tilt-y))
+			rotateY(var(--deck-tilt-x))
+			rotateZ(calc(var(--stack-rotation) + var(--active-drag-rotation)))
+			scale(var(--stack-scale));
+		transform-origin: 50% 80%;
+		transition:
+			opacity 260ms ease,
+			filter 260ms ease,
+			transform 520ms cubic-bezier(0.2, 0.85, 0.22, 1);
+		will-change: transform;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(1) {
+		--stack-layer: 4;
+		--stack-offset-x: var(--substack-active-x);
+		--stack-offset-y: var(--substack-active-y);
+		--stack-z: var(--substack-active-z);
+		--stack-rotation: var(--substack-active-rotation);
+		--stack-scale: 1;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(2) {
+		--stack-layer: 3;
+		--stack-offset-x: var(--substack-second-x);
+		--stack-offset-y: var(--substack-second-y);
+		--stack-z: 24px;
+		--stack-rotation: var(--substack-second-rotation);
+		--stack-scale: 0.965;
+		--stack-opacity: 0.94;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(3) {
+		--stack-layer: 2;
+		--stack-offset-x: var(--substack-third-x);
+		--stack-offset-y: var(--substack-third-y);
+		--stack-z: 0px;
+		--stack-rotation: var(--substack-third-rotation);
+		--stack-scale: 0.93;
+		--stack-opacity: 0.88;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li:nth-child(4) {
+		--stack-layer: 1;
+		--stack-offset-x: var(--substack-fourth-x);
+		--stack-offset-y: var(--substack-fourth-y);
+		--stack-z: -22px;
+		--stack-rotation: var(--substack-fourth-rotation);
+		--stack-scale: 0.895;
+		--stack-opacity: 0.8;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li.is-active {
+		pointer-events: auto;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li[data-exiting='true'] {
+		z-index: 99;
+		opacity: 0;
+		transition:
+			opacity 280ms ease 80ms,
+			transform 360ms cubic-bezier(0.32, 0, 0.67, 0);
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) li[data-snapping='true'] {
+		transition: none !important;
+	}
+
+	.essay-body ul:has(img[alt^='Substack screenshot']) img {
+		width: 100%;
+		margin: 0;
+		background: transparent;
+		filter:
+			drop-shadow(0 1rem 2.25rem oklch(14.5% 0 0 / 14%))
+			drop-shadow(0 0.25rem 0.75rem oklch(14.5% 0 0 / 8%));
+		user-select: none;
+		-webkit-user-drag: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) li {
+			transition-duration: 1ms;
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			--substack-stack-width: min(68rem, calc(100vw - 2rem));
+			--substack-card-width: clamp(36rem, 34vw, 42rem);
+			--substack-active-x: clamp(10rem, 14vw, 18rem);
+			--substack-active-y: 0rem;
+			--substack-active-z: 72px;
+			--substack-active-rotation: 18deg;
+			--substack-second-x: clamp(3rem, 5vw, 7rem);
+			--substack-second-y: 1.75rem;
+			--substack-second-rotation: 8deg;
+			--substack-third-x: clamp(-6rem, -5vw, -3rem);
+			--substack-third-y: 3.5rem;
+			--substack-third-rotation: -5deg;
+			--substack-fourth-x: clamp(-11rem, -10vw, -6rem);
+			--substack-fourth-y: 5rem;
+			--substack-fourth-rotation: 4deg;
+
+			height: clamp(20rem, 32vw, 28rem);
+			margin-block: 3rem 4rem;
+		}
+	}
+
+	@media (min-width: 90rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			--substack-stack-width: min(80rem, calc(100vw - 2rem));
+			--substack-card-width: clamp(40rem, 36vw, 48rem);
+			--substack-active-x: clamp(14rem, 18vw, 24rem);
+			--substack-active-y: -0.75rem;
+			--substack-active-rotation: 20deg;
+			--substack-second-x: clamp(5rem, 7vw, 10rem);
+			--substack-second-rotation: 9deg;
+		}
+	}
+
+	@media (max-width: 42rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			--substack-stack-width: min(100%, calc(100vw - 2rem));
+			--substack-card-width: min(100%, calc(100vw - 2rem));
+			--substack-active-x: 0px;
+			--substack-active-y: 0px;
+			--substack-active-z: 48px;
+			--substack-active-rotation: 3deg;
+			--substack-second-x: -10px;
+			--substack-second-y: 14px;
+			--substack-second-rotation: -3deg;
+			--substack-third-x: 14px;
+			--substack-third-y: 24px;
+			--substack-third-rotation: 2deg;
+			--substack-fourth-x: -18px;
+			--substack-fourth-y: 34px;
+			--substack-fourth-rotation: -4deg;
+
+			height: clamp(14rem, 66vw, 21rem);
+			margin-block: 2rem 2.75rem;
+			margin-inline: 0;
+		}
+	}
+
+	@media (max-width: 42rem) {
+		.essay-meta {
+			align-items: flex-start;
+			flex-wrap: wrap;
+		}
+	}
+</style>

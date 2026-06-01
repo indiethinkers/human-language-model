@@ -1,0 +1,376 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import { authors, type Author } from '../../data/authors';
+
+export function getStaticPaths() {
+	return Object.values(authors).map((author) => ({
+		params: { slug: author.slug },
+		props: { author },
+	}));
+}
+
+interface Props {
+	author: Author;
+}
+
+const { author } = Astro.props;
+const posts = (await getCollection('blog'))
+	.filter((post) => (post.data.authorSlug ?? 'daniel-hunter') === author.slug)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${author.name} - Indie Thinkers`} description={author.bio} />
+	</head>
+	<body class="shiny-dimes-home">
+		<main class="dime-page author-page">
+			<div class="nav-actions">
+				<a
+					href="https://indiethinkers.dfos.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="muted-link"
+				>
+					submit
+				</a>
+				<span class="muted-text">//</span>
+				<a
+					href="http://indiethinkers.substack.com/subscribe"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="muted-link"
+				>
+					subscribe
+				</a>
+			</div>
+
+			<div class="card-shell author-shell">
+				<div class="site-label">
+					<a href="/" class="muted-link">indie thinkers</a>
+				</div>
+
+				<div class="quote-frame author-frame">
+					<article class="quote-card author-detail">
+						<header class="author-hero">
+							<Image
+								src={author.avatar}
+								alt={author.name}
+								width={160}
+								height={160}
+								class="author-avatar"
+							/>
+							<div class="author-copy">
+								<h1>{author.name}</h1>
+								<p>{author.bio}</p>
+							</div>
+						</header>
+
+						{
+							posts.length > 0 && (
+								<section class="author-essays" aria-label={`${author.name} essays`}>
+									<h2>essays</h2>
+									<ul>
+										{posts.map((post) => (
+											<li>
+												<a href={`/essays/${post.id}`}>{post.data.title.toLowerCase()}</a>
+											</li>
+										))}
+									</ul>
+								</section>
+							)
+						}
+					</article>
+				</div>
+
+				<div class="credit">
+					<a href="/essays" class="credit-link">
+						view all essays
+					</a>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	@font-face {
+		font-family: Geist;
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url('/fonts/geist-latin.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+	@font-face {
+		font-family: 'Geist Mono';
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url('/fonts/geist-mono-latin.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+	@font-face {
+		font-family: 'Geist Fallback';
+		src: local('Arial');
+		ascent-override: 95.94%;
+		descent-override: 28.16%;
+		line-gap-override: 0%;
+		size-adjust: 104.76%;
+	}
+
+	@font-face {
+		font-family: 'Geist Mono Fallback';
+		src: local('Arial');
+		ascent-override: 74.67%;
+		descent-override: 21.92%;
+		line-gap-override: 0%;
+		size-adjust: 134.59%;
+	}
+
+	:root {
+		--font-geist-sans: Geist, 'Geist Fallback', Arial, sans-serif;
+		--font-geist-mono: 'Geist Mono', 'Geist Mono Fallback', Arial, monospace;
+		--shiny-gray-50: oklch(98.5% 0.002 247.839);
+		--shiny-gray-500: oklch(55.1% 0.027 264.364);
+		--shiny-gray-700: oklch(37.3% 0.034 259.733);
+		--shiny-gray-800: oklch(27.8% 0.033 256.848);
+		--shiny-foreground: oklch(14.5% 0 0);
+	}
+
+	body.shiny-dimes-home {
+		margin: 0;
+		padding: 0;
+		background: var(--shiny-gray-50);
+		background-size: auto;
+		color: var(--shiny-foreground);
+		font-family: var(--font-geist-sans);
+		font-size: 16px;
+		line-height: 1.5;
+		text-align: left;
+		word-wrap: normal;
+		overflow-wrap: normal;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body.shiny-dimes-home *,
+	body.shiny-dimes-home *::before,
+	body.shiny-dimes-home *::after {
+		box-sizing: border-box;
+		border: 0 solid;
+	}
+
+	body.shiny-dimes-home a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	body.shiny-dimes-home img,
+	body.shiny-dimes-home svg,
+	body.shiny-dimes-home video,
+	body.shiny-dimes-home canvas,
+	body.shiny-dimes-home audio,
+	body.shiny-dimes-home iframe,
+	body.shiny-dimes-home embed,
+	body.shiny-dimes-home object {
+		display: block;
+		vertical-align: middle;
+	}
+
+	.dime-page {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		max-width: none;
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
+		background: var(--shiny-gray-50);
+	}
+
+	.card-shell {
+		position: relative;
+	}
+
+	.site-label,
+	.nav-actions,
+	.shortcut-hint,
+	.credit {
+		position: fixed;
+		color: var(--shiny-gray-500);
+		font-size: 0.875rem;
+		line-height: calc(1.25 / 0.875);
+	}
+
+	.site-label {
+		top: 1rem;
+		left: 1rem;
+	}
+
+	.nav-actions {
+		top: 1rem;
+		right: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.shortcut-hint {
+		bottom: 1rem;
+		left: 1rem;
+	}
+
+	.credit {
+		right: 1rem;
+		bottom: 1rem;
+	}
+
+	.muted-link,
+	.credit-link,
+	.essay-link {
+		color: var(--shiny-gray-500);
+		transition-duration: 0.15s;
+		transition-property: color, background-color, border-color, outline-color, text-decoration-color,
+			fill, stroke;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.credit-link {
+		font-weight: 500;
+	}
+
+	.muted-link:hover,
+	.essay-link:hover {
+		color: var(--shiny-gray-700);
+	}
+
+	.credit-link:hover {
+		color: var(--shiny-gray-800);
+	}
+
+	.quote-frame {
+		width: 100%;
+		max-width: 42rem;
+		margin-inline: auto;
+		padding-inline: 1rem;
+	}
+
+	.quote-card {
+		display: flex;
+		min-height: 150px;
+		flex-direction: column;
+		align-items: center;
+		font-family: var(--font-geist-mono);
+		opacity: 1;
+		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.author-page {
+		align-items: flex-start;
+		padding: 7rem 1rem 6rem;
+	}
+
+	.author-shell,
+	.author-frame {
+		width: 100%;
+		max-width: 42rem;
+	}
+
+	.author-detail {
+		min-height: auto;
+		align-items: stretch;
+		gap: 2rem;
+	}
+
+	.author-hero {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.author-avatar {
+		width: 5rem;
+		height: 5rem;
+		flex: 0 0 5rem;
+		border-radius: 999px;
+		object-fit: cover;
+	}
+
+	.author-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.author-copy h1,
+	.author-copy p,
+	.author-essays h2,
+	.author-essays ul {
+		margin: 0;
+	}
+
+	.author-copy h1 {
+		font-size: 1.5rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		line-height: 1.3;
+	}
+
+	.author-copy p {
+		color: var(--shiny-gray-700);
+		font-size: 0.9375rem;
+		line-height: 1.7;
+	}
+
+	.author-essays {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.author-essays h2 {
+		color: var(--shiny-gray-500);
+		font-family: var(--font-geist-sans);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.075em;
+		line-height: 1.25;
+		text-transform: uppercase;
+	}
+
+	.author-essays ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.625rem;
+		list-style: none;
+		padding: 0;
+	}
+
+	.author-essays a {
+		color: var(--shiny-foreground);
+		text-decoration: none;
+		transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.author-essays a:hover {
+		color: var(--shiny-gray-700);
+	}
+
+	@media (max-width: 38rem) {
+		.author-hero {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

@@ -1,9 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 
-const quote =
-	'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.';
-const essayUrl = 'https://indiethinkers.com';
+const quoteEntries = (await getCollection('blog'))
+	.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+	.map((post) => ({
+		href: `/essays/${post.id}`,
+		quote: post.data.quote,
+	}));
+const initialQuote = quoteEntries[0]?.quote ?? '';
+const initialEssayHref = quoteEntries[0]?.href ?? '/essays';
 ---
 
 <!doctype html>
@@ -42,12 +48,12 @@ const essayUrl = 'https://indiethinkers.com';
 				</div>
 
 				<div class="quote-frame">
-					<div class="quote-card" data-quote-card>
-						<div class="quote-text" data-quote={quote}>
+					<div class="quote-card" data-quote-card data-quote-entries={JSON.stringify(quoteEntries)}>
+						<div class="quote-text" data-quote={initialQuote}>
 							<span data-quote-text></span><span class="type-cursor" data-type-cursor>&nbsp;</span>
 						</div>
 						<div class="essay-row">
-							<a href={essayUrl} target="_blank" rel="noopener noreferrer" class="essay-link">
+							<a href={initialEssayHref} class="essay-link">
 								(view essay)
 							</a>
 						</div>
@@ -55,9 +61,8 @@ const essayUrl = 'https://indiethinkers.com';
 				</div>
 
 				<div class="credit">
-					<span>by </span>
-					<a href="https://indiethinkers.com" target="_blank" rel="noopener" class="credit-link">
-						daniel hunter
+					<a href="/essays" class="credit-link">
+						view all essays
 					</a>
 				</div>
 			</div>
@@ -74,13 +79,22 @@ const essayUrl = 'https://indiethinkers.com';
 			const quoteText = document.querySelector('[data-quote-text]');
 			const cursor = document.querySelector('[data-type-cursor]');
 			const essayLink = document.querySelector('.essay-link');
-			const quote = quoteElement?.getAttribute('data-quote') ?? '';
+			const quoteEntries = JSON.parse(quoteCard?.getAttribute('data-quote-entries') ?? '[]');
 
 			let typeTimeout = 0;
 			let blinkInterval = 0;
 			let cursorVisible = true;
 			let isTransitioning = false;
 			let lastTap = 0;
+			let currentQuoteIndex = 0;
+
+			const getCurrentQuoteEntry = () =>
+				quoteEntries[currentQuoteIndex] ?? { href: '/essays', quote: '' };
+
+			const syncEssayLink = () => {
+				if (!essayLink) return;
+				essayLink.href = getCurrentQuoteEntry().href;
+			};
 
 			const setCursorVisible = (visible) => {
 				cursorVisible = visible;
@@ -111,9 +125,11 @@ const essayUrl = 'https://indiethinkers.com';
 			};
 
 			const typeQuote = () => {
+				const quote = getCurrentQuoteEntry().quote;
 				window.clearTimeout(typeTimeout);
 				stopBlinking();
 				setCursorVisible(true);
+				syncEssayLink();
 				if (quoteElement) quoteElement.style.opacity = '0';
 				if (quoteText) quoteText.textContent = '';
 				resetEssayAnimation();
@@ -143,6 +159,9 @@ const essayUrl = 'https://indiethinkers.com';
 				quoteCard.style.opacity = '0';
 
 				window.setTimeout(() => {
+					if (quoteEntries.length > 0) {
+						currentQuoteIndex = (currentQuoteIndex + 1) % quoteEntries.length;
+					}
 					typeQuote();
 					quoteCard.style.opacity = '1';
 					isTransitioning = false;
@@ -386,6 +405,10 @@ const essayUrl = 'https://indiethinkers.com';
 		opacity: 0;
 		animation: fadeIn 2s ease-in-out forwards;
 		animation-delay: 0.5s;
+	}
+
+	body.shiny-dimes-home .essay-row a {
+		color: var(--shiny-gray-500);
 	}
 
 	.desktop-hint {

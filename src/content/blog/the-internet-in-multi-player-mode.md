@@ -9,12 +9,17 @@ pubDate: 'June 1, 2026'
 heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
 ---
 
-## Hungry Golden Hippos
+## Hungry Hungry Golden Hippos
 
 Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
-Everyone [keeps yelling](https://x.com/gregisenberg/status/2038706332119797894?s=20) about how important distribution is. We get it. We know that slop is a plague covering the earth with no Moses to save us and trying to out-post everyone is a fool’s errand. 
-You can try and brute-force attention capture but the cost of human eyeballs has gone up and you'll ultimately look like a clown. Yesterday's price is not today's price. 
+Distribution is the most valuable thing on earth and it's becoming harder to obtain alone. Without it, desperation often creeps in and you're tempted to play stupid games. You feed the slop machine, but that's a single-player game where the house always wins.
+
+It's clear that slop is a plague covering the entire earth with no Moses to save us and trying to out-post everyone is a fool’s errand. You can try and brute-force attention capture all you want but the cost of human eyeballs has gone up. If you keep going you'll ultimately look like a clown. 
+
+So you stop. You finally admit that you can't afford the path you're on.
+
+Yesterday's price is not today's price. 
 
 Please listen to [George Mack](https://x.com/george__mack/status/2060154109974679825) here:
 
@@ -55,7 +60,7 @@ When George Mack dropped his [High Agency](https://www.highagency.com/) essay as
 
 ![High Agency essay micro-site](../../assets/the-internet-in-multi-player-mode/high-agency.png)
 
-Then Thariq from Anthropic reminded me and everyone else that HTML is incredible. He rocked the internet with the following assertion:
+Then Thariq from Anthropic reminded me and everyone else that HTML is dope. He rocked the internet with the following assertion:
 
 > **HTML** is the new markdown.
 
@@ -64,7 +69,7 @@ Then Thariq from Anthropic reminded me and everyone else that HTML is incredible
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-The beauty, and opportunity, of having full control over an HTML document is that it allows writers to be far more expressive than they could be in a [Markdown](https://daringfireball.net/projects/markdown/) file or a traditional blogging / newsletter platform like Substack. Some ideas need to stretch well into the margins.
+The beauty, and opportunity, of having full control over an HTML document is that it allows writers to be far more expressive than they could be in a Markdown file or a traditional blogging / newsletter platform like Substack. Some ideas need to stretch well into the margins.
 
 **Every.**
 
@@ -92,11 +97,7 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 <p class="image-caption"><em><a href="https://www.indiethinkers.com">https://www.indiethinkers.com</a></em></p>
 
-We need more platforms that allow writers to publish prose on the internet that pushes the boundaries of what we're accustomed to seeing. This type of experience is just not possible on Substack. 
-
-That kind of singular vision and full control used to mean going it alone. The bet behind Indie Thinkers is that it doesn't have to anymore.
-
-We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
+We need more platforms that allow writers to publish prose on the internet that pushes the boundaries of what we're accustomed to seeing. This type of experience is just not possible on Substack. We're not leaving the platform completely. We'll still leverage it for newsletter delivery, podcast episodes, and notes.
 
 ## A Human Language Model
 
@@ -110,7 +111,7 @@ The more I thought about this, the more I realized that building a human languag
 
 This type of project is well suited to be run like an open source project. Each author is a contributor. Every essay is simply a pull request on GitHub. One beautiful thing about AI is everyone is far more technical than they once were and having a writer submit a PR no longer sounds crazy. This unlocks new opportunities for human coordination and collaboration.
 
-![Drafts in GitHub](../../assets/the-internet-in-multi-player-mode/drafts-in-github-v2.png)
+![Drafts in GitHub](../../assets/the-internet-in-multi-player-mode/drafts-in-github-v4.png)
 
 Indie Thinkers can be a modern-day human language model. We'll build a body of work that helps chronicle the human condition and leaves behind evidence of life long after our robot friends roam the earth.
 

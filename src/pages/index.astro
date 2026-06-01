@@ -10,6 +10,7 @@ const quoteEntries = (await getCollection('blog'))
 	}));
 const initialQuote = quoteEntries[0]?.quote ?? '';
 const initialEssayHref = quoteEntries[0]?.href ?? '/essays';
+const hasMultipleEssays = quoteEntries.length > 1;
 ---
 
 <!doctype html>
@@ -67,10 +68,14 @@ const initialEssayHref = quoteEntries[0]?.href ?? '/essays';
 				</div>
 			</div>
 
-			<div class="shortcut-hint">
-				<span class="desktop-hint">hit the spacebar for another essay</span>
-				<span class="mobile-hint">double tap for another dime</span>
-			</div>
+			{
+				hasMultipleEssays && (
+					<div class="shortcut-hint">
+						<span class="desktop-hint">hit the spacebar for another essay</span>
+						<span class="mobile-hint">double tap for another dime</span>
+					</div>
+				)
+			}
 		</main>
 
 		<script>
@@ -154,7 +159,7 @@ const initialEssayHref = quoteEntries[0]?.href ?? '/essays';
 			};
 
 			const replayQuote = () => {
-				if (isTransitioning || !quoteCard) return;
+				if (isTransitioning || !quoteCard || quoteEntries.length <= 1) return;
 				isTransitioning = true;
 				quoteCard.style.opacity = '0';
 

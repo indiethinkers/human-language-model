@@ -170,9 +170,9 @@ Farnam Street is a timeless digital library. After you read Brain Food, what you
 
 I want my life's work to be centered around elevating others. Sounds lofty, but it's real. I get the most joy from helping someone clarify an idea and get it out into the world. I want to build a vehicle that makes other people's work more likely to travel. I have conviction that my role in this world is rooted in servant leadership.
 
-We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. The essays we leave behind are evidence of life. The words can still be read after the clock stops.
+We do not know the hour, nor the day, when the clock will stop. It's a bit morbid, but one of the best things you can do to get out of a rut is to read someone's obituary or [eulogy](https://archive.nytimes.com/www.nytimes.com/books/98/03/29/specials/baldwin-morrison.html). Life is precious. It is both long and painfully short. The essays we leave behind are evidence of life.
 
-There's still so much to figure out, but I'd love to have you be a part of this journey and contribute. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea and don't know where to start, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com).
+There's still so much to figure out, but I'd love to have you be a part of this journey and contribute. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com) and we'll talk through it.
 
 -- Daniel
 

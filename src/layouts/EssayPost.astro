@@ -1074,6 +1074,12 @@ const authorName = authorInfo?.name ?? author;
 		}
 	}
 
+	@media (min-width: 112rem) {
+		.essay-body ul:has(img[alt^='Substack screenshot']) {
+			margin-block: 10rem;
+		}
+	}
+
 	@media (max-width: 42rem) {
 		.essay-body ul:has(img[alt^='Substack screenshot']) {
 			--substack-stack-width: min(100%, calc(100vw - 2rem));

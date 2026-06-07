@@ -92,9 +92,11 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 **Indie Thinkers.**
 
-<video class="scroll-play-video" muted loop playsinline preload="metadata" aria-label="Indie Thinkers demo video">
-	<source src="/media/the-internet-in-multi-player-mode/indie-thinkers-demo-v4.mp4" type="video/mp4" />
-</video>
+<div class="video-frame">
+	<video class="scroll-play-video" muted loop playsinline preload="metadata" aria-label="Indie Thinkers demo video">
+		<source src="/media/the-internet-in-multi-player-mode/indie-thinkers-demo-v4.mp4" type="video/mp4" />
+	</video>
+</div>
 
 <p class="image-caption"><em><a href="https://www.indiethinkers.com">https://www.indiethinkers.com</a></em></p>
 

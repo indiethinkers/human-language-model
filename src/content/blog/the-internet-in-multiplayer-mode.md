@@ -1,18 +1,18 @@
 ---
-title: 'The internet in multi-player mode'
+title: 'The internet in multiplayer mode'
 description: 'Indie Thinkers isn’t a media company, or collective, it’s an open source project. Each author, a contributor. Every essay, a pull request.'
 deck: 'Indie Thinkers isn’t a media company, or collective, it’s an open source project. Each author, a contributor. Every essay, a pull request.'
-quote: 'I believe the future will be played in multi-player mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'
+quote: 'I believe the future will be played in multiplayer mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 pubDate: 'June 1, 2026'
-heroImage: '../../assets/the-internet-in-multi-player-mode/indie-thinkers-home.png'
-socialImage: '/media/the-internet-in-multi-player-mode/the-internet-in-multi-player-mode-og-image.png'
+heroImage: '../../assets/the-internet-in-multiplayer-mode/indie-thinkers-home.png'
+socialImage: '/media/the-internet-in-multiplayer-mode/the-internet-in-multiplayer-mode-og-image.png'
 ---
 
 ## Hungry Hungry Golden Hippos
 
-Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multi-player mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
+Here's my [spiky point of view](https://www.weskao.com/blog/spiky-point-of-view-lets-get-a-little-controversial): I believe **the future will be played in multiplayer mode**. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain. 
 
 Distribution is the most valuable thing on earth and it's becoming harder to obtain alone. Without it, desperation often creeps in and you're tempted to play stupid games. You feed the slop machine, but that's a single-player game where the house always wins.
 
@@ -52,14 +52,14 @@ You may have noticed, we moved Indie Thinkers dot com to a new home.
 
 I'm not here to dunk on Substack. They gave writers a beautiful place to live and collaborate. Features like recommendations and guest posts were a big deal when they first launched. Substack made publishing more approachable and it's still home to some of the best writing on the internet, full stop. But platforms like Substack and Medium flattened the presentation layer. Everything kind of looks the same now.
 
-- ![Substack screenshot of Untelling Things](../../assets/the-internet-in-multi-player-mode/substack-01-paper.png)
-- ![Substack screenshot of Derek Thompson](../../assets/the-internet-in-multi-player-mode/substack-02-paper.png)
-- ![Substack screenshot of Not Boring](../../assets/the-internet-in-multi-player-mode/substack-03-paper.png)
-- ![Substack screenshot of Kyla's Newsletter](../../assets/the-internet-in-multi-player-mode/substack-04-paper.png)
+- ![Substack screenshot of Untelling Things](../../assets/the-internet-in-multiplayer-mode/substack-01-paper.png)
+- ![Substack screenshot of Derek Thompson](../../assets/the-internet-in-multiplayer-mode/substack-02-paper.png)
+- ![Substack screenshot of Not Boring](../../assets/the-internet-in-multiplayer-mode/substack-03-paper.png)
+- ![Substack screenshot of Kyla's Newsletter](../../assets/the-internet-in-multiplayer-mode/substack-04-paper.png)
 
 When George Mack dropped his [High Agency](https://www.highagency.com/) essay as a dedicated micro-site, I saw a glimpse of what I wanted to create for myself, and eventually for other writers. I hadn’t seen someone give a single essay its own domain before. At the time I didn't quite know what to do with the idea though, so I bookmarked it in my brain and moved on.
 
-![High Agency essay micro-site](../../assets/the-internet-in-multi-player-mode/high-agency.png)
+![High Agency essay micro-site](../../assets/the-internet-in-multiplayer-mode/high-agency.png)
 
 Then Thariq from Anthropic reminded me and everyone else that HTML is dope. He rocked the internet with the following assertion:
 
@@ -74,19 +74,19 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 **Every.**
 
-[![Every After Automation essay page](../../assets/the-internet-in-multi-player-mode/every-after-automation.png)](https://every.to/p/after-automation)
+[![Every After Automation essay page](../../assets/the-internet-in-multiplayer-mode/every-after-automation.png)](https://every.to/p/after-automation)
 
 <p class="image-caption"><em><a href="https://every.to/p/after-automation">https://every.to/p/after-automation</a></em></p>
 
 **Cleartext.**
 
-[![Cleartext homepage](../../assets/the-internet-in-multi-player-mode/cleartext.png)](https://cleartxt.xyz/)
+[![Cleartext homepage](../../assets/the-internet-in-multiplayer-mode/cleartext.png)](https://cleartxt.xyz/)
 
 <p class="image-caption"><em><a href="https://cleartxt.xyz">https://cleartxt.xyz</a></em></p>
 
 **Lit in Colour.**
 
-[![Lit in Colour homepage](../../assets/the-internet-in-multi-player-mode/lit-in-colour.png)](https://litincolour.penguin.co.uk/)
+[![Lit in Colour homepage](../../assets/the-internet-in-multiplayer-mode/lit-in-colour.png)](https://litincolour.penguin.co.uk/)
 
 <p class="image-caption"><em><a href="https://litincolour.penguin.co.uk">https://litincolour.penguin.co.uk</a></em></p>
 
@@ -94,7 +94,7 @@ The beauty, and opportunity, of having full control over an HTML document is tha
 
 <div class="video-frame">
 	<video class="scroll-play-video" muted loop playsinline preload="metadata" aria-label="Indie Thinkers demo video">
-		<source src="/media/the-internet-in-multi-player-mode/indie-thinkers-demo-v4.mp4" type="video/mp4" />
+		<source src="/media/the-internet-in-multiplayer-mode/indie-thinkers-demo-v4.mp4" type="video/mp4" />
 	</video>
 </div>
 
@@ -114,7 +114,7 @@ The more I thought about this, the more I realized that building a human languag
 
 This type of project is well suited to be run like an open source project. Each author is a contributor. Every essay is simply a pull request on GitHub. One beautiful thing about AI is everyone is far more technical than they once were and having a writer submit a PR no longer sounds crazy. This unlocks new opportunities for human coordination and collaboration.
 
-![Drafts in GitHub](../../assets/the-internet-in-multi-player-mode/drafts-in-github-v4.png)
+![Drafts in GitHub](../../assets/the-internet-in-multiplayer-mode/drafts-in-github-v4.png)
 
 Indie Thinkers can be a modern-day human language model. We'll build a body of work that helps chronicle the human condition and leaves behind evidence of life long after our robot friends roam the earth.
 
@@ -126,7 +126,7 @@ Okay, well, how and where should people collaborate?
 
 First, one must plant a tree.
 
-![Dark Forest Operating System preview](../../assets/the-internet-in-multi-player-mode/dfos-preview.gif)
+![Dark Forest Operating System preview](../../assets/the-internet-in-multiplayer-mode/dfos-preview.gif)
 
 <p class="image-caption"><em>A collection of DFOS spaces, courtesy of Yancey Strickler</em></p>
 
@@ -141,13 +141,13 @@ When you launch a space, you can install the following native apps:
 - Treasury
 - Custom Apps (soon)
 
-![DFOS community treasury screenshot](../../assets/the-internet-in-multi-player-mode/dfos-community-treasury.png)
+![DFOS community treasury screenshot](../../assets/the-internet-in-multiplayer-mode/dfos-community-treasury.png)
 
 DFOS is a nascent platform and that comes with inherent risk for community builders, but I'm making a conscious decision to support it. I see the vision and want everyone involved to succeed. 
 
 I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](https://www.metalabel.com/ystrickler), the founder of [Metalabel](https://www.metalabel.com/about) and a co-founder of the crowdfunding giant Kickstarter. The Dark Forest won't just disappear overnight like a vibe coded micro-saas app. Yancey's flagship DFOS space, [New Creative Era](https://nce.dfos.com/), gives me all the warm arcade game era energy I didn't realize I was missing.
 
-![New Creative Era DFOS space](../../assets/the-internet-in-multi-player-mode/new-creative-era.png)
+![New Creative Era DFOS space](../../assets/the-internet-in-multiplayer-mode/new-creative-era.png)
 
 Eventually, Indie Thinkers will open a community treasury on DFOS that will be used to fund and launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and deserves the same packaging given to a feature release at a venture-backed startup.
 

@@ -1,5 +1,17 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"cleanUrls": true,
-	"trailingSlash": false
+	"trailingSlash": false,
+	"redirects": [
+		{
+			"source": "/essays/the-internet-in-multi-player-mode",
+			"destination": "/essays/the-internet-in-multiplayer-mode",
+			"permanent": true
+		},
+		{
+			"source": "/media/the-internet-in-multi-player-mode/:path*",
+			"destination": "/media/the-internet-in-multiplayer-mode/:path*",
+			"permanent": true
+		}
+	]
 }

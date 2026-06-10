@@ -77,7 +77,7 @@ Notes:
 - Source images imported by Astro should live under `src/assets/`.
 - Static public media should live under `public/media/`.
 - Essay detail pages automatically open external links in a new tab with `noopener noreferrer`.
-- The current published essay is `src/content/blog/the-internet-in-multi-player-mode.md`.
+- The current published essay is `src/content/blog/the-internet-in-multiplayer-mode.md`.
 
 ## Design And Assets
 

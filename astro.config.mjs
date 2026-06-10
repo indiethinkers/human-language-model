@@ -8,6 +8,9 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
 	site: 'https://indiethinkers.com',
 	trailingSlash: 'never',
+	redirects: {
+		'/essays/the-internet-in-multi-player-mode': '/essays/the-internet-in-multiplayer-mode',
+	},
 	build: {
 		format: 'file',
 	},

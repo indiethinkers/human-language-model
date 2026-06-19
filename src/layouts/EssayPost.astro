@@ -84,10 +84,23 @@ const authorName = authorInfo?.name ?? author;
 					</article>
 				</div>
 
-				<div class="credit">
-					<a href="/essays" class="credit-link">
-						view all essays
-					</a>
+				<div class="corner-links">
+					<div class="repo-credit">
+						<a
+							href="https://github.com/indiethinkers/human-language-model"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="credit-link"
+						>
+							github repo
+						</a>
+					</div>
+
+					<div class="credit">
+						<a href="/essays" class="credit-link">
+							view all essays
+						</a>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -443,6 +456,10 @@ const authorName = authorInfo?.name ?? author;
 		position: relative;
 	}
 
+	.corner-links {
+		display: contents;
+	}
+
 	.essay-page-header {
 		display: contents;
 	}
@@ -450,6 +467,7 @@ const authorName = authorInfo?.name ?? author;
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
+	.repo-credit,
 	.credit {
 		position: fixed;
 		color: var(--shiny-gray-500);
@@ -470,6 +488,11 @@ const authorName = authorInfo?.name ?? author;
 	}
 
 	.shortcut-hint {
+		bottom: 2.75rem;
+		left: 1rem;
+	}
+
+	.repo-credit {
 		bottom: 1rem;
 		left: 1rem;
 	}
@@ -1157,14 +1180,27 @@ const authorName = authorInfo?.name ?? author;
 			padding-inline: 0;
 		}
 
-		.essay-detail-page .credit {
-			position: static;
+		.essay-detail-page .corner-links {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 			width: 100%;
 			max-width: var(--essay-content-width);
+			gap: 1rem;
 			margin: 2.5rem auto 0;
 			padding: 1rem 0 calc(1.25rem + env(safe-area-inset-bottom));
 			border-top: 1px solid oklch(88% 0.01 264.364);
+		}
+
+		.essay-detail-page .repo-credit,
+		.essay-detail-page .credit {
+			position: static;
+			min-width: 0;
 			text-align: right;
+		}
+
+		.essay-detail-page .repo-credit {
+			text-align: left;
 		}
 
 		.essay-body ul:has(img[alt^='Substack screenshot']) {

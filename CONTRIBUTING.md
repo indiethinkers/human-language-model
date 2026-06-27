@@ -2,7 +2,7 @@
 
 Thank you for wanting to contribute to Indie Thinkers.
 
-Indie Thinkers is where we collect essays, notes, references, and artifacts we want to keep thinking with. It is run like an open source project, but it is not an open mic. Each author can be a contributor. Every essay can be a pull request. That does not mean every submission will be published, merged, or endorsed.
+Indie Thinkers is where we collect essays, notes, and artifacts we want to keep thinking with. It is run like an open source project, but it is not an open mic. Each author can be a contributor. Every essay can be a pull request. That does not mean every submission will be published, merged, or endorsed.
 
 The goal is not to publish more.
 
@@ -12,7 +12,7 @@ The goal is to publish work that feels worth returning to.
 
 Indie Thinkers collects thoughtful, durable, human-written work about how to live, think, build, create, read, relate, and make sense of the world.
 
-We are interested in essays, notes, references, and artifacts that deepen attention, judgment, memory, craft, authorship, and independent thought. We prefer work that will still be useful months or years from now.
+We are interested in essays, notes, and artifacts that deepen attention, judgment, memory, craft, authorship, and independent thought. We prefer work that will still be useful months or years from now.
 
 This place should not become another content treadmill. The internet already has enough feeds. Enough takes. Enough growth hacks. Enough writing optimized to be glanced at between notifications.
 
@@ -22,12 +22,10 @@ We are trying to build a body of work that leaves behind evidence of life.
 
 Good contributions can take a lot of forms:
 
-- Recommended essays, books, writers, interviews, talks, or archives
 - Original human-written essays or notes
 - Annotations, excerpts, marginalia, or reading notes
 - Corrections to metadata, links, formatting, or attribution
 - Improvements to documentation, organization, categories, or editorial process
-- Thoughtful suggestions for themes, collections, or reading paths
 
 If you are not sure whether something fits, open an issue. A short, honest explanation of why something belongs is more useful than a long argument for why it must be included.
 
@@ -73,7 +71,19 @@ Maintainers review submissions for fit, quality, attribution, and alignment with
 
 A public submission does not imply endorsement, acceptance, or publication. Some contributions may be declined even if they are thoughtful, well-written, or important. That is not always a judgment on the writer. Sometimes the work is simply outside the shape of the project.
 
-For pull requests, keep the change focused. If you are proposing a new essay, recommendation, collection, or structural change, include enough context for maintainers to understand the editorial case.
+For pull requests, keep the change focused. If you are proposing a new essay, annotation, correction, documentation update, or structural change, include enough context for maintainers to understand the editorial case.
+
+## Essay as Pull Request
+
+Indie Thinkers treats prose like open source work. A draft can begin as an issue, become a pull request, and improve through public review.
+
+That does not mean writing by committee. The contributor's voice matters. Maintainers may help with framing, structure, citations, images, metadata, and presentation so the piece can become more legible and more likely to travel.
+
+The best pull requests make the thinking visible: what question the piece explores, why it belongs here, why it has a long half-life, and what kind of collaboration would make it stronger.
+
+Before opening a pull request for an essay, consider getting initial feedback on a rough draft. Tools like [Every's Draft Review Kit](https://github.com/EveryInc/draft-review-kit) can help stress-test argument, structure, reader clarity, pacing, evidence gaps, and unnecessary bloat before maintainers review the work.
+
+Use tools like this for feedback, not authorship. They are most useful after you already have prose on the page and want sharper judgment about what is working, what is weak, and what needs to change.
 
 ## If You Are New to GitHub
 
@@ -88,7 +98,7 @@ A few words help:
 - A pull request is a proposed change. It is you saying, "Here is something I think belongs here. Please review it."
 - A merge is when maintainers accept the change and bring it into the main project.
 
-If you only want to recommend something, ask a question, or suggest a theme, open an issue. That is the easiest path.
+If you only want to ask a question or pitch an idea, open an issue. That is the easiest path.
 
 If you have an idea for a longer original essay, it is also fine to pitch first. Open an issue with the working title, the question you want to explore, and why you think it belongs here. You do not need to arrive with a finished piece.
 
@@ -112,9 +122,17 @@ You do not need to memorize the repo structure, but these are the common places:
 
 Essays are written in Markdown or MDX. If you are comfortable editing files, copy the shape of an existing essay and replace the frontmatter with your own title, description, quote, author, and date.
 
-If you are submitting a recommendation, theme, reading path, or question, an issue is enough.
+If you are asking a question or pitching an idea before drafting, an issue is enough.
 
 If you are submitting an essay and do not know where the file belongs, that is fine. Put the draft where you can, explain what it is, and maintainers can help move it into shape.
+
+## Presentation and Launch
+
+Some essays only need clean Markdown. Others benefit from images, audio, video, diagrams, custom layout, or interactive treatment.
+
+Presentation is optional, not a requirement. But if the piece has a visual, structural, or experiential shape in mind, say so early. Maintainers can help think through what belongs in the essay itself, what belongs in supporting assets, and what belongs in launch material.
+
+Prose, done well, is a real product. The writing matters. The packaging matters too.
 
 ## Suggested Submission Format
 
@@ -124,7 +142,7 @@ When opening an issue or pull request, this format helps:
 Title:
 
 Type of contribution:
-Recommendation / original essay / annotation / correction / documentation / other
+Original essay / annotation / correction / documentation / other
 
 Link or file path, if applicable:
 
@@ -133,6 +151,14 @@ Short summary:
 Why it belongs in Indie Thinkers:
 
 Why it has a long half-life:
+
+Presentation notes, if any:
+
+Collaborators, if any:
+
+Contributor support request, if any:
+
+Pre-PR feedback notes, if any:
 
 Human-written confirmation:
 I confirm this work is human-written, or I have disclosed any AI assistance.
@@ -146,7 +172,7 @@ You do not need to make the case in grand terms. Just make it clear.
 
 Please make attribution easy to verify.
 
-If you recommend someone else's work, include the author, title, source, and link when possible. If you quote or excerpt something, keep it limited to what is necessary and make the source obvious.
+If you cite, quote, or excerpt someone else's work, include the author, title, source, and link when possible. Keep quoted or excerpted material limited to what is necessary and make the source obvious.
 
 Do not submit full copied essays, paywalled work, images, audio, video, or other assets unless you created them, have permission to use them, or they are clearly available under terms that allow reuse.
 
@@ -182,7 +208,15 @@ Maintainers may suggest changes to framing, title, deck, metadata, excerpts, lin
 
 Substantial edits should be discussed with the writer. Small cleanup changes may happen as part of getting the work ready for the site.
 
-Prose, done well, is a real product. The writing matters. The packaging matters too.
+Indie Thinkers is a multiplayer project. Strong work may involve a writer, editor, designer, artist, developer, researcher, or production collaborator. When other people materially shape the work, name them in the submission so credit is clear.
+
+## Contributor Support
+
+Indie Thinkers has a treasury hosted on Open Collective: <https://opencollective.com/indiethinkers>.
+
+The treasury exists to support work that takes time and craft, including writing, editing, design, art, development, and production. Funding is not automatic, and most submissions should not assume payment unless it has been discussed before work begins.
+
+If money, commissioning, reimbursement, or production support is relevant to a contribution, raise it early in an issue or private conversation with maintainers.
 
 ## Community Norms
 
@@ -201,6 +235,6 @@ Strong opinions are welcome when they are carried with care, specificity, and re
 
 Indie Thinkers depends on people who notice what is worth preserving and take the time to share it well.
 
-If you have found something thoughtful, durable, strange, clarifying, beautifully made, or full of life, we would like to hear about it.
+If you have made something thoughtful, durable, strange, clarifying, beautifully shaped, or full of life, we would like to hear about it.
 
 Thank you for contributing with care.

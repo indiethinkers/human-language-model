@@ -1,5 +1,5 @@
 ---
-title: 'The internet in multiplayer mode'
+title: 'The Internet in Multiplayer Mode'
 description: 'Indie Thinkers isn’t a media company, or collective, it’s an open source project. Each author, a contributor. Every essay, a pull request.'
 deck: 'Indie Thinkers isn’t a media company, or collective, it’s an open source project. Each author, a contributor. Every essay, a pull request.'
 quote: 'I believe the future will be played in multiplayer mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'

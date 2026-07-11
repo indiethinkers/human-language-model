@@ -12,12 +12,15 @@ const {
 	deck,
 	author = 'Daniel Hunter',
 	authorSlug = 'daniel-hunter',
+	copyrightHolder = author,
+	license,
 	pubDate,
 	updatedDate,
 	socialImage,
 } = Astro.props;
 const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
 const authorName = authorInfo?.name ?? author;
+const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 ---
 
 <html lang="en">
@@ -81,6 +84,16 @@ const authorName = authorInfo?.name ?? author;
 						<div class="essay-body">
 							<slot />
 						</div>
+
+						<footer class="essay-license">
+							<p>
+								© {pubDate.getFullYear()} {copyrightHolder}.{' '}
+								<a href="https://creativecommons.org/licenses/by/4.0/">
+									Licensed under {licenseLabel}
+								</a>.
+							</p>
+							<p>Third-party materials are excluded unless separately noted.</p>
+						</footer>
 					</article>
 				</div>
 
@@ -634,6 +647,28 @@ const authorName = authorInfo?.name ?? author;
 		gap: 1.25rem;
 		font-size: 1rem;
 		line-height: 1.7;
+	}
+
+	.essay-license {
+		margin-top: 4rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid oklch(88% 0.01 264.364);
+		color: var(--shiny-gray-500);
+		font-size: 0.75rem;
+		line-height: 1.6;
+	}
+
+	.essay-license p {
+		margin: 0;
+	}
+
+	.essay-license p + p {
+		margin-top: 0.25rem;
+	}
+
+	.essay-license a {
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
 	}
 
 	.essay-body :where(h2, h3, h4, p, blockquote, ul, ol, figure) {

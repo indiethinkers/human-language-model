@@ -163,6 +163,12 @@ Pre-PR feedback notes, if any:
 Human-written confirmation:
 I confirm this work is human-written, or I have disclosed any AI assistance.
 
+Rights and license confirmation:
+I confirm that I own or control the rights needed to submit this work. I agree
+that accepted original software contributions are licensed under MIT and
+accepted original essay or editorial contributions are licensed under CC BY
+4.0. I understand that the CC BY 4.0 license is irrevocable.
+
 Attribution/copyright notes:
 ```
 
@@ -176,7 +182,13 @@ If you cite, quote, or excerpt someone else's work, include the author, title, s
 
 Do not submit full copied essays, paywalled work, images, audio, video, or other assets unless you created them, have permission to use them, or they are clearly available under terms that allow reuse.
 
-Accepted work may be published in the public repository, on the website, in the newsletter, or in related Indie Thinkers channels. If your work has licensing constraints, prior publication limits, or permissions that maintainers need to know about, say so before it is merged.
+Authors retain copyright in their work. By opening a pull request, you confirm that you own or control the rights needed to submit your original contribution. Accepted original essays and editorial material are licensed to the public under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). Accepted original software contributions are licensed under the MIT License.
+
+CC BY 4.0 is irrevocable. It permits redistribution, adaptation, and commercial reuse when the author is properly attributed. Only submit work under these terms if you understand and accept them.
+
+Illustrations and other media are licensed only under the terms agreed with their creator and recorded alongside the work. Third-party quotations, screenshots, embeds, trademarks, and other third-party material are not covered by the repository licenses.
+
+Accepted work may be published in the public repository, on the website, in the newsletter, or in related Indie Thinkers channels. If your work has prior-publication limits or permissions that maintainers need to know about, say so before it is merged.
 
 If there is any uncertainty, say so in the submission. A small attribution note now saves a larger mess later.
 

@@ -1,21 +1,33 @@
-MIT License
+Indie Thinkers uses multiple licenses.
 
-Copyright (c) 2026 Daniel Hunter
+Software
+========
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Source code and software documentation in this repository are licensed under
+the MIT License. See LICENSES/MIT.txt.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Editorial content
+=================
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Original essays and editorial material in src/content/blog/ are licensed by
+their respective copyright holders under the Creative Commons Attribution 4.0
+International Public License (CC BY 4.0), unless a work explicitly states
+otherwise. See LICENSES/CC-BY-4.0.txt.
+
+Authors retain copyright in their work. Reusers must provide attribution in
+accordance with CC BY 4.0.
+
+Illustrations and other media
+=============================
+
+Original illustrations and media are licensed only as indicated alongside the
+individual work or in its metadata. Do not assume that an asset is covered by
+CC BY 4.0 solely because it is stored in this repository.
+
+Third-party material
+====================
+
+Third-party quotations, screenshots, embeds, photographs, illustrations,
+trademarks, and other third-party material are excluded from these repository
+licenses. They remain subject to their respective owners' rights and any
+applicable exceptions or limitations to copyright.

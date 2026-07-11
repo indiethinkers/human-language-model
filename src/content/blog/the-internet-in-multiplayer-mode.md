@@ -149,7 +149,7 @@ I find solace in the fact that DFOS is the brainchild of [Yancey Strickler](http
 
 ![New Creative Era DFOS space](../../assets/the-internet-in-multiplayer-mode/new-creative-era.png)
 
-Eventually, Indie Thinkers will open a community treasury on DFOS that will be used to fund and launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and deserves the same packaging given to a feature release at a venture-backed startup.
+Eventually, Indie Thinkers will open a community treasury that will be used to fund and launch essays. I use the word launch intentionally here. Prose, done well, is a legit product, and deserves the same packaging given to a feature release at a venture-backed startup.
 
 The treasury won't be a vague community wallet or crypto gimmick. It'll be a real pool of money used to pay writers and artists. If someone has a dope idea but not the time, marketing resources, or design sense to turn it into something bigger, Indie Thinkers will be able to support them.
 

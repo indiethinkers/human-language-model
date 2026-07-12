@@ -1,6 +1,7 @@
 ---
 title: 'Each author, a contributor. Every essay, a pull request.'
 description: 'Indie Thinkers is open-source infrastructure for developing human stories.'
+deck: 'Indie Thinkers is open-source infrastructure for developing human stories. Writers develop essays with editors in public and every contribution becomes part of a shared body of knowledge. The revisions and conversations between writers and editors become learning resources that others can learn from.'
 quote: 'What if The Atlantic were an open-source project on GitHub?'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
@@ -8,8 +9,6 @@ copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'July 12, 2026'
 ---
-
-> Indie Thinkers is open-source infrastructure for developing human stories. Writers develop essays with editors in public and every contribution becomes part of a shared body of knowledge. The revisions and conversations between writers and editors become learning resources that others can learn from.
 
 ## A Simple Question
 
@@ -93,7 +92,16 @@ Writing is thinking and is itself a form of feedback for the person with a pen i
 
 An editor adds another mind to that process. Visibility helps editorial knowledge move from one writer–editor relationship to many others. In David Perell’s *How I Write* podcast, Michael Dean offers a glimpse of what it looks like to make a writer’s process teachable.
 
-[Watch on YouTube](https://www.youtube.com/watch?v=t1elm49zcQg&t=113s)
+<div class="video-frame youtube-frame">
+	<iframe
+		src="https://www.youtube-nocookie.com/embed/t1elm49zcQg?start=113"
+		title="Michael Dean on making a writer's process teachable"
+		loading="lazy"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		allowfullscreen
+	></iframe>
+</div>
 
 ## What Open Source Unlocks
 
@@ -131,7 +139,16 @@ On December 11, 1985, David Letterman interviewed Quincy Jones shortly before *T
 
 Q had an incredible ability to discover remarkable talent.
 
-[Watch on YouTube](https://youtu.be/J13k6oFjMO8?si=S3yX13kp4hCyc_-O&t=351)
+<div class="video-frame youtube-frame">
+	<iframe
+		src="https://www.youtube-nocookie.com/embed/J13k6oFjMO8?start=351"
+		title="Quincy Jones on casting Oprah Winfrey in The Color Purple"
+		loading="lazy"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		allowfullscreen
+	></iframe>
+</div>
 
 Indie Thinkers can help find what I call the underdogs of the internet. Writers with something meaningful to say who have not yet found the audience capable of recognizing it. Good work still needs somewhere to develop and somewhere to travel.
 

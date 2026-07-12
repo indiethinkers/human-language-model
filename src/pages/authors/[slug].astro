@@ -30,12 +30,12 @@ const posts = (await getCollection('blog'))
 		<main class="dime-page author-page">
 			<div class="nav-actions">
 				<a
-					href="https://github.com/indiethinkers/human-language-model?tab=contributing-ov-file"
+					href="https://github.com/indiethinkers/human-language-model"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="muted-link"
 				>
-					submit
+					github
 				</a>
 				<span class="muted-text">//</span>
 				<a
@@ -44,7 +44,7 @@ const posts = (await getCollection('blog'))
 					rel="noopener noreferrer"
 					class="muted-link"
 				>
-					subscribe
+					newsletter
 				</a>
 			</div>
 
@@ -84,17 +84,6 @@ const posts = (await getCollection('blog'))
 							)
 						}
 					</article>
-				</div>
-
-				<div class="repo-credit">
-					<a
-						href="https://github.com/indiethinkers/human-language-model"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="credit-link"
-					>
-						github
-					</a>
 				</div>
 
 				<div class="credit">
@@ -218,7 +207,6 @@ const posts = (await getCollection('blog'))
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
-	.repo-credit,
 	.credit {
 		position: fixed;
 		color: var(--shiny-gray-500);
@@ -240,11 +228,6 @@ const posts = (await getCollection('blog'))
 
 	.shortcut-hint {
 		bottom: 2.75rem;
-		left: 1rem;
-	}
-
-	.repo-credit {
-		bottom: 1rem;
 		left: 1rem;
 	}
 

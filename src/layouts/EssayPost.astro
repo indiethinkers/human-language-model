@@ -34,12 +34,12 @@ const authorName = authorInfo?.name ?? author;
 
 				<nav class="nav-actions" aria-label="Essay actions">
 					<a
-						href="https://github.com/indiethinkers/human-language-model?tab=contributing-ov-file"
+						href="https://github.com/indiethinkers/human-language-model"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="muted-link"
 					>
-						submit
+						github
 					</a>
 					<span class="muted-text">//</span>
 					<a
@@ -48,7 +48,7 @@ const authorName = authorInfo?.name ?? author;
 						rel="noopener noreferrer"
 						class="muted-link"
 					>
-						subscribe
+						newsletter
 					</a>
 				</nav>
 			</header>
@@ -85,17 +85,6 @@ const authorName = authorInfo?.name ?? author;
 				</div>
 
 				<div class="corner-links">
-					<div class="repo-credit">
-						<a
-							href="https://github.com/indiethinkers/human-language-model"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="credit-link"
-						>
-							github
-						</a>
-					</div>
-
 					<div class="credit">
 						<a href="/essays" class="credit-link">
 							view all essays
@@ -467,7 +456,6 @@ const authorName = authorInfo?.name ?? author;
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
-	.repo-credit,
 	.credit {
 		position: fixed;
 		color: var(--shiny-gray-500);
@@ -489,11 +477,6 @@ const authorName = authorInfo?.name ?? author;
 
 	.shortcut-hint {
 		bottom: 2.75rem;
-		left: 1rem;
-	}
-
-	.repo-credit {
-		bottom: 1rem;
 		left: 1rem;
 	}
 
@@ -1193,7 +1176,7 @@ const authorName = authorInfo?.name ?? author;
 		.essay-detail-page .corner-links {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: flex-end;
 			width: 100%;
 			max-width: var(--essay-content-width);
 			gap: 1rem;
@@ -1202,15 +1185,10 @@ const authorName = authorInfo?.name ?? author;
 			border-top: 1px solid oklch(88% 0.01 264.364);
 		}
 
-		.essay-detail-page .repo-credit,
 		.essay-detail-page .credit {
 			position: static;
 			min-width: 0;
 			text-align: right;
-		}
-
-		.essay-detail-page .repo-credit {
-			text-align: left;
 		}
 
 		.essay-body ul:has(img[alt^='Substack screenshot']) {

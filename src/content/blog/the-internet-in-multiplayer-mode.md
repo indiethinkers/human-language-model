@@ -5,6 +5,8 @@ deck: 'Indie Thinkers isn’t a media company, or collective, it’s an open sou
 quote: 'I believe the future will be played in multiplayer mode. AI has poured lighter fluid on solopreneurship, but the flames will eventually die out and only fumes will remain.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
+copyrightHolder: 'Daniel Hunter'
+license: 'CC-BY-4.0'
 pubDate: 'June 1, 2026'
 heroImage: '../../assets/the-internet-in-multiplayer-mode/indie-thinkers-home.png'
 socialImage: '/media/the-internet-in-multiplayer-mode/the-internet-in-multiplayer-mode-og-image.png'

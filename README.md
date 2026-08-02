@@ -57,6 +57,8 @@ Required frontmatter:
 title: 'The essay title'
 description: 'Short metadata description'
 quote: 'Homepage quote for this essay'
+copyrightHolder: 'Copyright holder name'
+license: 'CC-BY-4.0'
 pubDate: 'June 1, 2026'
 ```
 
@@ -103,6 +105,15 @@ public/
   fonts/               Public Geist font files
   media/               Public essay media
 ```
+
+## Licensing
+
+- Source code and software documentation are licensed under the MIT License.
+- Original essays in `src/content/blog/` are licensed by their respective copyright holders under CC BY 4.0 unless explicitly stated otherwise.
+- Original illustrations and media are licensed only when the individual work or its metadata says so.
+- Third-party quotations, screenshots, embeds, trademarks, and other third-party material are excluded from the repository licenses.
+
+See `LICENSE` and the full license texts in `LICENSES/` for details.
 
 ## Deployment
 

@@ -14,6 +14,8 @@ const blog = defineCollection({
 			quote: z.string(),
 			author: z.string().optional(),
 			authorSlug: z.string().optional(),
+			copyrightHolder: z.string(),
+			license: z.literal('CC-BY-4.0'),
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),

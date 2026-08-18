@@ -11,6 +11,10 @@ const quoteEntries = (await getCollection('blog'))
 const initialQuote = quoteEntries[0]?.quote ?? '';
 const initialEssayHref = quoteEntries[0]?.href ?? '/essays';
 const hasMultipleEssays = quoteEntries.length > 1;
+const githubHref = 'https://github.com/indiethinkers/human-language-model';
+const submitHref = `${githubHref}?tab=contributing-ov-file`;
+const subscribeHref = 'http://indiethinkers.substack.com/subscribe';
+const allEssaysHref = 'https://indiethinkers.substack.com/';
 ---
 
 <!doctype html>
@@ -23,9 +27,9 @@ const hasMultipleEssays = quoteEntries.length > 1;
 	</head>
 	<body class="shiny-dimes-home">
 		<main class="dime-page">
-			<div class="nav-actions">
+			<div class="nav-actions desktop-nav">
 				<a
-					href="https://github.com/indiethinkers/human-language-model?tab=contributing-ov-file"
+					href={submitHref}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="muted-link"
@@ -34,13 +38,59 @@ const hasMultipleEssays = quoteEntries.length > 1;
 				</a>
 				<span class="muted-text">//</span>
 				<a
-					href="http://indiethinkers.substack.com/subscribe"
+					href={subscribeHref}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="muted-link"
 				>
 					subscribe
 				</a>
+			</div>
+
+			<div class="mobile-nav" data-home-menu>
+				<button
+					type="button"
+					class="menu-toggle muted-link"
+					data-menu-toggle
+					aria-expanded="false"
+					aria-controls="home-menu"
+				>
+					menu
+				</button>
+				<nav id="home-menu" class="home-menu" data-menu-panel hidden aria-label="Site">
+					<a
+						href={githubHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="home-menu-link"
+					>
+						github
+					</a>
+					<a
+						href={allEssaysHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="home-menu-link"
+					>
+						view all essays
+					</a>
+					<a
+						href={submitHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="home-menu-link"
+					>
+						submit
+					</a>
+					<a
+						href={subscribeHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="home-menu-link"
+					>
+						subscribe
+					</a>
+				</nav>
 			</div>
 
 			<div class="card-shell">
@@ -61,9 +111,9 @@ const hasMultipleEssays = quoteEntries.length > 1;
 					</div>
 				</div>
 
-				<div class="repo-credit">
+				<div class="repo-credit desktop-nav">
 					<a
-						href="https://github.com/indiethinkers/human-language-model"
+						href={githubHref}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="credit-link"
@@ -72,8 +122,13 @@ const hasMultipleEssays = quoteEntries.length > 1;
 					</a>
 				</div>
 
-				<div class="credit">
-					<a href="/essays" class="credit-link">
+				<div class="credit desktop-nav">
+					<a
+						href={allEssaysHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="credit-link"
+					>
 						view all essays
 					</a>
 				</div>
@@ -95,7 +150,10 @@ const hasMultipleEssays = quoteEntries.length > 1;
 			const quoteText = document.querySelector('[data-quote-text]');
 			const cursor = document.querySelector('[data-type-cursor]');
 			const essayLink = document.querySelector('.essay-link');
+			const menuToggle = document.querySelector('[data-menu-toggle]');
+			const menuPanel = document.querySelector('[data-menu-panel]');
 			const quoteEntries = JSON.parse(quoteCard?.getAttribute('data-quote-entries') ?? '[]');
+			const desktopNavQuery = window.matchMedia('(min-width: 48rem)');
 
 			let typeTimeout = 0;
 			let blinkInterval = 0;
@@ -103,6 +161,46 @@ const hasMultipleEssays = quoteEntries.length > 1;
 			let isTransitioning = false;
 			let lastTap = 0;
 			let currentQuoteIndex = 0;
+			let menuOpen = false;
+
+			const setMenuOpen = (open, { restoreFocus = true } = {}) => {
+				menuOpen = open;
+				if (!menuToggle || !menuPanel) return;
+
+				menuToggle.setAttribute('aria-expanded', String(open));
+				menuToggle.textContent = open ? 'close' : 'menu';
+				menuPanel.hidden = !open;
+				document.body.classList.toggle('menu-open', open);
+
+				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint').forEach((el) => {
+					el.toggleAttribute('inert', open);
+				});
+
+				if (!open && restoreFocus) menuToggle.focus();
+			};
+
+			menuToggle?.addEventListener('click', () => {
+				setMenuOpen(!menuOpen);
+			});
+
+			menuPanel?.addEventListener('click', (event) => {
+				const target = event.target;
+				if (!(target instanceof Element)) return;
+				if (target === menuPanel || target.closest('a')) {
+					setMenuOpen(false, { restoreFocus: target === menuPanel });
+				}
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape' && menuOpen) {
+					event.preventDefault();
+					setMenuOpen(false);
+				}
+			});
+
+			desktopNavQuery.addEventListener('change', (event) => {
+				if (event.matches && menuOpen) setMenuOpen(false, { restoreFocus: false });
+			});
 
 			const getCurrentQuoteEntry = () =>
 				quoteEntries[currentQuoteIndex] ?? { href: '/essays', quote: '' };
@@ -185,12 +283,14 @@ const hasMultipleEssays = quoteEntries.length > 1;
 			};
 
 			window.addEventListener('keydown', (event) => {
-				if (event.code !== 'Space') return;
+				if (event.code !== 'Space' || menuOpen) return;
 				event.preventDefault();
 				replayQuote();
 			});
 
 			window.addEventListener('touchend', (event) => {
+				if (menuOpen || event.target.closest?.('[data-home-menu]')) return;
+
 				const currentTime = Date.now();
 				const tapLength = currentTime - lastTap;
 
@@ -319,7 +419,8 @@ const hasMultipleEssays = quoteEntries.length > 1;
 	.nav-actions,
 	.shortcut-hint,
 	.repo-credit,
-	.credit {
+	.credit,
+	.mobile-nav {
 		position: fixed;
 		color: var(--shiny-gray-500);
 		font-size: 0.875rem;
@@ -336,6 +437,60 @@ const hasMultipleEssays = quoteEntries.length > 1;
 		right: 1rem;
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	.mobile-nav {
+		top: 1rem;
+		right: 1rem;
+		z-index: 40;
+	}
+
+	.menu-toggle {
+		position: relative;
+		z-index: 1;
+		appearance: none;
+		background: transparent;
+		border: none;
+		padding: 0.5rem;
+		margin: -0.5rem;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+	}
+
+	.home-menu {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		background: var(--shiny-gray-50);
+	}
+
+	.home-menu[hidden] {
+		display: none;
+	}
+
+	.home-menu-link {
+		padding: 0.75rem 1rem;
+		color: var(--shiny-gray-500);
+		font-weight: 500;
+		text-align: center;
+		transition-duration: 0.15s;
+		transition-property: color;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.home-menu-link:hover,
+	.home-menu-link:focus-visible {
+		color: var(--shiny-gray-800);
+	}
+
+	body.shiny-dimes-home.menu-open {
+		overflow: hidden;
 	}
 
 	.shortcut-hint {
@@ -452,6 +607,12 @@ const hasMultipleEssays = quoteEntries.length > 1;
 		}
 	}
 
+	@media (max-width: 47.999rem) {
+		.desktop-nav {
+			display: none;
+		}
+	}
+
 	@media (min-width: 48rem) {
 		.quote-frame {
 			transform: translateY(clamp(-4rem, -6vh, -2rem));
@@ -462,6 +623,10 @@ const hasMultipleEssays = quoteEntries.length > 1;
 		}
 
 		.mobile-hint {
+			display: none;
+		}
+
+		.mobile-nav {
 			display: none;
 		}
 	}

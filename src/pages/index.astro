@@ -26,6 +26,52 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 		/>
 	</head>
 	<body class="shiny-dimes-home">
+		<div class="mobile-nav" data-home-menu>
+			<button
+				type="button"
+				class="menu-toggle muted-link"
+				data-menu-toggle
+				aria-expanded="false"
+				aria-controls="home-menu"
+			>
+				menu
+			</button>
+			<nav id="home-menu" class="home-menu" data-menu-panel hidden aria-label="Site">
+				<a
+					href={githubHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="home-menu-link"
+				>
+					github
+				</a>
+				<a
+					href={allEssaysHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="home-menu-link"
+				>
+					view all essays
+				</a>
+				<a
+					href={submitHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="home-menu-link"
+				>
+					submit
+				</a>
+				<a
+					href={subscribeHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="home-menu-link"
+				>
+					subscribe
+				</a>
+			</nav>
+		</div>
+
 		<main class="dime-page">
 			<div class="nav-actions desktop-nav">
 				<a
@@ -45,52 +91,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 				>
 					subscribe
 				</a>
-			</div>
-
-			<div class="mobile-nav" data-home-menu>
-				<button
-					type="button"
-					class="menu-toggle muted-link"
-					data-menu-toggle
-					aria-expanded="false"
-					aria-controls="home-menu"
-				>
-					menu
-				</button>
-				<nav id="home-menu" class="home-menu" data-menu-panel hidden aria-label="Site">
-					<a
-						href={githubHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="home-menu-link"
-					>
-						github
-					</a>
-					<a
-						href={allEssaysHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="home-menu-link"
-					>
-						view all essays
-					</a>
-					<a
-						href={submitHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="home-menu-link"
-					>
-						submit
-					</a>
-					<a
-						href={subscribeHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="home-menu-link"
-					>
-						subscribe
-					</a>
-				</nav>
 			</div>
 
 			<div class="card-shell">
@@ -153,7 +153,7 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 			const menuToggle = document.querySelector('[data-menu-toggle]');
 			const menuPanel = document.querySelector('[data-menu-panel]');
 			const quoteEntries = JSON.parse(quoteCard?.getAttribute('data-quote-entries') ?? '[]');
-			const desktopNavQuery = window.matchMedia('(min-width: 48rem)');
+			const desktopNavQuery = window.matchMedia('(min-width: 1024px)');
 
 			let typeTimeout = 0;
 			let blinkInterval = 0;
@@ -420,11 +420,15 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 	.shortcut-hint,
 	.repo-credit,
 	.credit,
-	.mobile-nav {
+	.menu-toggle {
 		position: fixed;
 		color: var(--shiny-gray-500);
 		font-size: 0.875rem;
 		line-height: calc(1.25 / 0.875);
+	}
+
+	.desktop-nav {
+		display: none;
 	}
 
 	.site-label {
@@ -435,19 +439,14 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 	.nav-actions {
 		top: 1rem;
 		right: 1rem;
-		display: flex;
 		gap: 0.5rem;
 	}
 
-	.mobile-nav {
-		top: 1rem;
-		right: 1rem;
-		z-index: 40;
-	}
-
 	.menu-toggle {
-		position: relative;
-		z-index: 1;
+		top: max(1rem, env(safe-area-inset-top));
+		right: max(1rem, env(safe-area-inset-right));
+		z-index: 50;
+		-webkit-appearance: none;
 		appearance: none;
 		background: transparent;
 		border: none;
@@ -461,7 +460,7 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 	.home-menu {
 		position: fixed;
 		inset: 0;
-		z-index: 0;
+		z-index: 40;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -607,13 +606,7 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 		}
 	}
 
-	@media (max-width: 47.999rem) {
-		.desktop-nav {
-			display: none;
-		}
-	}
-
-	@media (min-width: 48rem) {
+	@media (min-width: 1024px) {
 		.quote-frame {
 			transform: translateY(clamp(-4rem, -6vh, -2rem));
 		}
@@ -628,6 +621,15 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 
 		.mobile-nav {
 			display: none;
+		}
+
+		.nav-actions.desktop-nav {
+			display: flex;
+		}
+
+		.repo-credit.desktop-nav,
+		.credit.desktop-nav {
+			display: block;
 		}
 	}
 </style>

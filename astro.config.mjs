@@ -46,6 +46,11 @@ export default defineConfig({
 			styles: ['normal', 'italic'],
 			subsets: ['latin'],
 			fallbacks: ['Georgia', 'serif'],
+			options: {
+				experimental: {
+					variableAxis: { opsz: [['6', '72']] },
+				},
+			},
 		},
 	],
 });

@@ -2,7 +2,7 @@
 title: 'The Writer and Little “j” Journalist'
 description: 'A mix of code, prose, and the future of work'
 deck: 'A mix of code, prose, and the future of work'
-quote: 'I still hesitate to fully claim ‘journalist’ as a label, mostly because I respect the profession too much to treat it like a costume.'
+quote: 'Writing isn’t just thinking or self-expression. A screenplay becomes a film. A cold email becomes a career. A collection of questions becomes a treasured archive of interviews. Structured natural language can become malleable software.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'

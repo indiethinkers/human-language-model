@@ -71,11 +71,14 @@ authorSlug: 'daniel-hunter'
 updatedDate: 'June 2, 2026'
 heroImage: '../../assets/path/to/image.png'
 socialImage: '/media/path/to/og-image.png'
+presentation: 'source'
+titleMono: 'j'
 ```
 
 Notes:
 
 - New author profiles are added in `src/data/authors.ts`.
+- `presentation: 'source'` opts an essay into the source-view layout (serif prose, monospace gutter with paragraph numbers, `<aside class="sidenote">` blocks for margin notes). `titleMono` sets the first matching part of the title in monospace.
 - Source images imported by Astro should live under `src/assets/`.
 - Static public media should live under `public/media/`.
 - Essay detail pages automatically open external links in a new tab with `noopener noreferrer`.

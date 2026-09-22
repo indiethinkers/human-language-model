@@ -13,8 +13,16 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+
+const readingBody = (post.body ?? '')
+	.replace(/<[^>]+>/g, ' ')
+	.replace(/\]\([^)]+\)/g, ']');
+const readingWords = readingBody
+	.split(/\s+/)
+	.filter((token) => /[\p{L}\p{N}]/u.test(token)).length;
+const readingMinutes = Math.max(1, Math.round(readingWords / 230));
 ---
 
-<EssayPost {...post.data}>
+<EssayPost {...post.data} readingMinutes={readingMinutes} sourcePath={post.filePath}>
 	<Content />
 </EssayPost>

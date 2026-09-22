@@ -2,7 +2,7 @@
 title: 'The Writer and Little “j” Journalist'
 description: 'A mix of code, prose, and the future of work'
 deck: 'A mix of code, prose, and the future of work'
-quote: 'Writing isn’t just thinking or self-expression. A screenplay becomes a film. A cold email becomes a career. A collection of questions becomes a treasured archive of interviews. Structured natural language can become malleable software.'
+quote: 'Writing isn’t just thinking or self-expression. A screenplay becomes a film. A cold email becomes a career. A collection of questions becomes a treasured archive of interviews. Structured natural language becomes malleable software.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'
@@ -58,7 +58,7 @@ This line attributed to C.S. Lewis defined vibe coding well before Karpathy coin
 
 > You can make anything by writing.
 
-Writing isn’t just thinking or self-expression. A screenplay becomes a film. A cold email becomes a career. A collection of questions becomes a treasured archive of interviews. Structured natural language can become [malleable software](https://www.inkandswitch.com/essay/malleable-software/).
+Writing isn’t just thinking or self-expression. A screenplay becomes a film. A cold email becomes a career. A collection of questions becomes a treasured archive of interviews. Structured natural language becomes [malleable software](https://www.inkandswitch.com/essay/malleable-software/).
 
 <blockquote class="twitter-tweet" data-dnt="true">
 	<p lang="en" dir="ltr">The hottest new programming language is English</p>

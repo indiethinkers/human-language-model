@@ -23,6 +23,9 @@ const readingWords = readingBody
 const readingMinutes = Math.max(1, Math.round(readingWords / 230));
 ---
 
-<EssayPost {...post.data} readingMinutes={readingMinutes} sourcePath={post.filePath}>
+<EssayPost
+	{...post.data}
+	socialImage={post.data.socialImage ?? `/og/${post.id}.png`}
+	readingMinutes={readingMinutes} sourcePath={post.filePath}>
 	<Content />
 </EssayPost>

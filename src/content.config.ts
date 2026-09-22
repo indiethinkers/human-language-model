@@ -23,12 +23,17 @@ const blog = defineCollection({
 				heroImage: z.optional(image()),
 				socialImage: z.string().optional(),
 				presentation: z.enum(['source']).optional(),
-				titleMono: z.string().optional(),
+				titleMarkup: z.string().optional(),
 			})
-			.refine((data) => !data.titleMono || data.title.includes(data.titleMono), {
-				error: 'titleMono must occur in title',
-				path: ['titleMono'],
-			}),
+			.refine(
+				(data) =>
+					!data.titleMarkup ||
+					data.titleMarkup.replace(/`([^`]+)`|_([^_]+)_/g, '$1$2') === data.title,
+				{
+					error: 'titleMarkup must equal title once its `mono` and _italic_ marks are removed',
+					path: ['titleMarkup'],
+				},
+			),
 });
 
 export const collections = { blog };

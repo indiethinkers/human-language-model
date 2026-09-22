@@ -9,7 +9,7 @@ copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'September 21, 2026'
 presentation: 'source'
-titleMono: 'j'
+titleMarkup: 'The Writer _and_ Little `“j”` Journalist'
 ---
 
 In 2010, I was a sound editor at a small post-production facility in Santa Monica, working on everything from MTV’s *The Hills* to HBO’s *Curb Your Enthusiasm*. When I started, I rarely saw people who looked like me in those rooms. That absence became [Post in Black](https://postinblack.com/), a blog that has grown into a podcast entering its seventh season with industry heavyweights like Dolby sponsoring.

@@ -22,7 +22,7 @@ const {
 	updatedDate,
 	socialImage,
 	presentation,
-	titleMono,
+	titleMarkup,
 	readingMinutes,
 	sourcePath,
 } = Astro.props;
@@ -30,10 +30,15 @@ const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
 const authorName = authorInfo?.name ?? author;
 const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 const isSource = presentation === 'source';
-const titleMonoIndex = titleMono ? title.indexOf(titleMono) : -1;
-const showTitleMono = Boolean(titleMono) && titleMonoIndex !== -1;
-const titleBefore = showTitleMono ? title.slice(0, titleMonoIndex) : title;
-const titleAfter = showTitleMono ? title.slice(titleMonoIndex + titleMono!.length) : '';
+const titleMarkTags = { '`': 'code', _: 'em' } as const;
+const titleSegments = (titleMarkup ?? title)
+	.split(/(`[^`]+`|_[^_]+_)/)
+	.map((part, index) =>
+		index % 2
+			? { text: part.slice(1, -1), Tag: titleMarkTags[part[0] as keyof typeof titleMarkTags] }
+			: { text: part },
+	)
+	.filter(({ text }) => text);
 const toLocalIsoDate = (date: Date) => {
 	const year = date.getFullYear();
 	const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -157,7 +162,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									<div class="source-fence" aria-hidden="true">
 										---
 									</div>
-									<h1 class="source-title">{titleBefore}{showTitleMono && <code class="title-mono">{titleMono}</code>}{titleAfter}</h1>
+									<h1 class="source-title">{titleSegments.map(({ text, Tag }) => (Tag ? <Tag>{text}</Tag> : text))}</h1>
 									{deck && <p class="source-deck">{deck}</p>}
 									<dl class="source-meta">
 										<div>
@@ -1493,27 +1498,28 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		margin: 0;
 		color: var(--source-ink);
 		font-family: var(--font-newsreader);
-		font-size: clamp(2.25rem, 1.35rem + 2.6vw, 3.75rem);
+		font-size: clamp(2.25rem, 1rem + 3.8vw, 4.375rem);
 		font-weight: 500;
-		letter-spacing: -0.015em;
+		letter-spacing: -0.02em;
 		line-height: 1.06;
 		text-wrap: balance;
 	}
 
-	.presentation-source code,
-	.presentation-source .title-mono {
+	.presentation-source .source-title em {
+		font-weight: 400;
+	}
+
+	.presentation-source code {
 		padding: 0;
 		border: 0;
 		border-radius: 0;
 		background: none;
 	}
 
-	.presentation-source .title-mono {
-		color: var(--source-accent);
+	.presentation-source .source-title code {
 		font-family: var(--font-geist-mono);
-		font-size: 0.86em;
+		font-size: 0.78em;
 		font-weight: 500;
-		letter-spacing: 0;
 	}
 
 	.presentation-source .source-deck {

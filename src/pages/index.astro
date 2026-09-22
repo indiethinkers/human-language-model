@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 
 const quoteEntries = (await getCollection('blog'))
-	.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.map((post) => ({
 		href: `/essays/${post.id}`,
 		quote: post.data.quote,
@@ -14,7 +14,7 @@ const hasMultipleEssays = quoteEntries.length > 1;
 const githubHref = 'https://github.com/indiethinkers/human-language-model';
 const submitHref = `${githubHref}?tab=contributing-ov-file`;
 const subscribeHref = 'http://indiethinkers.substack.com/subscribe';
-const allEssaysHref = 'https://indiethinkers.substack.com/';
+const allEssaysHref = '/essays';
 ---
 
 <!doctype html>
@@ -37,20 +37,7 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 				menu
 			</button>
 			<nav id="home-menu" class="home-menu" data-menu-panel hidden aria-label="Site">
-				<a
-					href={githubHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="home-menu-link"
-				>
-					github
-				</a>
-				<a
-					href={allEssaysHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="home-menu-link"
-				>
+				<a href={allEssaysHref} class="home-menu-link">
 					view all essays
 				</a>
 				<a
@@ -111,24 +98,8 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 					</div>
 				</div>
 
-				<div class="repo-credit desktop-nav">
-					<a
-						href={githubHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="credit-link"
-					>
-						github
-					</a>
-				</div>
-
 				<div class="credit desktop-nav">
-					<a
-						href={allEssaysHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="credit-link"
-					>
+					<a href={allEssaysHref} class="credit-link">
 						view all essays
 					</a>
 				</div>
@@ -418,7 +389,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
-	.repo-credit,
 	.credit,
 	.menu-toggle {
 		position: fixed;
@@ -493,11 +463,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 	}
 
 	.shortcut-hint {
-		bottom: 2.75rem;
-		left: 1rem;
-	}
-
-	.repo-credit {
 		bottom: 1rem;
 		left: 1rem;
 	}
@@ -627,7 +592,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 			display: flex;
 		}
 
-		.repo-credit.desktop-nav,
 		.credit.desktop-nav {
 			display: block;
 		}

@@ -1,10 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Font } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { authors } from '../data/authors';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+	readingMinutes: number;
+	sourcePath?: string;
+};
 
 const {
 	title,
@@ -17,18 +21,111 @@ const {
 	pubDate,
 	updatedDate,
 	socialImage,
+	presentation,
+	titleMarkup,
+	readingMinutes,
+	sourcePath,
 } = Astro.props;
 const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
 const authorName = authorInfo?.name ?? author;
 const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
+const isSource = presentation === 'source';
+const titleMarkTags = { '`': 'code', _: 'em' } as const;
+const titleSegments = (titleMarkup ?? title)
+	.split(/(`[^`]+`|_[^_]+_)/)
+	.map((part, index) =>
+		index % 2
+			? { text: part.slice(1, -1), Tag: titleMarkTags[part[0] as keyof typeof titleMarkTags] }
+			: { text: part },
+	)
+	.filter(({ text }) => text);
+const toLocalIsoDate = (date: Date) => {
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const day = String(date.getDate()).padStart(2, '0');
+	return `${year}-${month}-${day}`;
+};
+const isoDate = toLocalIsoDate(pubDate);
+const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} image={socialImage} />
+		{isSource && <Font cssVariable="--font-newsreader" preload />}
+		{
+			isSource && (
+				<script is:inline>
+					(() => {
+						const run = () => {
+							const status = document.querySelector('.source-status');
+							const paragraphs = Array.from(
+								document.querySelectorAll('.essay-body > p:not(.image-caption):not(.signoff)'),
+							).filter((node) => node.textContent.trim().length > 0);
+
+							paragraphs.forEach((paragraph, index) => {
+								const number = index + 1;
+								paragraph.id = 'p-' + number;
+								const link = document.createElement('a');
+								link.className = 'p-num';
+								link.href = '#p-' + number;
+								link.setAttribute('aria-label', 'Link to paragraph ' + number);
+								link.textContent = String(number).padStart(2, '0');
+								paragraph.prepend(link);
+							});
+
+							const pad = (value) => String(value).padStart(2, '0');
+							let ticking = false;
+
+							const updatePosition = () => {
+								ticking = false;
+								if (paragraphs.length === 0) return;
+
+								const threshold = window.innerHeight * 0.35;
+								let currentIndex = 0;
+
+								for (let index = 0; index < paragraphs.length; index++) {
+									if (paragraphs[index].getBoundingClientRect().top <= threshold) {
+										currentIndex = index;
+									}
+								}
+
+								const current = currentIndex + 1;
+
+								if (status) {
+									status.textContent = '¶ ' + pad(current) + ' / ' + pad(paragraphs.length);
+									status.removeAttribute('hidden');
+								}
+
+								paragraphs.forEach((paragraph, index) => {
+									const marker = paragraph.querySelector('.p-num');
+									if (marker) marker.classList.toggle('is-current', index === currentIndex);
+								});
+							};
+
+							const onScrollOrResize = () => {
+								if (ticking) return;
+								ticking = true;
+								requestAnimationFrame(updatePosition);
+							};
+
+							window.addEventListener('scroll', onScrollOrResize, { passive: true });
+							window.addEventListener('resize', onScrollOrResize, { passive: true });
+							updatePosition();
+						};
+
+						if (document.readyState === 'loading') {
+							document.addEventListener('DOMContentLoaded', run);
+						} else {
+							run();
+						}
+					})();
+				</script>
+			)
+		}
 	</head>
 
-	<body class="shiny-dimes-home">
+	<body class={isSource ? 'shiny-dimes-home presentation-source' : 'shiny-dimes-home'}>
 		<main class="dime-page essay-detail-page">
 			<header class="essay-page-header">
 				<div class="site-label">
@@ -59,56 +156,130 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 			<div class="card-shell essay-detail-shell">
 				<div class="quote-frame essay-detail-frame">
 					<article class="quote-card essay-detail">
-						<header class="essay-header">
-							<h1 class="essay-title">{title}</h1>
-							<div class="essay-meta">
-								<a href={`/authors/${authorInfo.slug}`} class="essay-byline">
-									{authorName}
-								</a>
-								<span class="essay-meta-separator" aria-hidden="true">/</span>
-								<span class="essay-date">
-									<FormattedDate date={pubDate} />
-									{
-										updatedDate && (
-											<span>
-												{' '}
-												/ updated <FormattedDate date={updatedDate} />
-											</span>
-										)
-									}
-								</span>
-							</div>
-							{deck && <p class="essay-deck">{deck}</p>}
-						</header>
+						{
+							isSource ? (
+								<header class="source-header">
+									<div class="source-fence" aria-hidden="true">
+										---
+									</div>
+									<h1 class="source-title">{titleSegments.map(({ text, Tag }) => (Tag ? <Tag>{text}</Tag> : text))}</h1>
+									{deck && <p class="source-deck">{deck}</p>}
+									<dl class="source-meta">
+										<div>
+											<dt>author</dt>
+											<dd>
+												<a href={`/authors/${authorInfo.slug}`}>{authorName}</a>
+											</dd>
+										</div>
+										<div>
+											<dt>published</dt>
+											<dd>
+												<time datetime={isoDate}>{isoDate}</time>
+											</dd>
+										</div>
+										{isoUpdatedDate && (
+											<div>
+												<dt>updated</dt>
+												<dd>
+													<time datetime={isoUpdatedDate}>{isoUpdatedDate}</time>
+												</dd>
+											</div>
+										)}
+										<div>
+											<dt>read</dt>
+											<dd>{readingMinutes} min</dd>
+										</div>
+										<div>
+											<dt>license</dt>
+											<dd>
+												<a href="https://creativecommons.org/licenses/by/4.0/">
+													{licenseLabel}
+												</a>
+											</dd>
+										</div>
+									</dl>
+									<div class="source-fence" aria-hidden="true">
+										---
+									</div>
+								</header>
+							) : (
+								<header class="essay-header">
+									<h1 class="essay-title">{title}</h1>
+									<div class="essay-meta">
+										<a href={`/authors/${authorInfo.slug}`} class="essay-byline">
+											{authorName}
+										</a>
+										<span class="essay-meta-separator" aria-hidden="true">/</span>
+										<span class="essay-date">
+											<FormattedDate date={pubDate} />
+											{
+												updatedDate && (
+													<span>
+														{' '}
+														/ updated <FormattedDate date={updatedDate} />
+													</span>
+												)
+											}
+										</span>
+									</div>
+									{deck && <p class="essay-deck">{deck}</p>}
+								</header>
+							)
+						}
 
 						<div class="essay-body">
 							<slot />
 						</div>
 
-						<footer class="essay-license">
-							<p>
-								© {pubDate.getFullYear()} {copyrightHolder}.{' '}
-								<a href="https://creativecommons.org/licenses/by/4.0/">
-									Licensed under {licenseLabel}
-								</a>.
-							</p>
-							<p>Third-party materials are excluded unless separately noted.</p>
-						</footer>
+						{
+							isSource ? (
+								<>
+									<div class="source-eof" aria-hidden="true">
+										<span>~</span>
+										<span>~</span>
+										<span>~</span>
+										<span>~</span>
+										<span>~</span>
+										<span>~</span>
+									</div>
+									<footer class="source-footer">
+										<div class="source-footer-license">
+											<p>
+												© {pubDate.getFullYear()} {copyrightHolder} ·{' '}
+												<a href="https://creativecommons.org/licenses/by/4.0/">
+													{licenseLabel}
+												</a>
+											</p>
+											<p>Third-party materials are excluded unless separately noted.</p>
+										</div>
+										{sourcePath && (
+											<div class="source-footer-links">
+												<a
+													href={`https://github.com/indiethinkers/human-language-model/blob/main/${sourcePath}`}
+												>
+													view source ↗
+												</a>
+											</div>
+										)}
+									</footer>
+								</>
+							) : (
+								<footer class="essay-license">
+									<p>
+										© {pubDate.getFullYear()} {copyrightHolder}.{' '}
+										<a href="https://creativecommons.org/licenses/by/4.0/">
+											Licensed under {licenseLabel}
+										</a>.
+									</p>
+									<p>Third-party materials are excluded unless separately noted.</p>
+								</footer>
+							)
+						}
 					</article>
 				</div>
 
 				<div class="corner-links">
-					<div class="repo-credit">
-						<a
-							href="https://github.com/indiethinkers/human-language-model"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="credit-link"
-						>
-							github
-						</a>
-					</div>
-
+					{isSource && <div class="source-status" aria-hidden="true" hidden />}
 					<div class="credit">
 						<a href="/essays" class="credit-link">
 							view all essays
@@ -480,7 +651,6 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
-	.repo-credit,
 	.credit {
 		position: fixed;
 		color: var(--shiny-gray-500);
@@ -502,11 +672,6 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 
 	.shortcut-hint {
 		bottom: 2.75rem;
-		left: 1rem;
-	}
-
-	.repo-credit {
-		bottom: 1rem;
 		left: 1rem;
 	}
 
@@ -796,6 +961,13 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 		border-radius: 0;
 		box-shadow: none;
 		overflow: visible;
+	}
+
+	.essay-body .video-frame > iframe {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		border: 0;
 	}
 
 	.essay-body .image-caption {
@@ -1218,7 +1390,7 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 		.essay-detail-page .corner-links {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: flex-end;
 			width: 100%;
 			max-width: var(--essay-content-width);
 			gap: 1rem;
@@ -1227,15 +1399,10 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 			border-top: 1px solid oklch(88% 0.01 264.364);
 		}
 
-		.essay-detail-page .repo-credit,
 		.essay-detail-page .credit {
 			position: static;
 			min-width: 0;
 			text-align: right;
-		}
-
-		.essay-detail-page .repo-credit {
-			text-align: left;
 		}
 
 		.essay-body ul:has(img[alt^='Substack screenshot']) {
@@ -1278,6 +1445,554 @@ const licenseLabel = license === 'CC-BY-4.0' ? 'CC BY 4.0' : license;
 		.essay-meta {
 			align-items: flex-start;
 			flex-wrap: wrap;
+		}
+	}
+
+	body.presentation-source {
+		--source-paper: #F8F8F6;
+		--source-ink: #16181C;
+		--source-text: #23262B;
+		--source-deck: #3F4550;
+		--source-muted: #6A707C;
+		--source-tilde: #A9AEB6;
+		--source-rule: #E3E4E0;
+		--source-accent: #2B5A7A;
+		--shiny-gray-50: #F8F8F6;
+		--essay-content-width: 40rem;
+	}
+
+	.presentation-source .site-label,
+	.presentation-source .nav-actions,
+	.presentation-source .credit,
+	.presentation-source .credit a,
+	.presentation-source .source-status {
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 13px;
+		font-weight: 400;
+	}
+
+	.presentation-source .source-status {
+		white-space: nowrap;
+	}
+
+	.presentation-source .essay-detail {
+		gap: 0;
+	}
+
+	.presentation-source .source-header {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		margin-bottom: 48px;
+	}
+
+	.presentation-source .source-fence {
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 13px;
+		font-variant-ligatures: none;
+		line-height: 20px;
+	}
+
+	.presentation-source .source-title {
+		margin: 0;
+		color: var(--source-ink);
+		font-family: var(--font-newsreader);
+		font-size: clamp(2.25rem, 1rem + 3.8vw, 4.375rem);
+		font-weight: 500;
+		letter-spacing: -0.02em;
+		line-height: 1.06;
+		text-wrap: balance;
+	}
+
+	.presentation-source .source-title em {
+		font-weight: 400;
+	}
+
+	.presentation-source code {
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+	}
+
+	.presentation-source .source-title code {
+		font-family: var(--font-geist-mono);
+		font-size: 0.78em;
+		font-weight: 500;
+	}
+
+	.presentation-source .source-deck {
+		margin: 0;
+		color: var(--source-deck);
+		font-family: var(--font-newsreader);
+		font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+		font-style: italic;
+		font-weight: 400;
+		line-height: 1.4;
+	}
+
+	.presentation-source .source-meta {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 28px;
+		row-gap: 8px;
+		margin: 0;
+		font-family: var(--font-geist-mono);
+		font-size: 12.5px;
+		line-height: 20px;
+	}
+
+	.presentation-source .source-meta > div {
+		display: flex;
+		gap: 8px;
+	}
+
+	.presentation-source .source-meta dt {
+		color: var(--source-muted);
+		font-weight: 400;
+	}
+
+	.presentation-source .source-meta dd {
+		margin: 0;
+		color: var(--source-text);
+	}
+
+	.presentation-source .source-meta a {
+		color: var(--source-text);
+		text-decoration: underline;
+		text-decoration-color: color-mix(in srgb, var(--source-accent) 35%, transparent);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+	}
+
+	.presentation-source .essay-body {
+		gap: 24px;
+		color: var(--source-text);
+		font-family: var(--font-newsreader);
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 1.62;
+	}
+
+	.presentation-source .source-deck,
+	.presentation-source .essay-body p,
+	.presentation-source .essay-body li {
+		text-wrap: pretty;
+	}
+
+	.presentation-source .essay-body a:not(:has(img)) {
+		color: var(--source-accent);
+		font-weight: inherit;
+		text-decoration-line: underline;
+		text-decoration-color: color-mix(in srgb, var(--source-accent) 35%, transparent);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+	}
+
+	.presentation-source .essay-body a:not(:has(img)):hover {
+		background-color: transparent;
+		color: var(--source-accent);
+		text-decoration-color: currentColor;
+	}
+
+	.presentation-source ::selection {
+		background-color: color-mix(in srgb, var(--source-accent) 18%, transparent);
+	}
+
+	.presentation-source .essay-body > p:not(.image-caption):not(.signoff) {
+		position: relative;
+	}
+
+	.presentation-source .essay-body a.p-num {
+		position: absolute;
+		top: 0.5rem;
+		right: calc(100% + 3rem);
+		display: none;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 16px;
+		text-decoration: none;
+	}
+
+	.presentation-source .essay-body a.p-num:hover {
+		background: none;
+		color: var(--source-muted);
+		text-decoration: none;
+	}
+
+	.presentation-source .essay-body a.p-num.is-current {
+		color: var(--source-accent);
+		font-weight: 500;
+	}
+
+	.presentation-source .essay-body blockquote {
+		margin-block: 12px;
+		padding: 0 0 0 20px;
+		border: 0;
+		color: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		letter-spacing: inherit;
+		line-height: inherit;
+	}
+
+	.presentation-source .essay-body blockquote::before {
+		top: 0.55rem;
+		left: 0;
+		color: var(--source-accent);
+		font-family: var(--font-geist-mono);
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 18px;
+	}
+
+	.presentation-source .essay-body blockquote > p:first-child {
+		color: var(--source-ink);
+		font-family: var(--font-newsreader);
+		font-size: 23px;
+		font-style: italic;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	.presentation-source .essay-body blockquote > p:not(:first-child) {
+		margin-top: 12px;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12.5px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 20px;
+	}
+
+	.presentation-source .essay-body strong {
+		font-weight: 600;
+	}
+
+	.presentation-source .essay-body .image-caption {
+		margin-top: -12px;
+		margin-bottom: 0;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12.5px;
+		line-height: 1.5;
+		text-align: left;
+	}
+
+	.presentation-source .essay-body .image-caption em {
+		font-style: normal;
+	}
+
+	.presentation-source .essay-body .image-caption::before {
+		content: '// ';
+	}
+
+	.presentation-source .essay-body .video-frame {
+		width: 100%;
+		margin-inline: 0;
+		border-radius: 4px;
+		background: var(--source-ink);
+		box-shadow: none;
+	}
+
+	.presentation-source .essay-body img {
+		border-radius: 4px;
+		filter: none;
+		box-shadow: none;
+	}
+
+	.presentation-source .essay-body ul {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		padding: 0;
+		list-style: none;
+	}
+
+	.presentation-source .essay-body ul > li {
+		position: relative;
+		padding-left: 22px;
+	}
+
+	.presentation-source .essay-body ul > li::before {
+		content: '-';
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: var(--source-accent);
+		font-family: var(--font-geist-mono);
+		font-size: 14px;
+		font-weight: 400;
+		line-height: calc(20px * 1.62);
+	}
+
+	.presentation-source .essay-body .signoff {
+		font-size: inherit;
+		font-style: italic;
+	}
+
+	.presentation-source .essay-body .author-links {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 20px;
+		margin-top: 0;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12.5px;
+	}
+
+	.presentation-source .essay-body .author-links a:not(:has(img)) {
+		color: var(--source-muted);
+		font-weight: 400;
+	}
+
+	.presentation-source .essay-body .author-links a:not(:has(img)):hover {
+		background-color: transparent;
+		color: var(--source-muted);
+		text-decoration-color: currentColor;
+	}
+
+	.presentation-source .source-footer {
+		margin-top: 40px;
+		padding-top: 24px;
+		border-top: 1px solid var(--source-rule);
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+		line-height: 1.6;
+	}
+
+	.presentation-source .source-footer p {
+		margin: 0;
+	}
+
+	.presentation-source .source-footer p + p {
+		margin-top: 4px;
+	}
+
+	.presentation-source .source-footer a {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+
+	.presentation-source .source-footer-links a {
+		color: var(--source-accent);
+	}
+
+	.presentation-source .sidenote {
+		display: block;
+		margin-top: -12px;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+		line-height: 1.55;
+	}
+
+	.presentation-source .sidenote-title {
+		display: none;
+	}
+
+	.presentation-source .sidenote:not(.sidenote-becomes) .sidenote-kind::after {
+		content: ' ·';
+	}
+
+	.presentation-source .sidenote-becomes {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.presentation-source .becomes {
+		display: grid;
+		grid-template-columns: max-content max-content minmax(0, 1fr);
+		column-gap: 10px;
+		row-gap: 3px;
+		color: var(--source-text);
+	}
+
+	.presentation-source .becomes > :nth-child(3n + 2) {
+		color: var(--source-accent);
+	}
+
+	.presentation-source .source-eof {
+		display: none;
+	}
+
+	@media (max-width: 42rem) {
+		.presentation-source .source-meta {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: 16px;
+			font-size: 11.5px;
+		}
+
+		.presentation-source .essay-body {
+			gap: 20px;
+			font-size: 18px;
+			line-height: 1.6;
+		}
+
+		.presentation-source .essay-body blockquote > p:first-child {
+			font-size: 20px;
+		}
+
+		.presentation-source .essay-body ul > li::before {
+			line-height: calc(18px * 1.6);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.presentation-source .source-status {
+			position: fixed;
+			left: 1rem;
+			bottom: 1rem;
+		}
+	}
+
+	@media (max-width: 64rem) {
+		.presentation-source .essay-detail-page {
+			padding-bottom: calc(2.75rem + env(safe-area-inset-bottom));
+		}
+
+		.presentation-source .corner-links {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 20;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			max-width: none;
+			height: calc(2.75rem + env(safe-area-inset-bottom));
+			margin: 0;
+			padding: 0 1.25rem env(safe-area-inset-bottom);
+			border-top: 1px solid var(--source-rule);
+			background: var(--source-paper);
+		}
+
+		.presentation-source .source-status,
+		.presentation-source .credit {
+			position: static;
+		}
+
+		.presentation-source .credit-link {
+			display: inline-flex;
+			align-items: center;
+			min-height: 44px;
+		}
+	}
+
+	@media (min-width: 80rem) {
+		.presentation-source .essay-detail-shell,
+		.presentation-source .essay-detail-frame {
+			max-width: calc(76rem + 2rem);
+		}
+
+		.presentation-source .essay-detail {
+			display: grid;
+			grid-template-columns:
+				[gutter-start] 15rem
+				[gutter-end text-start] 40rem
+				[text-end notes-start] 15rem
+				[notes-end];
+			column-gap: 3rem;
+			row-gap: 0;
+		}
+
+		.presentation-source .source-header {
+			grid-column: text;
+		}
+
+		.presentation-source .essay-body {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-template-columns: subgrid;
+			column-gap: 3rem;
+			row-gap: 24px;
+		}
+
+		.presentation-source .essay-body > * {
+			grid-column: text;
+		}
+
+		.presentation-source .essay-body > .sidenote {
+			display: flex;
+			grid-column: notes;
+			flex-direction: column;
+			align-self: start;
+			gap: 2px;
+			margin-top: 0;
+			padding-top: 7px;
+		}
+
+		.presentation-source .essay-body > blockquote + .sidenote {
+			padding-top: 20px;
+		}
+
+		.presentation-source .sidenote-title {
+			display: block;
+			color: var(--source-text);
+		}
+
+		.presentation-source .sidenote:not(.sidenote-becomes) .sidenote-kind::after {
+			content: none;
+		}
+
+		.presentation-source .essay-body a.p-num {
+			display: block;
+		}
+
+		.presentation-source .essay-body blockquote {
+			padding-left: 0;
+		}
+
+		.presentation-source .essay-body blockquote::before {
+			right: calc(100% + 3rem);
+			left: auto;
+		}
+
+		.presentation-source .essay-body ul > li {
+			padding-left: 0;
+		}
+
+		.presentation-source .essay-body ul > li::before {
+			right: calc(100% + 22px);
+			left: auto;
+		}
+
+		.presentation-source .source-eof {
+			display: flex;
+			grid-column: gutter;
+			flex-direction: column;
+			justify-self: end;
+			margin-top: 16px;
+			color: var(--source-tilde);
+			font-family: var(--font-geist-mono);
+			font-size: 13px;
+			line-height: 28px;
+		}
+
+		.presentation-source .source-footer {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-template-columns: subgrid;
+			column-gap: 3rem;
+		}
+
+		.presentation-source .source-footer-license {
+			grid-column: text;
+		}
+
+		.presentation-source .source-footer-links {
+			grid-column: notes;
 		}
 	}
 </style>

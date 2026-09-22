@@ -14,7 +14,7 @@ const hasMultipleEssays = quoteEntries.length > 1;
 const githubHref = 'https://github.com/indiethinkers/human-language-model';
 const submitHref = `${githubHref}?tab=contributing-ov-file`;
 const subscribeHref = 'http://indiethinkers.substack.com/subscribe';
-const allEssaysHref = 'https://indiethinkers.substack.com/';
+const allEssaysHref = '/essays';
 ---
 
 <!doctype html>
@@ -45,12 +45,7 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 				>
 					github
 				</a>
-				<a
-					href={allEssaysHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="home-menu-link"
-				>
+				<a href={allEssaysHref} class="home-menu-link">
 					view all essays
 				</a>
 				<a
@@ -111,24 +106,8 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 					</div>
 				</div>
 
-				<div class="repo-credit desktop-nav">
-					<a
-						href={githubHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="credit-link"
-					>
-						github
-					</a>
-				</div>
-
 				<div class="credit desktop-nav">
-					<a
-						href={allEssaysHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="credit-link"
-					>
+					<a href={allEssaysHref} class="credit-link">
 						view all essays
 					</a>
 				</div>
@@ -418,7 +397,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
-	.repo-credit,
 	.credit,
 	.menu-toggle {
 		position: fixed;
@@ -494,11 +472,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 
 	.shortcut-hint {
 		bottom: 2.75rem;
-		left: 1rem;
-	}
-
-	.repo-credit {
-		bottom: 1rem;
 		left: 1rem;
 	}
 
@@ -627,7 +600,6 @@ const allEssaysHref = 'https://indiethinkers.substack.com/';
 			display: flex;
 		}
 
-		.repo-credit.desktop-nav,
 		.credit.desktop-nav {
 			display: block;
 		}

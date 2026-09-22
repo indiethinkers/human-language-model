@@ -8,9 +8,13 @@ authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'September 21, 2026'
+presentation: 'source'
+titleMono: 'j'
 ---
 
 In 2010, I was a sound editor at a small post-production facility in Santa Monica, working on everything from MTV’s *The Hills* to HBO’s *Curb Your Enthusiasm*. When I started, I rarely saw people who looked like me in those rooms. That absence became [Post in Black](https://postinblack.com/), a blog that has grown into a podcast entering its seventh season with industry heavyweights like Dolby sponsoring.
+
+<aside class="sidenote"><span class="sidenote-kind">// listen</span> <span class="sidenote-title">Post in Black</span> <a href="https://postinblack.com/">postinblack.com ↗</a></aside>
 
 For the past seven years, my brother David and me have spent hundreds of hours interviewing composers, editors, visual effects artists, colorists, sound editors, music supervisors, and mixers. It’s a celebration of Black excellence behind the lens. Each podcast episode gives guests room to tell their story.
 
@@ -32,7 +36,11 @@ I didn’t realize I was doing anything remotely close to journalism until we st
 
 Then recent college grads would DM us on IG saying they didn’t know people who looked like them were working on big-budget projects. We were doing far more than just recording interviews. Editor [Terilyn Shropshire](https://www.youtube.com/watch?v=T1xX_PE9ero&t=1s) said that we were “chronicling the lives of everyone behind the scenes for future generations.”
 
+<aside class="sidenote"><span class="sidenote-kind">// watch</span> <span class="sidenote-title">Terilyn Shropshire on Post in Black</span> <a href="https://www.youtube.com/watch?v=T1xX_PE9ero&amp;t=1s">youtube.com ↗</a></aside>
+
 I didn’t quite know how to describe the type of writer I wanted to be until I heard [Jasmine Sun](https://jasmi.news/) use the phrase “capital J journalism” in her interview with [Jackson Dahl](https://jdahl.substack.com/p/jasmine-sun).
+
+<aside class="sidenote"><span class="sidenote-kind">// listen</span> <span class="sidenote-title">Dialectic 49, with Jackson Dahl</span> <a href="https://jdahl.substack.com/p/jasmine-sun">jdahl.substack.com ↗</a></aside>
 
 > When I’m doing capital “J” journalism and I’m actually reporting out a piece... it’s almost always a research question that I do not know the answer to.
 >
@@ -54,19 +62,25 @@ If you know folks who work in post-production, many of them will note the challe
 
 If I were forced to label myself, I’d be considered a [writer-builder](https://www.workingtheorys.com/p/writer-builder).
 
+<aside class="sidenote"><span class="sidenote-kind">// read</span> <span class="sidenote-title">Writer-builder</span> <a href="https://www.workingtheorys.com/p/writer-builder">workingtheorys.com ↗</a></aside>
+
 This line attributed to C.S. Lewis defined vibe coding well before Karpathy coined it:
 
 > You can make anything by writing.
 
 Writing isn’t just thinking or self-expression. A screenplay becomes a film. A cold email becomes a career. A collection of questions becomes a treasured archive of interviews. Structured natural language becomes [malleable software](https://www.inkandswitch.com/essay/malleable-software/).
 
-<blockquote class="twitter-tweet" data-dnt="true">
-	<p lang="en" dir="ltr">The hottest new programming language is English</p>
-	&mdash; Andrej Karpathy (@karpathy) <a href="https://x.com/karpathy/status/1617979122625712128">January 24, 2023</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<aside class="sidenote sidenote-becomes"><span class="sidenote-kind">// becomes</span> <span class="becomes"><span>screenplay</span><span>→</span><span>film</span><span>cold email</span><span>→</span><span>career</span><span>questions</span><span>→</span><span>archive</span><span>language</span><span>→</span><span>software</span></span> <a href="https://www.inkandswitch.com/essay/malleable-software/">inkandswitch.com ↗</a></aside>
+
+> The hottest new programming language is English
+>
+> — Andrej Karpathy, [@karpathy](https://x.com/karpathy/status/1617979122625712128) · 2023-01-24
+
+<aside class="sidenote"><span class="sidenote-kind">// post</span> <a href="https://x.com/karpathy/status/1617979122625712128">x.com/karpathy ↗</a></aside>
 
 The intersection of code and prose is where [indiethinkers.com](https://indiethinkers.com/) was born and the larger experiment behind the [human language model](https://github.com/indiethinkers/human-language-model) project: a literary publication built in public, with the same care people bring to open-source software. While the writer-builder label does fit me well, there’s something deeper about journalism.
+
+<aside class="sidenote"><span class="sidenote-kind">// source</span> <span class="sidenote-title">human-language-model</span> <a href="https://github.com/indiethinkers/human-language-model">github.com/indiethinkers ↗</a></aside>
 
 I love:
 
@@ -81,7 +95,7 @@ Journalism, at its best, keeps a record for future generations.
 
 That is the work I want to do here. My focus will be on code, prose, and the future of work. I’m still figuring out what kind of writer I am. But I know the work that motivates me every day. I want to find people worth paying attention to, ask insightful questions, and make their stories harder to miss. Maybe that’s little “j” journalism: research and writing with a responsibility to look closely at the underdogs of the internet. For now, that’s enough to work with.
 
--- Daniel
+<p class="signoff">— Daniel</p>
 
 <div class="author-links">
 	<a href="https://x.com/danielkhunter">x.com/danielkhunter</a>

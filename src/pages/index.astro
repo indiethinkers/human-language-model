@@ -113,7 +113,9 @@ const allEssaysHref = '/essays';
 			}
 		</main>
 
-		<script src="https://www.makermap.lol/badge/danielkhunter.js" data-position="corner" async></script>
+		<div data-maker-badge>
+			<script src="https://www.makermap.lol/badge/danielkhunter.js" data-position="corner" async></script>
+		</div>
 
 		<script>
 			const quoteCard = document.querySelector('[data-quote-card]');
@@ -143,7 +145,7 @@ const allEssaysHref = '/essays';
 				menuPanel.hidden = !open;
 				document.body.classList.toggle('menu-open', open);
 
-				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint').forEach((el) => {
+				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint, [data-maker-badge]').forEach((el) => {
 					el.toggleAttribute('inert', open);
 				});
 
@@ -459,6 +461,10 @@ const allEssaysHref = '/essays';
 
 	body.shiny-dimes-home.menu-open {
 		overflow: hidden;
+	}
+
+	body.shiny-dimes-home.menu-open [data-maker-badge] {
+		visibility: hidden;
 	}
 
 	.shortcut-hint {

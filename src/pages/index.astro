@@ -61,6 +61,10 @@ const allEssaysHref = '/essays';
 
 		<main class="dime-page">
 			<div class="nav-actions desktop-nav">
+				<a href={allEssaysHref} class="muted-link">
+					view all essays
+				</a>
+				<span class="muted-text">//</span>
 				<a
 					href={submitHref}
 					target="_blank"
@@ -97,12 +101,6 @@ const allEssaysHref = '/essays';
 						</div>
 					</div>
 				</div>
-
-				<div class="credit desktop-nav">
-					<a href={allEssaysHref} class="credit-link">
-						view all essays
-					</a>
-				</div>
 			</div>
 
 			{
@@ -114,6 +112,10 @@ const allEssaysHref = '/essays';
 				)
 			}
 		</main>
+
+		<div data-maker-badge>
+			<script src="https://www.makermap.lol/badge/danielkhunter.js" data-position="corner" async></script>
+		</div>
 
 		<script>
 			const quoteCard = document.querySelector('[data-quote-card]');
@@ -143,7 +145,7 @@ const allEssaysHref = '/essays';
 				menuPanel.hidden = !open;
 				document.body.classList.toggle('menu-open', open);
 
-				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint').forEach((el) => {
+				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint, [data-maker-badge]').forEach((el) => {
 					el.toggleAttribute('inert', open);
 				});
 
@@ -389,7 +391,6 @@ const allEssaysHref = '/essays';
 	.site-label,
 	.nav-actions,
 	.shortcut-hint,
-	.credit,
 	.menu-toggle {
 		position: fixed;
 		color: var(--shiny-gray-500);
@@ -462,18 +463,16 @@ const allEssaysHref = '/essays';
 		overflow: hidden;
 	}
 
+	body.shiny-dimes-home.menu-open [data-maker-badge] {
+		visibility: hidden;
+	}
+
 	.shortcut-hint {
 		bottom: 1rem;
 		left: 1rem;
 	}
 
-	.credit {
-		right: 1rem;
-		bottom: 1rem;
-	}
-
 	.muted-link,
-	.credit-link,
 	.essay-link {
 		color: var(--shiny-gray-500);
 		transition-duration: 0.15s;
@@ -482,17 +481,9 @@ const allEssaysHref = '/essays';
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.credit-link {
-		font-weight: 500;
-	}
-
 	.muted-link:hover,
 	.essay-link:hover {
 		color: var(--shiny-gray-700);
-	}
-
-	.credit-link:hover {
-		color: var(--shiny-gray-800);
 	}
 
 	.quote-frame {
@@ -590,10 +581,6 @@ const allEssaysHref = '/essays';
 
 		.nav-actions.desktop-nav {
 			display: flex;
-		}
-
-		.credit.desktop-nav {
-			display: block;
 		}
 	}
 </style>

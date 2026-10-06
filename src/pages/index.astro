@@ -109,7 +109,7 @@ const allEssaysHref = '/essays';
 				hasMultipleEssays && (
 					<div class="shortcut-hint">
 						<span class="desktop-hint">hit the spacebar for another essay</span>
-						<span class="mobile-hint">double tap for another dime</span>
+						<span class="mobile-hint">double tap for the next essay</span>
 					</div>
 				)
 			}
@@ -568,6 +568,14 @@ const allEssaysHref = '/essays';
 
 		to {
 			opacity: 1;
+		}
+	}
+
+	@media (max-width: 1023px) {
+		.shortcut-hint {
+			right: 1rem;
+			bottom: max(1rem, env(safe-area-inset-bottom));
+			text-align: center;
 		}
 	}
 

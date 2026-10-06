@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const quoteEntries = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -21,8 +22,8 @@ const allEssaysHref = '/essays';
 <html lang="en">
 	<head>
 		<BaseHead
-			title="Indie Thinkers"
-			description="A curated collection of quotes from the brightest minds on the internet."
+			title={SITE_TITLE}
+			description={SITE_DESCRIPTION}
 		/>
 	</head>
 	<body class="shiny-dimes-home">

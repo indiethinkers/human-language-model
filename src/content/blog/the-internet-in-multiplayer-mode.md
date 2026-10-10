@@ -8,7 +8,6 @@ authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'June 1, 2026'
-heroImage: '../../assets/the-internet-in-multiplayer-mode/indie-thinkers-home.png'
 ---
 
 ## Hungry Hungry Golden Hippos

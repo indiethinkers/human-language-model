@@ -675,7 +675,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		--essay-content-width: 728px;
 		--font-geist-sans: Geist, 'Geist Fallback', Arial, sans-serif;
 		--font-geist-mono: 'Geist Mono', 'Geist Mono Fallback', Arial, monospace;
-		--shiny-gray-50: oklch(98.5% 0.002 247.839);
 		--shiny-gray-500: oklch(55.1% 0.027 264.364);
 		--shiny-gray-700: oklch(37.3% 0.034 259.733);
 		--shiny-gray-800: oklch(27.8% 0.033 256.848);
@@ -1527,7 +1526,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 	}
 
 	body.presentation-source {
-		--source-paper: #F8F8F6;
+		--source-paper: var(--shiny-gray-50);
 		--source-ink: #16181C;
 		--source-text: #23262B;
 		--source-deck: #3F4550;
@@ -1535,7 +1534,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		--source-tilde: #A9AEB6;
 		--source-rule: #E3E4E0;
 		--source-accent: #2B5A7A;
-		--shiny-gray-50: #F8F8F6;
 		--essay-content-width: 40rem;
 	}
 

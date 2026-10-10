@@ -358,6 +358,22 @@ const posts = (await getCollection('blog'))
 		padding: 0;
 	}
 
+	.author-essays li {
+		position: relative;
+		padding-left: 2ch;
+	}
+
+	.author-essays li::before {
+		content: '-';
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: var(--shiny-gray-500);
+		font-family: var(--font-geist-mono);
+		font-weight: 400;
+		line-height: inherit;
+	}
+
 	.author-essays a {
 		color: var(--shiny-foreground);
 		text-decoration: none;

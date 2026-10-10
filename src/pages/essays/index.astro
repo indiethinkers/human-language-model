@@ -255,6 +255,22 @@ const posts = (await getCollection('blog')).sort(
 		text-align: left;
 	}
 
+	.essay-list > li {
+		position: relative;
+		padding-left: 2ch;
+	}
+
+	.essay-list > li::before {
+		content: '-';
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: var(--shiny-gray-500);
+		font-family: var(--font-geist-mono);
+		font-weight: 400;
+		line-height: inherit;
+	}
+
 	.essay-list-link {
 		color: var(--shiny-foreground);
 		transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);

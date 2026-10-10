@@ -1737,6 +1737,24 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		line-height: 1.5;
 	}
 
+	.presentation-source .essay-body .george-mack-quote blockquote > p:first-child {
+		color: var(--shiny-gray-500);
+		font-family: var(--font-geist-mono);
+		font-size: 0.75rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 1.25;
+	}
+
+	.presentation-source .essay-body blockquote.twitter-tweet {
+		margin: 0;
+		padding: 0;
+	}
+
+	.presentation-source .essay-body blockquote.twitter-tweet::before {
+		content: none;
+	}
+
 	.presentation-source .essay-body blockquote > p:not(:first-child) {
 		margin-top: 12px;
 		color: var(--source-muted);
@@ -1806,6 +1824,19 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		font-size: 14px;
 		font-weight: 400;
 		line-height: calc(20px * 1.62);
+	}
+
+	.presentation-source .essay-body > ul:has(img[alt^='Substack screenshot']) {
+		grid-column: 1 / -1;
+		justify-self: center;
+	}
+
+	.presentation-source .essay-body ul:has(img[alt^='Substack screenshot']) > li {
+		padding-left: 0;
+	}
+
+	.presentation-source .essay-body ul:has(img[alt^='Substack screenshot']) > li::before {
+		content: none;
 	}
 
 	.presentation-source .essay-body .signoff {

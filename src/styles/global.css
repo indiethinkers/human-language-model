@@ -1,3 +1,4 @@
 :root {
-	--shiny-gray-50: oklch(98.5% 0.002 247.839);
+	/* Page surface, shared by every page and by chrome that sits on it. */
+	--shiny-gray-50: #F8F8F6;
 }

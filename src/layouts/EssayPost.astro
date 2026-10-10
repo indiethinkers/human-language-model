@@ -359,7 +359,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 					let activeIndex = 0;
 					let pointerStart = null;
 
-					deck.classList.add('substack-card-stack');
 					deck.tabIndex = 0;
 					deck.setAttribute('role', 'button');
 					deck.setAttribute('aria-label', 'Flip through Substack screenshots');
@@ -1418,9 +1417,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 			margin-block: 2rem 2.75rem;
 			margin-inline: 0;
 		}
-	}
 
-	@media (max-width: 42rem) {
 		.essay-meta {
 			align-items: flex-start;
 			flex-wrap: wrap;

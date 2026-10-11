@@ -12,7 +12,7 @@ authorSlug: 'max-pete'
 copyrightHolder: 'Max Pete'
 pubDate: 'November 13, 2025'
 guest: true
-lectureNumber: 9
+lectureNumber: 8
 wordCount: 617
 ---
 <p>There’s this quiet pressure a lot of us carry: the pressure to look like we have it all together.</p>

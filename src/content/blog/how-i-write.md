@@ -11,7 +11,7 @@ authorSlug: 'seth-werkheiser'
 copyrightHolder: 'Seth Werkheiser'
 pubDate: 'September 23, 2025'
 guest: true
-lectureNumber: 4
+lectureNumber: 3
 wordCount: 804
 ---
 <aside class="guest-note"><span class="gn-label">// from the host · Daniel Hunter</span><p><em>Stoked to finally share our first guest lecture by Seth Werkheiser.</em> </p><p><em>My favorite quote from the piece</em></p><blockquote><p>All you have to do is just be 5% better than everyone else who's really bad at it. You don't have to get everything perfect… you just have to be a little bit better so you can survive the war of attrition.</p></blockquote><p>It’s a critical reminder that consistency and small improvements over a long period of time are key to the success you crave.</p><p>Hope you enjoy.</p><p>— Daniel</p></aside>

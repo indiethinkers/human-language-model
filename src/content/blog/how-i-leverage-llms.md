@@ -11,7 +11,7 @@ authorSlug: 'robert-lin'
 copyrightHolder: 'Robert Lin'
 pubDate: 'November 6, 2025'
 guest: true
-lectureNumber: 8
+lectureNumber: 7
 wordCount: 1000
 ---
 <p>A couple months back, Dan Hunter asked me:</p>

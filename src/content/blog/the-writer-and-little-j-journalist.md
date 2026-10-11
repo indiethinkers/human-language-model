@@ -9,6 +9,7 @@ copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'September 21, 2026'
 presentation: 'source'
+series: 'code & prose'
 titleMarkup: 'The Writer _and_ Little `“j”` Journalist'
 ---
 

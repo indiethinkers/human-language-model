@@ -73,6 +73,7 @@ authorSlug: 'daniel-hunter'
 updatedDate: 'June 2, 2026'
 socialImage: '/media/path/to/og-image.png'
 presentation: 'source'
+series: 'code & prose'
 titleMarkup: 'The essay _title_ with `mono` marks'
 ```
 
@@ -80,6 +81,7 @@ Notes:
 
 - New author profiles are added in `src/data/authors.ts`.
 - `presentation: 'source'` opts an essay into the source-view layout (serif prose, monospace gutter with paragraph numbers, `<aside class="sidenote">` blocks for margin notes). `titleMarkup` repeats the title with `_italic_` and `` `monospace` `` spans for the source-view header, and the build fails if it doesn't match `title` once the marks are removed.
+- `series` prints a `// series` kicker above that header, in the same style as the guest-lecture label. Guest lectures keep their own `// guest lecture` label and number.
 - Source images imported by Astro should live under `src/assets/`.
 - Static public media should live under `public/media/`.
 - Essay detail pages automatically open external links in a new tab with `noopener noreferrer`.

@@ -3,7 +3,6 @@ import AngelaHollowellAvatar from '../assets/authors/angela-hollowell.png';
 import BeckyIsjwaraAvatar from '../assets/authors/becky-isjwara.jpg';
 import BradFlaugherAvatar from '../assets/authors/brad-flaugher.jpg';
 import DanielHunterAvatar from '../assets/authors/daniel-hunter.jpg';
-import GraceNikaeAvatar from '../assets/authors/grace-nikae.jpg';
 import KirupaAvatar from '../assets/authors/kirupa.jpg';
 import MaxPeteAvatar from '../assets/authors/max-pete.jpg';
 import PeteCybriwskyAvatar from '../assets/authors/pete-cybriwsky.jpg';
@@ -23,12 +22,6 @@ export const authors: Record<string, Author> = {
 		name: 'Daniel Hunter',
 		bio: 'Daniel Hunter is the founder of Indie Thinkers, Post in Black, and a Software Engineer at Crossbeam.',
 		avatar: DanielHunterAvatar,
-	},
-	'grace-nikae': {
-		slug: 'grace-nikae',
-		name: 'Grace Nikae',
-		bio: 'Writer. Previously published Kizuna.',
-		avatar: GraceNikaeAvatar,
 	},
 	'brad-flaugher': {
 		slug: 'brad-flaugher',

@@ -11,11 +11,9 @@ authorSlug: 'seth-werkheiser'
 copyrightHolder: 'Seth Werkheiser'
 pubDate: 'September 23, 2025'
 guest: true
-lectureNumber: 4
+lectureNumber: 3
 wordCount: 804
 ---
-<aside class="guest-note"><span class="gn-label">// from the host · Daniel Hunter</span><p><em>Stoked to finally share our first guest lecture by Seth Werkheiser.</em> </p><p><em>My favorite quote from the piece</em></p><blockquote><p>All you have to do is just be 5% better than everyone else who's really bad at it. You don't have to get everything perfect… you just have to be a little bit better so you can survive the war of attrition.</p></blockquote><p>It’s a critical reminder that consistency and small improvements over a long period of time are key to the success you crave.</p><p>Hope you enjoy.</p><p>— Daniel</p></aside>
-
 <p>When I started blogging about music in 2001, it was just for my little corner of the world. I was playing in bands, going to shows around PA and NJ, and noticing that the bigger music sites weren’t covering any of it. So I bought a domain name and started writing about my friends every day. That’s how this all started. I knew what I was talking about, I knew who might read it, and that’s how I’ve worked ever since.</p>
 
 <p>At first, I wrote very plainly—“just the facts, ma’am,” I’d tell myself. It kept me out of “trouble,” but wow, was it boring.</p>

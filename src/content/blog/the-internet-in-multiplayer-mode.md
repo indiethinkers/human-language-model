@@ -9,6 +9,7 @@ copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'June 1, 2026'
 presentation: 'source'
+series: 'code & prose'
 ---
 
 ## Hungry Hungry Golden Hippos

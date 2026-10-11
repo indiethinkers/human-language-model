@@ -12,7 +12,7 @@ authorSlug: 'kirupa'
 copyrightHolder: 'KIRUPA 🍊'
 pubDate: 'October 31, 2023'
 guest: true
-lectureNumber: 3
+lectureNumber: 2
 wordCount: 659
 ---
 <p>It often seems that success in a particular domain is reserved for a select few:<br/></p>

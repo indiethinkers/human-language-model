@@ -11,7 +11,7 @@ authorSlug: 'becky-isjwara'
 copyrightHolder: 'Becky Isjwara'
 pubDate: 'October 7, 2025'
 guest: true
-lectureNumber: 5
+lectureNumber: 4
 wordCount: 1097
 ---
 ![pile of newspapers](../../assets/guest-lectures/journalists-should-be-content-creators/0.jpg)

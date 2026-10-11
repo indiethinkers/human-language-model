@@ -12,7 +12,7 @@ authorSlug: 'pete-cybriwsky'
 copyrightHolder: 'Pete Cybriwsky'
 pubDate: 'October 14, 2025'
 guest: true
-lectureNumber: 6
+lectureNumber: 5
 wordCount: 754
 ---
 ![](../../assets/guest-lectures/write-like-an-artist/0.jpg)

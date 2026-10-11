@@ -19,6 +19,7 @@ const blog = defineCollection({
 			updatedDate: z.coerce.date().optional(),
 			socialImage: z.string().optional(),
 			presentation: z.enum(['source']).optional(),
+			series: z.string().min(1).optional(),
 			titleMarkup: z.string().optional(),
 			guest: z.literal(true).optional(),
 			lectureNumber: z.number().int().positive().optional(),

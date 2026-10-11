@@ -12,11 +12,9 @@ authorSlug: 'brad-flaugher'
 copyrightHolder: 'Brad Flaugher'
 pubDate: 'October 24, 2023'
 guest: true
-lectureNumber: 2
+lectureNumber: 1
 wordCount: 677
 ---
-<aside class="guest-note"><span class="gn-label">// from the host · Daniel Hunter</span><p><em>Today we have a guest post from </em>Brad Flaugher<em>, a data scientist and entrepreneur based in Philadelphia, PA.  Brad is a dear friend and the author of <a href="https://aiharmony.info">AI Harmony</a>, out now at Amazon and Barnes and Noble. AI is here to stay. Ignore it at your own peril. </em></p><p><em>— Daniel</em></p></aside>
-
 ![](../../assets/guest-lectures/becoming-unstoppable/0.jpg)
 
 <p class="image-caption"><em>be not afraid</em></p>

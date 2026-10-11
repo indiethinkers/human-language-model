@@ -12,7 +12,7 @@ authorSlug: 'angela-hollowell'
 copyrightHolder: 'Angela Hollowell'
 pubDate: 'October 23, 2025'
 guest: true
-lectureNumber: 7
+lectureNumber: 6
 wordCount: 846
 ---
 <p>Pursuing the creative career of your dreams is a luxury. While CEOs can fail forward with million-dollar parachutes, we’re out here bootstrapping companies with duct tape and dreams. Welcome to the creator economy—where we’re not just creating media, we’re creating livelihoods from humble beginnings. I don’t envy the ones who have a different experience. I think there’s something beautiful, challenging, rewarding, and spiritual about building something from scratch. </p>

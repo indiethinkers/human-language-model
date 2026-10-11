@@ -42,6 +42,7 @@ const authorSlug = isGuest ? Astro.props.guestSlug : (Astro.props.authorSlug ?? 
 const copyrightHolder = isGuest ? Astro.props.guest : Astro.props.copyrightHolder;
 const updatedDate = isGuest ? undefined : Astro.props.updatedDate;
 const presentation = isGuest ? 'source' : Astro.props.presentation;
+const series = isGuest ? undefined : Astro.props.series;
 const titleMarkup = isGuest ? undefined : Astro.props.titleMarkup;
 const lectureNumber = isGuest ? Astro.props.lectureNumber : undefined;
 const guestAuthor = isGuest ? authors[Astro.props.guestSlug] : undefined;
@@ -181,7 +182,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 						{
 							isGuest ? (
 								<header class="source-header">
-									<div class="guest-kicker">
+									<div class="series-kicker">
 										<b>// guest lecture</b>
 										<span>no. {lectureLabel}</span>
 									</div>
@@ -224,6 +225,13 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 								</header>
 							) : isSource ? (
 								<header class="source-header">
+									{
+										series && (
+											<div class="series-kicker">
+												<b>// {series}</b>
+											</div>
+										)
+									}
 									<div class="source-fence" aria-hidden="true">
 										---
 									</div>
@@ -2103,7 +2111,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		}
 	}
 
-	.guest-lecture .guest-kicker {
+	.series-kicker {
 		display: flex;
 		align-items: center;
 		gap: 10px;
@@ -2116,7 +2124,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		text-transform: lowercase;
 	}
 
-	.guest-lecture .guest-kicker b {
+	.series-kicker b {
 		color: var(--source-accent);
 		font-weight: 500;
 	}

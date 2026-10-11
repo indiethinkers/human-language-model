@@ -1,34 +1,56 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Font } from 'astro:assets';
+import { Font, Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { authors } from '../data/authors';
 
-type Props = CollectionEntry<'blog'>['data'] & {
+interface GuestLectureProps {
+	variant: 'guest';
+	title: string;
+	description: string;
+	deck?: string;
+	guest: string;
+	guestSlug: string;
+	pubDate: Date;
+	readingMinutes: number;
+	lectureNumber: number;
+	sourcePath?: string;
+	socialImage?: string;
+}
+
+type EssayProps = CollectionEntry<'blog'>['data'] & {
+	variant?: 'essay';
 	readingMinutes: number;
 	sourcePath?: string;
 };
 
+type Props = GuestLectureProps | EssayProps;
+
+const isGuest = Astro.props.variant === 'guest';
 const {
 	title,
 	description,
 	deck,
-	author = 'Daniel Hunter',
-	authorSlug = 'daniel-hunter',
-	copyrightHolder,
 	pubDate,
-	updatedDate,
 	socialImage,
-	presentation,
-	titleMarkup,
 	readingMinutes,
 	sourcePath,
 } = Astro.props;
+const author = isGuest ? Astro.props.guest : (Astro.props.author ?? 'Daniel Hunter');
+const authorSlug = isGuest ? Astro.props.guestSlug : (Astro.props.authorSlug ?? 'daniel-hunter');
+const copyrightHolder = isGuest ? Astro.props.guest : Astro.props.copyrightHolder;
+const updatedDate = isGuest ? undefined : Astro.props.updatedDate;
+const presentation = isGuest ? 'source' : Astro.props.presentation;
+const titleMarkup = isGuest ? undefined : Astro.props.titleMarkup;
+const lectureNumber = isGuest ? Astro.props.lectureNumber : undefined;
+const guestAuthor = isGuest ? authors[Astro.props.guestSlug] : undefined;
 const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
 const authorName = authorInfo?.name ?? author;
-const licenseLabel = 'CC BY 4.0';
+const guestName = isGuest ? authorName : undefined;
+const licenseLabel = isGuest ? `© ${guestName}, with permission` : 'CC BY 4.0';
 const isSource = presentation === 'source';
+const lectureLabel = isGuest ? String(lectureNumber).padStart(2, '0') : '';
 const titleMarkTags = { '`': 'code', _: 'em' } as const;
 const titleSegments = (titleMarkup ?? title)
 	.split(/(`[^`]+`|_[^_]+_)/)
@@ -125,7 +147,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		}
 	</head>
 
-	<body class={isSource ? 'shiny-dimes-home presentation-source' : 'shiny-dimes-home'}>
+	<body class:list={['shiny-dimes-home', { 'presentation-source': isSource, 'guest-lecture': isGuest }]}>
 		<main class="dime-page essay-detail-page">
 			<header class="essay-page-header">
 				<div class="site-label">
@@ -157,7 +179,50 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 				<div class="quote-frame essay-detail-frame">
 					<article class="quote-card essay-detail">
 						{
-							isSource ? (
+							isGuest ? (
+								<header class="source-header">
+									<div class="guest-kicker">
+										<b>// guest lecture</b>
+										<span>no. {lectureLabel}</span>
+									</div>
+									<div class="source-fence" aria-hidden="true">
+										---
+									</div>
+									<h1 class="source-title">{title}</h1>
+									{deck && <p class="source-deck">{deck}</p>}
+									<dl class="source-meta">
+										<div>
+											<dt>guest</dt>
+											<dd>
+												<a href={`/authors/${authorSlug}`}>{guestName}</a>
+											</dd>
+										</div>
+										<div>
+											<dt>host</dt>
+											<dd>
+												<a href="/authors/daniel-hunter">Daniel Hunter</a>
+											</dd>
+										</div>
+										<div>
+											<dt>published</dt>
+											<dd>
+												<time datetime={isoDate}>{isoDate}</time>
+											</dd>
+										</div>
+										<div>
+											<dt>read</dt>
+											<dd>{readingMinutes} min</dd>
+										</div>
+										<div>
+											<dt>license</dt>
+											<dd>{licenseLabel}</dd>
+										</div>
+									</dl>
+									<div class="source-fence" aria-hidden="true">
+										---
+									</div>
+								</header>
+							) : isSource ? (
 								<header class="source-header">
 									<div class="source-fence" aria-hidden="true">
 										---
@@ -229,6 +294,24 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 
 						<div class="essay-body">
 							<slot />
+							{
+								isGuest && guestAuthor && (
+									<section class="guest-bio">
+										<Image
+											src={guestAuthor.avatar}
+											alt={guestAuthor.name}
+											width={112}
+											height={112}
+											fit="cover"
+										/>
+										<div>
+											<span class="gb-label">// about the guest</span>
+											<span class="gb-name">{guestAuthor.name}</span>
+											{guestAuthor.bio}
+										</div>
+									</section>
+								)
+							}
 						</div>
 
 						{
@@ -244,12 +327,21 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									</div>
 									<footer class="source-footer">
 										<div class="source-footer-license">
-											<p>
-												© {pubDate.getFullYear()} {copyrightHolder} ·{' '}
-												<a href="https://creativecommons.org/licenses/by/4.0/">
-													{licenseLabel}
-												</a>
-											</p>
+											{
+												isGuest ? (
+													<p>
+														© {pubDate.getFullYear()} {copyrightHolder} · Guest lecture,
+														published with permission.
+													</p>
+												) : (
+													<p>
+														© {pubDate.getFullYear()} {copyrightHolder} ·{' '}
+														<a href="https://creativecommons.org/licenses/by/4.0/">
+															{licenseLabel}
+														</a>
+													</p>
+												)
+											}
 											<p>Third-party materials are excluded unless separately noted.</p>
 										</div>
 										{sourcePath && (
@@ -310,7 +402,12 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 						link.rel = Array.from(relValues).join(' ');
 					} catch {}
 				});
-
+			})();
+		</script>
+		{
+			!isGuest && (
+				<script is:inline>
+					(() => {
 				const decks = document.querySelectorAll(
 					".essay-body ul:has(img[alt^='Substack screenshot'])",
 				);
@@ -495,7 +592,12 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 
 					renderStack();
 				});
-
+					})();
+				</script>
+			)
+		}
+		<script is:inline>
+			(() => {
 				const scrollPlayVideos = document.querySelectorAll('.scroll-play-video');
 
 				if ('IntersectionObserver' in window) {
@@ -573,7 +675,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		--essay-content-width: 728px;
 		--font-geist-sans: Geist, 'Geist Fallback', Arial, sans-serif;
 		--font-geist-mono: 'Geist Mono', 'Geist Mono Fallback', Arial, monospace;
-		--shiny-gray-50: oklch(98.5% 0.002 247.839);
 		--shiny-gray-500: oklch(55.1% 0.027 264.364);
 		--shiny-gray-700: oklch(37.3% 0.034 259.733);
 		--shiny-gray-800: oklch(27.8% 0.033 256.848);
@@ -1425,7 +1526,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 	}
 
 	body.presentation-source {
-		--source-paper: #F8F8F6;
+		--source-paper: var(--shiny-gray-50);
 		--source-ink: #16181C;
 		--source-text: #23262B;
 		--source-deck: #3F4550;
@@ -1433,7 +1534,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		--source-tilde: #A9AEB6;
 		--source-rule: #E3E4E0;
 		--source-accent: #2B5A7A;
-		--shiny-gray-50: #F8F8F6;
 		--essay-content-width: 40rem;
 	}
 
@@ -1635,6 +1735,24 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		line-height: 1.5;
 	}
 
+	.presentation-source .essay-body .george-mack-quote blockquote > p:first-child {
+		color: var(--shiny-gray-500);
+		font-family: var(--font-geist-mono);
+		font-size: 0.75rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 1.25;
+	}
+
+	.presentation-source .essay-body blockquote.twitter-tweet {
+		margin: 0;
+		padding: 0;
+	}
+
+	.presentation-source .essay-body blockquote.twitter-tweet::before {
+		content: none;
+	}
+
 	.presentation-source .essay-body blockquote > p:not(:first-child) {
 		margin-top: 12px;
 		color: var(--source-muted);
@@ -1704,6 +1822,19 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		font-size: 14px;
 		font-weight: 400;
 		line-height: calc(20px * 1.62);
+	}
+
+	.presentation-source .essay-body > ul:has(img[alt^='Substack screenshot']) {
+		grid-column: 1 / -1;
+		justify-self: center;
+	}
+
+	.presentation-source .essay-body ul:has(img[alt^='Substack screenshot']) > li {
+		padding-left: 0;
+	}
+
+	.presentation-source .essay-body ul:has(img[alt^='Substack screenshot']) > li::before {
+		content: none;
 	}
 
 	.presentation-source .essay-body .signoff {
@@ -1970,5 +2101,123 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		.presentation-source .source-footer-links {
 			grid-column: notes;
 		}
+	}
+
+	.guest-lecture .guest-kicker {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin: 0 0 10px;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+		letter-spacing: 0.02em;
+		line-height: 20px;
+		text-transform: lowercase;
+	}
+
+	.guest-lecture .guest-kicker b {
+		color: var(--source-accent);
+		font-weight: 500;
+	}
+
+	.guest-lecture .essay-body > .guest-note {
+		grid-column: text;
+	}
+
+	.guest-lecture .guest-note {
+		margin: 4px 0 8px;
+		padding: 14px 18px;
+		border-left: 2px solid color-mix(in srgb, var(--source-accent) 55%, transparent);
+		background: color-mix(in srgb, var(--source-accent) 5%, transparent);
+		color: var(--source-text);
+		font-family: var(--font-geist-mono);
+		font-size: 12.5px;
+		line-height: 1.65;
+	}
+
+	.guest-lecture .guest-note p {
+		margin: 0 0 8px !important;
+		font: inherit !important;
+	}
+
+	.guest-lecture .guest-note p:last-child {
+		margin: 0 !important;
+	}
+
+	.guest-lecture .guest-note .gn-label {
+		display: block;
+		margin-bottom: 6px;
+		color: var(--source-muted);
+	}
+
+	.guest-lecture .essay-body > .guest-bio {
+		grid-column: text;
+	}
+
+	.guest-lecture .guest-bio {
+		display: flex;
+		align-items: flex-start;
+		gap: 18px;
+		margin: 36px 0 8px;
+		padding: 20px 0;
+		border-top: 1px dashed color-mix(in srgb, var(--source-muted) 45%, transparent);
+		border-bottom: 1px dashed color-mix(in srgb, var(--source-muted) 45%, transparent);
+		color: var(--source-text);
+		font-family: var(--font-geist-mono);
+		font-size: 12.5px;
+		line-height: 1.6;
+	}
+
+	.guest-lecture .guest-bio .gb-label {
+		display: block;
+		margin-bottom: 2px;
+		color: var(--source-muted);
+	}
+
+	.guest-lecture .guest-bio .gb-name {
+		display: block;
+		margin-bottom: 4px;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.guest-lecture .essay-body img {
+		max-height: 560px;
+		object-fit: contain;
+		background: color-mix(in srgb, var(--source-muted) 6%, transparent);
+	}
+
+	.guest-lecture .essay-body .guest-bio img {
+		width: 56px;
+		height: 56px;
+		max-height: none;
+		margin: 0;
+		border-radius: 50%;
+		background: none;
+		object-fit: cover;
+		filter: grayscale(0.15);
+	}
+
+	.guest-lecture .essay-body p code {
+		font-size: 0.8em;
+	}
+
+	.guest-lecture .essay-body > ol {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin: 0;
+		padding-left: 1.25rem;
+	}
+
+	.guest-lecture .essay-body > ol > li::marker {
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+	}
+
+	.guest-lecture .essay-body > ol > li > p {
+		margin: 0;
 	}
 </style>

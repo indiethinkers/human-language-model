@@ -12,6 +12,11 @@
 			"source": "/media/the-internet-in-multi-player-mode/:path*",
 			"destination": "/media/the-internet-in-multiplayer-mode/:path*",
 			"permanent": true
+		},
+		{
+			"source": "/essays/intrinsic-motivation-a83",
+			"destination": "/essays/intrinsic-motivation",
+			"permanent": true
 		}
 	]
 }

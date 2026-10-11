@@ -13,6 +13,7 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const isGuest = post.data.guest === true;
 
 const readingBody = (post.body ?? '')
 	.replace(/<[^>]+>/g, ' ')
@@ -20,12 +21,36 @@ const readingBody = (post.body ?? '')
 const readingWords = readingBody
 	.split(/\s+/)
 	.filter((token) => /[\p{L}\p{N}]/u.test(token)).length;
-const readingMinutes = Math.max(1, Math.round(readingWords / 230));
+const readingMinutes = isGuest
+	? Math.max(1, Math.ceil((post.data.wordCount ?? readingWords) / 225))
+	: Math.max(1, Math.round(readingWords / 230));
 ---
 
-<EssayPost
-	{...post.data}
-	socialImage={post.data.socialImage ?? `/og/${post.id}.png`}
-	readingMinutes={readingMinutes} sourcePath={post.filePath}>
-	<Content />
-</EssayPost>
+{
+	isGuest ? (
+		<EssayPost
+			variant="guest"
+			title={post.data.title}
+			description={post.data.description}
+			deck={post.data.deck}
+			guest={post.data.author ?? post.data.copyrightHolder}
+			guestSlug={post.data.authorSlug ?? ''}
+			pubDate={post.data.pubDate}
+			readingMinutes={readingMinutes}
+			lectureNumber={post.data.lectureNumber ?? 1}
+			socialImage={post.data.socialImage ?? `/og/${post.id}.png`}
+			sourcePath={post.filePath}
+		>
+			<Content />
+		</EssayPost>
+	) : (
+		<EssayPost
+			{...post.data}
+			socialImage={post.data.socialImage ?? `/og/${post.id}.png`}
+			readingMinutes={readingMinutes}
+			sourcePath={post.filePath}
+		>
+			<Content />
+		</EssayPost>
+	)
+}

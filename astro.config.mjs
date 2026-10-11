@@ -9,6 +9,7 @@ export default defineConfig({
 	trailingSlash: 'never',
 	redirects: {
 		'/essays/the-internet-in-multi-player-mode': '/essays/the-internet-in-multiplayer-mode',
+		'/essays/intrinsic-motivation-a83': '/essays/intrinsic-motivation',
 	},
 	build: {
 		format: 'file',

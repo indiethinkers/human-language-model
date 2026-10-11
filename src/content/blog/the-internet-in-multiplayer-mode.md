@@ -8,6 +8,7 @@ authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
 pubDate: 'June 1, 2026'
+presentation: 'source'
 ---
 
 ## Hungry Hungry Golden Hippos
@@ -177,7 +178,7 @@ We do not know the hour, nor the day, when the clock will stop. It's a bit morbi
 
 There's still so much to figure out, but I'd love to have you be a part of this journey and contribute. If you'd like to write for Indie Thinkers at some point, even if you don't have an idea, I encourage you to reach out to me directly at [daniel@indiethinkers.com](mailto:daniel@indiethinkers.com) and we'll talk through it.
 
--- Daniel
+<p class="signoff">— Daniel</p>
 
 <div class="author-links">
 	<a href="https://x.com/danielkhunter">x.com/danielkhunter</a>

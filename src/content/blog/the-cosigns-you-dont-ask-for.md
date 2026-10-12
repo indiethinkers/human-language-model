@@ -1,7 +1,7 @@
 ---
-title: 'The Cosigns You Don''t Ask For'
-description: 'What it means to put your name on the line for someone else.'
-deck: 'What it means to put your name on the line for someone else.'
+title: 'Rising Stars Need a Witness'
+description: 'Cosign aims to make overlooked talent easier to find'
+deck: 'Cosign aims to make overlooked talent easier to find'
 quote: 'I did not ask for an intro, but I damn sure earned it.'
 quotes:
   - 'I did not ask for an intro, but I damn sure earned it.'
@@ -19,25 +19,27 @@ series: 'code & prose'
 
 In 2018, [Jon Gosier](https://www.linkedin.com/in/jongos/) sent me a message saying he was going to introduce me to [Bob Moore](https://www.linkedin.com/in/robertjmoore/). I did not ask for an intro, but I damn sure earned it.
 
-I was the second engineer hired at [Audigent](https://audigent.com/), a company Jon co-founded in Philly back in 2015. When I started, we were living off a small friends-and-family round, with less than six months of runway before the money ran out. I was all in. 60-70 hour work weeks, heated but respectful debates, and an obsession with making our MVP demo well. Jon saw it all. Respect was earned.
+I was the second engineer hired at [Audigent](https://audigent.com/), a company Jon co-founded in Philly back in 2015. When I started, we were living off a small friends-and-family round, with less than six months of runway before the money ran out. I was all in. 60-70 hour work weeks, heated but respectful debates, and an obsession with making our MVP demo well. Jon saw it all.
 
 We survived and Audigent was later [acquired by Experian for $363 million](https://www.experianplc.com/content/dam/marketing/global/plc/en/assets/documents/reports/2025/635400RXXHHYT1JTSZ26-2025-03-31-viewer.html).
 
 Bob Moore, the CEO of [Crossbeam](https://www.crossbeam.com/), was a bit of a legend in the Philly startup ecosystem. Getting a meeting with him was a "cancel all your plans" type of situation. Jon's intro got me an interview and laid the foundation for a senior engineering role.
 
-I had the talent, and I was ready. But being talented and prepared often isn't enough. Many of us stay ready. We’re hungry. But you need someone to believe in you and mention your name when you're not in the room. Jon did that for me. He was my first professional cosigner in tech.
+I had the talent, and I was ready. But being talented and prepared often isn't enough. Many of us stay ready. We’re hungry. But you need someone to believe in you and mention your name when you're not in the room. Jon did that for me. He was my first professional "cosigner" in tech.
 
-## Cosign, On Deck
+## Cosigns are expensive, and they are earned
 
 When I hear the word *cosign*, I’m reminded of all the apartments in Boston I couldn't get into during my college days without help from my parents. I think about the seriousness of the cosigner commitment for mortgage and loan applications. A cosigner is making a legally binding promise. If you can't pay, they will, or their credit score goes down the toilet with yours.
 
-Being a cosigner is no joke, which is why it's something you rarely, if ever, ask for or do. A professional cosign, like a stamp of approval for a former coworker, doesn't carry the same level of risk, but it’s naturally uncommon. Cosigns are earned first, given second. Recommendations should not be requested haphazardly with the click of a button.
+Being a cosigner is no joke. A recommendation for a former coworker won't put your credit score at risk, but your name is still attached to it. Cosigns are earned first, given second. I don't want a button turning that into a casual favor, with requests blowing up my inbox.
 
 ![Asking for a recommendation on LinkedIn](../../assets/the-cosigns-you-dont-ask-for/linkedin-recommendation.png)
 
 <p class="image-caption"><em>Asking for a recommendation on LinkedIn</em></p>
 
-[Cosign](https://cosign.co/), a new professional network from [a16z's New Media team](https://a16zjobs.substack.com/p/introducing-cosign-a-new-space-to) that launched on September 25th, is built around that idea. On Cosign, there's no way to ask someone for public praise. It's my favorite subtle design choice in the product.
+[Cosign](https://cosign.co/), a new professional network from [a16z's New Media team](https://a16zjobs.substack.com/p/introducing-cosign-a-new-space-to) that launched on September 25th, is built around that idea. The absence of a request button is my favorite subtle design choice in the product. I love that it doesn't nudge users to beg for praise.
+
+I wouldn't fault someone for asking a former colleague to put in a word if that colleague knows their work, because the endorsement is still earned. Waiting to be cosigned is a tough strategy for someone who isn't already well connected.
 
 <blockquote class="twitter-tweet" data-dnt="true">
 	<p lang="en" dir="ltr">Excited to introduce <a href="https://x.com/cosign">@Cosign</a>: the curated professional network for the startup community: <a href="https://cosign.co/">cosign.co</a><br><br>Our goal is to create the following:<br><br>- A comprehensive startup directory of investors, companies, and operators, including what they worked on and who they worked on it with.<br><br>- Cosign graph: Who shaped your career? Who were you actually in the trenches with? Who would work with you again? Who thinks you’re someone to watch?<br><br>- Durable reputation: Great endorsements happen every day on X and disappear into the feed. Cosign attaches those signals permanently to people and companies.<br><br>- Discovery: Who are the best fintech angels? Which AI companies should I watch? Who are the best designers?<br><br>- Intent network: Privately signal “I’d invest in them,” “I’d hire them,” “I’d work with them,” or eventually even “I’d acquire this company.” Match people when interest exists on both sides.<br><br>Imagine if Wikipedia, LinkedIn, and OG AngelList had a baby. Though Cosign is a community, not a business.<br><br>In order to join, you need to be cosigned. Or you can apply directly.<br><br>David Booth and I started this idea 7 years ago but didn’t have the firepower to make it work. Now we do.<br><br>No one has really touched LinkedIn in 20 years. Excited to take a swing.<br><br><a href="https://cosign.co/">cosign.co</a></p>
@@ -46,11 +48,11 @@ Being a cosigner is no joke, which is why it's something you rarely, if ever, as
 
 ## When credentials get cheap
 
-AI has made it nearly free to look impressive on paper. A polished resume, a tailored cover letter, and a slick portfolio site can now be brought to life in a single afternoon. When everyone looks talented and prepared, the pretty pages stop telling the full story, and you have to dig deeper to know whether a person is worth your time.
+AI can polish a resume, tailor a cover letter, and build a portfolio site in an afternoon. A candidate can look great before anyone has seen them work.
 
 ![David Perell's X profile, showing he follows 943 people](../../assets/the-cosigns-you-dont-ask-for/david-perell.png)
 
-When someone important follows you on X, it's an implicit endorsement. Cosign wants to make it explicit. Erik Torenberg, a general partner at a16z, posed an interesting thought experiment.
+It's tempting to check who follows them instead. Erik Torenberg, a general partner at a16z, posed an interesting thought experiment:
 
 <blockquote>
 <p>What's more impressive to you: someone who went to Stanford, or someone who is followed by Patrick Collison, Elon Musk, and Marc Andreessen? I think most people would say the latter. It's this kind of peer-to-peer credential.</p>
@@ -69,15 +71,11 @@ When someone important follows you on X, it's an implicit endorsement. Cosign wa
 
 <p class="image-caption"><em>Erik Torenberg on peer-to-peer credentials</em></p>
 
-It's a seductive idea, and I'll come back to why it's also a risky one.
+An elite degree tells you something. It still doesn't tell you what someone built last month or what they're like to work with.
 
-An elite degree is still a real signal, but it's an old one. It tells you someone got into a great school at 18, not what they built last year. It's also less rare than it feels. [Stanford alone handed out 2,140 bachelor's degrees in 2025](https://news.stanford.edu/stories/2025/06/commencement-ceremony-graduating-students). Multiply that across the Ivy League and every top state school (UCLA, Michigan, Texas, UVA, etc.), and the signal gets noisy fast.
+David Perell, one of my favorite writers and thinkers, follows fewer than a thousand people on X. I'd love it if he followed me, but I'd never ask. How ridiculous would that be? I’d look like a clown. Still, a follow wouldn't tell anyone why he was interested.
 
-A follow from the heavyweights in your field is much harder to get. Yes, anyone can ask for a follow on Twitter but almost no one does, because it's mortifying.
-
-David Perell, one of my favorite writers and thinkers, follows fewer than a thousand people. I'd love it if he followed me, but I'd never ask. How ridiculous would that be? I’d look like a clown. Scarcity is what makes the network graph more legitimate and more meaningful than a CV alone.
-
-The crew at Cosign is introducing a rarer signal, one that should get more meaningful over time. That signal is what separates it from LinkedIn, which has become a sales and go-to-market tool first and a professional network second.
+On Cosign, someone can explain why they're backing you. That's what interests me. LinkedIn has become a sales and go-to-market tool first and a professional network second.
 
 <blockquote class="twitter-tweet" data-dnt="true">
 	<p lang="en" dir="ltr">Using <a href="https://x.com/pangram">@pangram</a> on LinkedIn is like seeing the AI matrix</p>
@@ -85,13 +83,15 @@ The crew at Cosign is introducing a rarer signal, one that should get more meani
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-But LinkedIn isn't really the competition. Cosign is competing with private networks, group chats, and IRL touchpoints. The social signaling that happens outside the social networks we use every day. It's about discovering real people, which is great for companies that are hiring and even better for people looking for their [next play](https://nextplay.so/).
+Lenny spoke no lies here. The timeline over there is pure slop.
+
+The recommendations I'd want to read are probably sitting in private group chats or being shared in person. Cosign could make them useful to someone outside those conversations who's looking for their [next play](https://nextplay.so/).
 
 ## My name is on the line
 
 I've been giving cosigns for years.
 
-My brother and I run [Post in Black](https://postinblack.com/), a podcast where we've interviewed dozens of editors, music supervisors, sound editors, and VFX artists for the past six years. The people behind the scenes who rarely get covered. Eventually filmmakers in the industry started asking us who to hire. We've put our names on the line countless times without even blinking.
+My brother and I run [Post in Black](https://postinblack.com/), a podcast where we've interviewed dozens of editors, music supervisors, sound editors, and VFX artists for the past six years. The people behind the scenes who rarely get covered. Eventually filmmakers in the industry started asking us who to hire. We've put our names on the line countless times.
 
 <div class="video-frame">
 	<iframe
@@ -105,35 +105,39 @@ My brother and I run [Post in Black](https://postinblack.com/), a podcast where 
 
 But it doesn't always work out.
 
-We all have stories about referrals that went sideways. I once recommended a friend for a job on a short film, and they ended up not getting along with the producer and director. It eventually got really combative. The filmmakers hit me up and said they'd never work with my friend again. I still remember how shocked they were at the whole experience because the recommendation came from me, and I was a trusted source.
+We all have stories about referrals that went sideways. I once recommended a friend for a job on a short film, and they ended up not getting along with the producer and director. It eventually got really combative. The filmmakers hit me up and said they'd never work with my friend again. I still remember how shocked they were at the whole experience because the recommendation came from me. A trusted source.
 
-That's the cost of a cosign. Giving one takes five minutes, but a bad one isn't easily forgotten. Your name, out in public, attached to someone else's next move, can be expensive. One skeptic of Cosign [put it plainly](https://www.linkedin.com/posts/a16z_were-excited-to-launch-cosign-silicon-activity-7509260141385498624-q7Py): "A vouch only works as a signal that is costly if giving a bad one costs the voucher something later." That's fair, and it exposes a real tension. Offline, a bad recommendation definitely costs you. Online, and at scale, that cost can quietly disappear. If a bad cosign costs nothing, people will hand them out freely, and Cosign becomes LinkedIn wearing a different suit.
+A skeptic of Cosign [wrote](https://www.linkedin.com/posts/a16z_were-excited-to-launch-cosign-silicon-activity-7509260141385498624-q7Py): "A vouch only works as a signal that is costly if giving a bad one costs the voucher something later."
 
-## If I’m wrong, it should cost something
+Would a stranger reading one of my cosigns ever hear about a bad referral?
 
-Remember the cosigner on that apartment lease? Their signature means something because their credit score is on the line. The Cosign product needs its own version. Every cosign you give stays attached to your name, and over time that record should show how good your judgment is. A cosign from someone with a long history of backing the right people should count for more than one from someone who hands them out freely.
+## If I'm wrong, should it cost something?
 
-Full disclosure: I gave my first cosign to Dhruv Gupta, one of the product engineers at Cosign. We met because I was impressed with that platform and was eager to help. I haven't worked with him, but I've spent a meaningful amount of time inside the product he helps build. My Cosign fit under this category: Will be a Star. It's a bet, not a reference.
+I'd want to look back at someone's cosigns and see how their judgment held up. Did they spot people early? Do they seem to endorse everyone? That would affect how much weight I'd give their next recommendation.
+
+Full disclosure: I gave my first cosign to Dhruv Gupta, one of the product engineers at Cosign. We met because I was impressed with the platform and was eager to help. I haven't worked directly with him so I picked "Will be a Star." It's a bet, not a reference.
 
 ![Cosign form set to Will be a Star for Dhruv Gupta](../../assets/the-cosigns-you-dont-ask-for/will-be-a-star.png)
 
-Notice what that screen is doing, though. Cosign handed me a list of ten people and asked me to pick one. Giving your first cosign is easy by design, which is exactly why the record has to matter. A prediction with a deadline is one way to build it.
+[Cosign's FAQ](https://cosign.co/faq) asks people to explain what their belief is based on, including whether they've worked together or followed someone's work. I'd want that reminder while writing the endorsement.
 
-A real record also means no take-backs, and Cosign already gets this right: once you give a cosign, you can't pull it. If you could quietly pull a cosign the moment someone disappoints you, giving one would cost you nothing. A bad cosign should sting, the same way a missed rent payment hits the cosigner's credit. That's what makes you think twice before you put your name next to someone else's.
+The FAQ also says you can edit your cosigns. Good. I'd want to correct something I got wrong. But how long should someone be able to edit a cosign? And is it clear to readers that it was edited, when, and why?
 
-## The good ol' boys club
+Getting a prediction wrong doesn't necessarily mean I was careless. Claiming to know someone's work better than I did would be my fault. I wouldn't want both judged the same way.
 
-There's some risk here with Cosign though.
+If every failed bet hurts your reputation, why take a chance on someone unknown? Endorsing an established name would be safer.
 
-Peer-to-peer credentials have an older name.
+## The good ol' boys club and peer-to-peer credentials
 
 The group chats and back-channel references Cosign wants to bring into the open have historically worked best for people who were already inside.
 
-Look closely at Torenberg's thought experiment. Being followed by Patrick Collison, Elon Musk, and Marc Andreessen is impressive precisely because almost nobody gets close enough to earn it. A credential that flows through who you know rewards the people who already know the right people. I hope the Cosign product doesn't turn into insiders vouching for insiders, where the socially rich get richer. If it does, it won't fix the problem with elite degrees.
+Look closely at [Torenberg's thought experiment](https://x.com/cosign/status/2107926259007385878?s=20). Being followed by Patrick Collison, Elon Musk, and Marc Andreessen is impressive precisely because almost nobody gets close enough to earn it. A credential that flows through who you know rewards the people who already know the right people. I hope the Cosign product doesn't turn into insiders vouching for insiders, where the socially rich get richer. If it does, overlooked talent will still be overlooked.
 
-To be fair, my intro to Bob came through who I knew, too. But Jon knew me because he'd watched me put in 60-70 hour weeks at a company that almost ran out of money. That's the line Cosign has to hold. A cosign should come from direct experience someone actually had.
+I'm speaking from experience. My intro to Bob came through who I knew, too. Jon actually watched me work though, at a company that had gone from literal dust to a successful seed round. He had evidence to share with Bob. I want more people to get that chance.
 
-Part of the fix has to happen offline. Cosign could borrow the Cursor community playbook: local chapters around the world, each run by an ambassador, where people demo what they're building to strangers who might vouch for them. The “Will be a Star” I used for Dhruv aligns well with this approach. If a cosign should come from work someone actually saw, outsiders need more rooms where their work gets seen.
+Outsiders need more rooms where their work gets seen.
+
+I'd love to see Cosign borrow from the Cursor (SpaceXSI?) community playbook. Local chapters, each run by an ambassador, could give people a place to demo what they're building. Someone who sees a promising project could give its creator a "Will be a Star" cosign and explain what caught their attention. They wouldn't need years of working together to have something specific to say.
 
 ![An a16z New Media event in Santa Monica](../../assets/the-cosigns-you-dont-ask-for/new-media-event.jpg)
 
@@ -149,7 +153,7 @@ Think about who spoke for you in a room you weren't invited into.
 
 Think about who you could do that for.
 
-Then put your name on the line for them.
+Then put your name on the line.
 
 <p class="signoff">— Daniel</p>
 

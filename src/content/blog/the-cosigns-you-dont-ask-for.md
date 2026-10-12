@@ -44,6 +44,11 @@ A professional cosign, like a stamp of approval for a former coworker, doesn't c
 
 [Cosign](https://cosign.co/), a new professional network from [a16z's New Media team](https://a16zjobs.substack.com/p/introducing-cosign-a-new-space-to) that launched on September 25th, is built around that idea. On Cosign, there's no way to ask someone for public praise. It's my favorite subtle design choice in the product.
 
+<blockquote>
+	<p>Excited to introduce <a href="https://x.com/cosign">@Cosign</a>: the curated professional network for the startup community: <a href="https://cosign.co/">cosign.co</a><br><br>Our goal is to create the following:<br><br>- A comprehensive startup directory of investors, companies, and operators, including what they worked on and who they worked on it with.<br><br>- Cosign graph: Who shaped your career? Who were you actually in the trenches with? Who would work with you again? Who thinks you’re someone to watch?<br><br>- Durable reputation: Great endorsements happen every day on X and disappear into the feed. Cosign attaches those signals permanently to people and companies.<br><br>- Discovery: Who are the best fintech angels? Which AI companies should I watch? Who are the best designers?<br><br>- Intent network: Privately signal “I’d invest in them,” “I’d hire them,” “I’d work with them,” or eventually even “I’d acquire this company.” Match people when interest exists on both sides.<br><br>Imagine if Wikipedia, LinkedIn, and OG AngelList had a baby. Though Cosign is a community, not a business.<br><br>In order to join, you need to be cosigned. Or you can apply directly.<br><br>David Booth and I started this idea 7 years ago but didn’t have the firepower to make it work. Now we do.<br><br>No one has really touched LinkedIn in 20 years. Excited to take a swing.<br><br><a href="https://cosign.co/">cosign.co</a></p>
+	<p>— Erik Torenberg, <a href="https://x.com/eriktorenberg/status/2103493671866060958">@eriktorenberg</a> · September 25, 2026</p>
+</blockquote>
+
 ## When credentials get cheap
 
 AI has made it nearly free to look impressive on paper. A polished resume, a tailored cover letter, and a slick portfolio site can now be brought to life in a single afternoon. When everyone looks talented and prepared, the pretty pages stop telling the full story, and you have to dig deeper to know whether a person is worth your time.
@@ -77,6 +82,11 @@ David Perell, one of my favorite writers and thinkers, follows fewer than a thou
 The crew at Cosign is introducing a rarer signal, one that should get more meaningful over time.
 
 That signal is what separates it from LinkedIn, which has become a sales and go-to-market tool first and a professional network second.
+
+<blockquote>
+	<p>Using <a href="https://x.com/pangram">@pangram</a> on LinkedIn is like seeing the AI matrix</p>
+	<p>— Lenny Rachitsky, <a href="https://x.com/lennysan/status/2107241817184092652">@lennysan</a> · October 5, 2026</p>
+</blockquote>
 
 But LinkedIn isn't really the competition. Cosign is competing with private networks, group chats, and IRL touchpoints. The social signaling that happens outside the social networks we use every day. It's about discovering real people, which is great for companies that are hiring and even better for people looking for their [next play](https://nextplay.so/).
 

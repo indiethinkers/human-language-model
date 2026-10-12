@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { Font, Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { authors } from '../data/authors';
 
@@ -389,9 +390,13 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 			</div>
 		</main>
 
+		<SiteFooter />
+
 		<script is:inline>
 			(() => {
 				document.querySelectorAll('a[href]').forEach((link) => {
+					if (link.closest('.site-footer')) return;
+
 					const href = link.getAttribute('href');
 
 					if (!href) return;
@@ -690,6 +695,10 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 	}
 
 	body.shiny-dimes-home {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		min-height: 100dvh;
 		margin: 0;
 		padding: 0;
 		background: var(--shiny-gray-50);
@@ -736,7 +745,8 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		justify-content: center;
 		width: auto;
 		max-width: none;
-		min-height: 100vh;
+		flex: 1 1 auto;
+		min-height: auto;
 		margin: 0;
 		padding: 0;
 		background: var(--shiny-gray-50);
@@ -1426,7 +1436,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 	@media (max-width: 64rem) {
 		.essay-detail-page {
 			display: block;
-			min-height: 100svh;
 			padding: 0;
 		}
 

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const quoteEntries = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -118,6 +119,8 @@ const allEssaysHref = '/essays';
 			}
 		</main>
 
+		<SiteFooter />
+
 		<script>
 			const quoteCard = document.querySelector('[data-quote-card]');
 			const quoteElement = document.querySelector('[data-quote]');
@@ -146,7 +149,7 @@ const allEssaysHref = '/essays';
 				menuPanel.hidden = !open;
 				document.body.classList.toggle('menu-open', open);
 
-				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint').forEach((el) => {
+				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint, .site-footer').forEach((el) => {
 					el.toggleAttribute('inert', open);
 				});
 
@@ -332,6 +335,10 @@ const allEssaysHref = '/essays';
 	}
 
 	body.shiny-dimes-home {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		min-height: 100dvh;
 		margin: 0;
 		padding: 0;
 		background: var(--shiny-gray-50);
@@ -378,7 +385,8 @@ const allEssaysHref = '/essays';
 		justify-content: center;
 		width: auto;
 		max-width: none;
-		min-height: 100vh;
+		flex: 1 1 auto;
+		min-height: 0;
 		margin: 0;
 		padding: 0;
 		background: var(--shiny-gray-50);

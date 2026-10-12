@@ -1,7 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 import { Font, Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
+import EssayToc from '../components/EssayToc.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { authors } from '../data/authors';
@@ -18,12 +20,14 @@ interface GuestLectureProps {
 	lectureNumber: number;
 	sourcePath?: string;
 	socialImage?: string;
+	headings?: MarkdownHeading[];
 }
 
 type EssayProps = CollectionEntry<'blog'>['data'] & {
 	variant?: 'essay';
 	readingMinutes: number;
 	sourcePath?: string;
+	headings?: MarkdownHeading[];
 };
 
 type Props = GuestLectureProps | EssayProps;
@@ -46,6 +50,7 @@ const presentation = isGuest ? 'source' : Astro.props.presentation;
 const series = isGuest ? undefined : Astro.props.series;
 const titleMarkup = isGuest ? undefined : Astro.props.titleMarkup;
 const lectureNumber = isGuest ? Astro.props.lectureNumber : undefined;
+const headings = Astro.props.headings ?? [];
 const guestAuthor = isGuest ? authors[Astro.props.guestSlug] : undefined;
 const authorInfo = authors[authorSlug] ?? authors['daniel-hunter'];
 const authorName = authorInfo?.name ?? author;
@@ -300,6 +305,8 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 								</header>
 							)
 						}
+
+						{isSource && <EssayToc headings={headings} />}
 
 						<div class="essay-body">
 							<slot />
@@ -1694,6 +1701,69 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		background-color: color-mix(in srgb, var(--source-accent) 18%, transparent);
 	}
 
+	.presentation-source .essay-body :is(h2, h3) {
+		scroll-margin-top: 6rem;
+	}
+
+	.presentation-source .essay-toc {
+		display: none;
+	}
+
+	.presentation-source .essay-toc-label {
+		margin: 0 0 12px;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+		line-height: 20px;
+		text-transform: lowercase;
+	}
+
+	.presentation-source .essay-toc-label b {
+		color: var(--source-accent);
+		font-weight: 500;
+	}
+
+	.presentation-source .essay-toc-list {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 12px;
+		border-left: 1px solid var(--source-rule);
+	}
+
+	.presentation-source .essay-toc-item {
+		margin: 0;
+	}
+
+	.presentation-source .essay-toc-link {
+		display: block;
+		padding: 4px 0 4px 10px;
+		margin-left: -12px;
+		border-left: 2px solid transparent;
+		color: var(--source-muted);
+		font-family: var(--font-geist-mono);
+		font-size: 12px;
+		line-height: 1.45;
+		text-decoration: none;
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.presentation-source .essay-toc-item.is-depth-3 .essay-toc-link {
+		padding-left: 22px;
+		font-size: 11.5px;
+	}
+
+	.presentation-source .essay-toc-link:hover {
+		color: var(--source-text);
+	}
+
+	.presentation-source .essay-toc-item.is-active .essay-toc-link {
+		border-left-color: var(--source-accent);
+		color: var(--source-ink);
+		font-weight: 500;
+	}
+
 	.presentation-source .essay-body > p:not(.image-caption):not(.signoff) {
 		position: relative;
 	}
@@ -1980,6 +2050,10 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 	}
 
 	@media (max-width: 64rem) {
+		.presentation-source .essay-body :is(h2, h3) {
+			scroll-margin-top: 4.5rem;
+		}
+
 		.presentation-source .essay-detail-page {
 			padding-bottom: calc(2.75rem + env(safe-area-inset-bottom));
 		}
@@ -2015,9 +2089,26 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 	}
 
 	@media (min-width: 80rem) {
+		html:has(.presentation-source) {
+			scroll-behavior: smooth;
+		}
+
 		.presentation-source .essay-detail-shell,
 		.presentation-source .essay-detail-frame {
 			max-width: calc(76rem + 2rem);
+		}
+
+		.presentation-source .essay-toc {
+			display: block;
+			grid-column: notes;
+			grid-row: 1;
+			position: sticky;
+			top: 7rem;
+			z-index: 1;
+			align-self: start;
+			max-height: calc(100vh - 8rem);
+			overflow-y: auto;
+			padding-top: 7px;
 		}
 
 		.presentation-source .essay-detail {

@@ -4,10 +4,12 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import { remarkHtmlHeadings } from './src/remark/remark-html-headings.mjs';
+import { rehypeSentenceBreaks } from './src/remark/rehype-sentence-spacing.mjs';
 
 export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkHtmlHeadings],
+		rehypePlugins: [rehypeSentenceBreaks],
 	},
 	site: 'https://indiethinkers.com',
 	trailingSlash: 'never',

@@ -14,18 +14,20 @@ if (tocEntries.length < 2) {
 }
 ---
 
-<nav class="essay-toc" aria-label="Table of contents">
-	<p class="essay-toc-label"><b>// table of contents</b></p>
-	<ol class="essay-toc-list">
-		{
-			tocEntries.map((heading) => (
-				<li class:list={['essay-toc-item', { 'is-depth-3': heading.depth === 3 }]}>
-					<a class="essay-toc-link" href={`#${heading.slug}`}>{heading.text}</a>
-				</li>
-			))
-		}
-	</ol>
-</nav>
+<div class="essay-toc-rail">
+	<nav class="essay-toc" aria-label="Table of contents">
+		<p class="essay-toc-label"><b>// table of contents</b></p>
+		<ol class="essay-toc-list">
+			{
+				tocEntries.map((heading) => (
+					<li class:list={['essay-toc-item', { 'is-depth-3': heading.depth === 3 }]}>
+						<a class="essay-toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+					</li>
+				))
+			}
+		</ol>
+	</nav>
+</div>
 
 <script>
 	(() => {

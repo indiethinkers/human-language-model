@@ -195,10 +195,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									<div class="source-fence" aria-hidden="true">
 										---
 									</div>
-									<div class="source-title-row">
-										<h1 class="source-title">{title}</h1>
-										{isSource && <EssayToc headings={headings} />}
-									</div>
+									<h1 class="source-title">{title}</h1>
 									{deck && <p class="source-deck">{deck}</p>}
 									<dl class="source-meta">
 										<div>
@@ -244,10 +241,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									<div class="source-fence" aria-hidden="true">
 										---
 									</div>
-									<div class="source-title-row">
-										<h1 class="source-title">{titleSegments.map(({ text, Tag }) => (Tag ? <Tag>{text}</Tag> : text))}</h1>
-										{isSource && <EssayToc headings={headings} />}
-									</div>
+									<h1 class="source-title">{titleSegments.map(({ text, Tag }) => (Tag ? <Tag>{text}</Tag> : text))}</h1>
 									{deck && <p class="source-deck">{deck}</p>}
 									<dl class="source-meta">
 										<div>
@@ -311,6 +305,8 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 								</header>
 							)
 						}
+
+						{isSource && <EssayToc headings={headings} />}
 
 						<div class="essay-body">
 							<slot />
@@ -1608,6 +1604,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		letter-spacing: -0.02em;
 		line-height: 1.06;
 		text-wrap: balance;
+		anchor-name: --source-essay-title;
 	}
 
 	.presentation-source .source-title em {
@@ -1707,6 +1704,10 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 
 	.presentation-source .essay-body :is(h2, h3) {
 		scroll-margin-top: 6rem;
+	}
+
+	.presentation-source .essay-toc-rail {
+		display: none;
 	}
 
 	.presentation-source .essay-toc {
@@ -2102,19 +2103,8 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 			max-width: calc(76rem + 2rem);
 		}
 
-		.presentation-source .essay-toc {
-			display: block;
-			grid-column: notes;
-			position: sticky;
-			top: 7rem;
-			z-index: 1;
-			align-self: start;
-			max-height: calc(100vh - 8rem);
-			overflow-y: auto;
-			padding-top: 0;
-		}
-
 		.presentation-source .essay-detail {
+			position: relative;
 			display: grid;
 			grid-template-columns:
 				[gutter-start] 15rem
@@ -2125,31 +2115,39 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 			row-gap: 0;
 		}
 
+		.presentation-source .essay-toc-rail {
+			display: block;
+			position: absolute;
+			top: anchor(--source-essay-title top);
+			right: 0;
+			width: 15rem;
+			bottom: 0;
+			z-index: 1;
+			pointer-events: none;
+		}
+
+		.presentation-source .essay-toc {
+			display: block;
+			position: sticky;
+			top: 7rem;
+			max-height: calc(100vh - 8rem);
+			overflow-y: auto;
+			padding-top: 0;
+			pointer-events: auto;
+		}
+
+		@supports not (top: anchor(--source-essay-title top)) {
+			.presentation-source .essay-toc-rail {
+				top: 44px;
+			}
+
+			.presentation-source .essay-detail:has(.series-kicker) .essay-toc-rail {
+				top: 98px;
+			}
+		}
+
 		.presentation-source .source-header {
-			display: contents;
-		}
-
-		.presentation-source .source-header > :not(.source-title-row) {
 			grid-column: text;
-		}
-
-		.presentation-source .source-title-row {
-			display: grid;
-			grid-column: 1 / -1;
-			grid-template-columns: subgrid;
-			align-items: start;
-		}
-
-		.presentation-source .source-title-row > .source-title {
-			grid-column: text;
-		}
-
-		.presentation-source .source-title-row > .essay-toc {
-			grid-column: notes;
-		}
-
-		.presentation-source .source-header > .source-fence:last-of-type {
-			margin-bottom: 48px;
 		}
 
 		.presentation-source .essay-body {

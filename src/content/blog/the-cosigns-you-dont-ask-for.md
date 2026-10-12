@@ -1,12 +1,11 @@
 ---
 title: 'The Cosigns You Don''t Ask For'
-description: 'Cosigns are earned first, given second.'
-deck: 'Cosigns are earned first, given second.'
+description: 'What it means to put your name on the line for someone else.'
+deck: 'What it means to put your name on the line for someone else.'
 quote: 'I did not ask for an intro, but I damn sure earned it.'
 quotes:
   - 'I did not ask for an intro, but I damn sure earned it.'
   - 'Cosigns are earned first, given second.'
-  - 'Someone has to give first.'
 author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'
@@ -18,9 +17,7 @@ series: 'code & prose'
 
 ## Someone believed in me
 
-In 2018, [Jon Gosier](https://www.linkedin.com/in/jongos/) sent me a message saying he was going to introduce me to [Bob Moore](https://www.linkedin.com/in/robertjmoore/).
-
-I did not ask for an intro, but I damn sure earned it.
+In 2018, [Jon Gosier](https://www.linkedin.com/in/jongos/) sent me a message saying he was going to introduce me to [Bob Moore](https://www.linkedin.com/in/robertjmoore/). I did not ask for an intro, but I damn sure earned it.
 
 I was the second engineer hired at [Audigent](https://audigent.com/), a company Jon co-founded in Philly back in 2015. When I started, we were living off a small friends-and-family round, with less than six months of runway before the money ran out. I was all in. 60-70 hour work weeks, heated but respectful debates, and an obsession with making our MVP demo well. Jon saw it all. Respect was earned.
 
@@ -34,9 +31,7 @@ I had the talent, and I was ready. But being talented and prepared often isn't e
 
 When I hear the word *cosign*, I’m reminded of all the apartments in Boston I couldn't get into during my college days without help from my parents. I think about the seriousness of the cosigner commitment for mortgage and loan applications. A cosigner is making a legally binding promise. If you can't pay, they will, or their credit score goes down the toilet with yours.
 
-Being a cosigner is no joke, which is why it's something you rarely, if ever, ask for or do.
-
-A professional cosign, like a stamp of approval for a former coworker, doesn't carry the same level of risk, but it’s naturally uncommon. Cosigns are earned first, given second. Recommendations should not be requested haphazardly with the click of a button.
+Being a cosigner is no joke, which is why it's something you rarely, if ever, ask for or do. A professional cosign, like a stamp of approval for a former coworker, doesn't carry the same level of risk, but it’s naturally uncommon. Cosigns are earned first, given second. Recommendations should not be requested haphazardly with the click of a button.
 
 ![Asking for a recommendation on LinkedIn](../../assets/the-cosigns-you-dont-ask-for/linkedin-recommendation.png)
 
@@ -57,7 +52,10 @@ AI has made it nearly free to look impressive on paper. A polished resume, a tai
 
 When someone important follows you on X, it's an implicit endorsement. Cosign wants to make it explicit. Erik Torenberg, a general partner at a16z, posed an interesting thought experiment.
 
-> What's more impressive to you: someone who went to Stanford, or someone who is followed by Patrick Collison, Elon Musk, and Marc Andreessen? I think most people would say the latter. It's this kind of peer-to-peer credential.
+<blockquote>
+<p>What's more impressive to you: someone who went to Stanford, or someone who is followed by Patrick Collison, Elon Musk, and Marc Andreessen? I think most people would say the latter. It's this kind of peer-to-peer credential.</p>
+<p>— Erik Torenberg</p>
+</blockquote>
 
 <div class="video-frame">
 	<video
@@ -79,9 +77,7 @@ A follow from the heavyweights in your field is much harder to get. Yes, anyone 
 
 David Perell, one of my favorite writers and thinkers, follows fewer than a thousand people. I'd love it if he followed me, but I'd never ask. How ridiculous would that be? I’d look like a clown. Scarcity is what makes the network graph more legitimate and more meaningful than a CV alone.
 
-The crew at Cosign is introducing a rarer signal, one that should get more meaningful over time.
-
-That signal is what separates it from LinkedIn, which has become a sales and go-to-market tool first and a professional network second.
+The crew at Cosign is introducing a rarer signal, one that should get more meaningful over time. That signal is what separates it from LinkedIn, which has become a sales and go-to-market tool first and a professional network second.
 
 <blockquote class="twitter-tweet" data-dnt="true">
 	<p lang="en" dir="ltr">Using <a href="https://x.com/pangram">@pangram</a> on LinkedIn is like seeing the AI matrix</p>
@@ -115,9 +111,7 @@ That's the cost of a cosign. Giving one takes five minutes, but a bad one isn't 
 
 ## If I’m wrong, it should cost something
 
-Remember the cosigner on that apartment lease? Their signature means something because their credit score is on the line. The Cosign product needs its own version.
-
-Every cosign you give stays attached to your name, and over time that record should show how good your judgment is. A cosign from someone with a long history of backing the right people should count for more than one from someone who hands them out freely.
+Remember the cosigner on that apartment lease? Their signature means something because their credit score is on the line. The Cosign product needs its own version. Every cosign you give stays attached to your name, and over time that record should show how good your judgment is. A cosign from someone with a long history of backing the right people should count for more than one from someone who hands them out freely.
 
 Full disclosure: I gave my first cosign to Dhruv Gupta, one of the product engineers at Cosign. We met because I was impressed with that platform and was eager to help. I haven't worked with him, but I've spent a meaningful amount of time inside the product he helps build. My Cosign fit under this category: Will be a Star. It's a bet, not a reference.
 
@@ -125,11 +119,9 @@ Full disclosure: I gave my first cosign to Dhruv Gupta, one of the product engin
 
 Notice what that screen is doing, though. Cosign handed me a list of ten people and asked me to pick one. Giving your first cosign is easy by design, which is exactly why the record has to matter. A prediction with a deadline is one way to build it.
 
-A real record also means no take-backs, and Cosign already gets this right: once you give a cosign, you can't pull it. If you could quietly pull a cosign the moment someone disappoints you, giving one would cost you nothing. A bad cosign should sting, the same way a missed rent payment hits the cosigner's credit. That's what makes you think twice before you put your name next to someone else's.
+A real record also means no take-backs, and Cosign already gets this right: once you give a cosign, you can't pull it. If you could quietly pull a cosign the moment someone disappoints you, giving one would cost you nothing. A bad cosign should sting, the same way a missed rent payment hits the cosigner's credit. That's what makes you think twice before you put your name next to someone else's. There's some risk here with Cosign though.
 
 ## The good ol' boys club
-
-There's some risk here with Cosign though.
 
 Peer-to-peer credentials have an older name… The good ol' boys club.
 
@@ -149,7 +141,7 @@ Done right, that shrinks the insider advantage and brings more hidden gems to th
 
 ## Fin
 
-Jon didn't owe me that intro to Bob, and he never asked for anything in return. He'd watched me work, and he was willing to put his name next to mine. That's what makes a cosign worth something, on Cosign or anywhere else. Someone has to give first.
+Jon didn't owe me that intro to Bob, and he never asked for anything in return. He'd watched me work, and he was willing to put his name next to mine. That's what makes a cosign worth something.
 
 Think about who spoke for you in a room you weren't invited into.
 
@@ -162,5 +154,4 @@ Then put your name on the line for them.
 <div class="author-links">
 	<a href="https://x.com/danielkhunter">x.com/danielkhunter</a>
 	<a href="https://github.com/danielkhunter">github.com/danielkhunter</a>
-	<a href="https://substack.com/@danielkhunter">substack.com/@danielkhunter</a>
 </div>

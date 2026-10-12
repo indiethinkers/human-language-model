@@ -119,11 +119,13 @@ Full disclosure: I gave my first cosign to Dhruv Gupta, one of the product engin
 
 Notice what that screen is doing, though. Cosign handed me a list of ten people and asked me to pick one. Giving your first cosign is easy by design, which is exactly why the record has to matter. A prediction with a deadline is one way to build it.
 
-A real record also means no take-backs, and Cosign already gets this right: once you give a cosign, you can't pull it. If you could quietly pull a cosign the moment someone disappoints you, giving one would cost you nothing. A bad cosign should sting, the same way a missed rent payment hits the cosigner's credit. That's what makes you think twice before you put your name next to someone else's. There's some risk here with Cosign though.
+A real record also means no take-backs, and Cosign already gets this right: once you give a cosign, you can't pull it. If you could quietly pull a cosign the moment someone disappoints you, giving one would cost you nothing. A bad cosign should sting, the same way a missed rent payment hits the cosigner's credit. That's what makes you think twice before you put your name next to someone else's.
 
 ## The good ol' boys club
 
-Peer-to-peer credentials have an older name… The good ol' boys club.
+There's some risk here with Cosign though.
+
+Peer-to-peer credentials have an older name.
 
 The group chats and back-channel references Cosign wants to bring into the open have historically worked best for people who were already inside.
 

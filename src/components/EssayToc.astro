@@ -1,0 +1,84 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+	headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+const tocEntries = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+
+if (tocEntries.length < 2) {
+	return null;
+}
+---
+
+<nav class="essay-toc" aria-label="Contents">
+	<p class="essay-toc-label"><b>// contents</b></p>
+	<ol class="essay-toc-list">
+		{
+			tocEntries.map((heading) => (
+				<li class:list={['essay-toc-item', { 'is-depth-3': heading.depth === 3 }]}>
+					<a class="essay-toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+				</li>
+			))
+		}
+	</ol>
+</nav>
+
+<script>
+	(() => {
+		const run = () => {
+			const toc = document.querySelector('.essay-toc');
+			if (!toc) return;
+
+			const links = Array.from(toc.querySelectorAll('.essay-toc-link'));
+			if (links.length === 0) return;
+
+			const targets = links
+				.map((link) => {
+					const id = link.getAttribute('href')?.slice(1);
+					return id ? document.getElementById(id) : null;
+				})
+				.filter((el): el is HTMLElement => el instanceof HTMLElement);
+
+			if (targets.length === 0) return;
+
+			let ticking = false;
+
+			const updateActive = () => {
+				ticking = false;
+				const threshold = window.innerHeight * 0.35;
+				let activeIndex = 0;
+
+				for (let index = 0; index < targets.length; index++) {
+					if (targets[index].getBoundingClientRect().top <= threshold) {
+						activeIndex = index;
+					}
+				}
+
+				links.forEach((link, index) => {
+					link.classList.toggle('is-active', index === activeIndex);
+					link.closest('.essay-toc-item')?.classList.toggle('is-active', index === activeIndex);
+				});
+			};
+
+			const onScrollOrResize = () => {
+				if (ticking) return;
+				ticking = true;
+				requestAnimationFrame(updateActive);
+			};
+
+			window.addEventListener('scroll', onScrollOrResize, { passive: true });
+			window.addEventListener('resize', onScrollOrResize, { passive: true });
+			updateActive();
+		};
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', run);
+		} else {
+			run();
+		}
+	})();
+</script>

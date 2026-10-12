@@ -10,7 +10,7 @@ author: 'Daniel Hunter'
 authorSlug: 'daniel-hunter'
 copyrightHolder: 'Daniel Hunter'
 license: 'CC-BY-4.0'
-pubDate: 'October 11, 2026'
+pubDate: 'October 12, 2026'
 presentation: 'source'
 series: 'code & prose'
 ---

@@ -38,15 +38,33 @@ Being a cosigner is no joke, which is why it's something you rarely, if ever, as
 
 A professional cosign, like a stamp of approval for a former coworker, doesn't carry the same level of risk, but it’s naturally uncommon. Cosigns are earned first, given second. Recommendations should not be requested haphazardly with the click of a button.
 
+![Asking for a recommendation on LinkedIn](../../assets/the-cosigns-you-dont-ask-for/linkedin-recommendation.png)
+
+<p class="image-caption"><em>Asking for a recommendation on LinkedIn</em></p>
+
 [Cosign](https://cosign.co/), a new professional network from [a16z's New Media team](https://a16zjobs.substack.com/p/introducing-cosign-a-new-space-to) that launched on September 25th, is built around that idea. On Cosign, there's no way to ask someone for public praise. It's my favorite subtle design choice in the product.
 
 ## When credentials get cheap
 
 AI has made it nearly free to look impressive on paper. A polished resume, a tailored cover letter, and a slick portfolio site can now be brought to life in a single afternoon. When everyone looks talented and prepared, the pretty pages stop telling the full story, and you have to dig deeper to know whether a person is worth your time.
 
+![David Perell's X profile, showing he follows 943 people](../../assets/the-cosigns-you-dont-ask-for/david-perell.png)
+
 When someone important follows you on X, it's an implicit endorsement. Cosign wants to make it explicit. Erik Torenberg, a general partner at a16z, posed an interesting thought experiment.
 
 > What's more impressive to you: someone who went to Stanford, or someone who is followed by Patrick Collison, Elon Musk, and Marc Andreessen? I think most people would say the latter. It's this kind of peer-to-peer credential.
+
+<div class="video-frame">
+	<video
+		src="/media/the-cosigns-you-dont-ask-for/et-web.mp4"
+		controls
+		playsinline
+		preload="metadata"
+		title="Erik Torenberg on peer-to-peer credentials"
+	></video>
+</div>
+
+<p class="image-caption"><em>Erik Torenberg on peer-to-peer credentials</em></p>
 
 It's a seductive idea, and I'll come back to why it's also a risky one.
 
@@ -92,6 +110,8 @@ Every cosign you give stays attached to your name, and over time that record sho
 
 Full disclosure: I gave my first cosign to Dhruv Gupta, one of the product engineers at Cosign. We met because I was impressed with that platform and was eager to help. I haven't worked with him, but I've spent a meaningful amount of time inside the product he helps build. My Cosign fit under this category: Will be a Star. It's a bet, not a reference.
 
+![Cosign form set to Will be a Star for Dhruv Gupta](../../assets/the-cosigns-you-dont-ask-for/will-be-a-star.png)
+
 Notice what that screen is doing, though. Cosign handed me a list of ten people and asked me to pick one. Giving your first cosign is easy by design, which is exactly why the record has to matter. A prediction with a deadline is one way to build it.
 
 A real record also means no take-backs, and Cosign already gets this right: once you give a cosign, you can't pull it. If you could quietly pull a cosign the moment someone disappoints you, giving one would cost you nothing. A bad cosign should sting, the same way a missed rent payment hits the cosigner's credit. That's what makes you think twice before you put your name next to someone else's.
@@ -109,6 +129,10 @@ Look closely at Torenberg's thought experiment. Being followed by Patrick Collis
 To be fair, my intro to Bob came through who I knew, too. But Jon knew me because he'd watched me put in 60-70 hour weeks at a company that almost ran out of money. That's the line Cosign has to hold. A cosign should come from direct experience someone actually had.
 
 Part of the fix has to happen offline. Cosign could borrow the Cursor community playbook: local chapters around the world, each run by an ambassador, where people demo what they're building to strangers who might vouch for them. The “Will be a Star” I used for Dhruv aligns well with this approach. If a cosign should come from work someone actually saw, outsiders need more rooms where their work gets seen.
+
+![An a16z New Media event in Santa Monica](../../assets/the-cosigns-you-dont-ask-for/new-media-event.jpg)
+
+<p class="image-caption"><em>An a16z New Media event in Santa Monica</em></p>
 
 Done right, that shrinks the insider advantage and brings more hidden gems to the surface. A cosign is worth the most when it's a new discovery for the viewer and not just a confirmation.
 

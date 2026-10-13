@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://indiethinkers.com/sitemap-index.xml

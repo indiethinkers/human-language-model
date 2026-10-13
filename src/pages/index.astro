@@ -335,10 +335,6 @@ const allEssaysHref = '/essays';
 	}
 
 	body.shiny-dimes-home {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-		min-height: 100dvh;
 		margin: 0;
 		padding: 0;
 		background: var(--shiny-gray-50);
@@ -385,11 +381,20 @@ const allEssaysHref = '/essays';
 		justify-content: center;
 		width: auto;
 		max-width: none;
-		flex: 1 1 auto;
-		min-height: auto;
+		min-height: 100vh;
+		min-height: 100dvh;
 		margin: 0;
 		padding: 0;
 		background: var(--shiny-gray-50);
+	}
+
+	/* Keep quote centered in the viewport; footer is overlaid, not in the flex column flow. */
+	body.shiny-dimes-home .site-footer {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
 	}
 
 	.card-shell {

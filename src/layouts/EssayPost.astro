@@ -105,6 +105,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 
 							const pad = (value) => String(value).padStart(2, '0');
 							let ticking = false;
+							let previousIndex = -1;
 
 							const updatePosition = () => {
 								ticking = false;
@@ -119,6 +120,12 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									}
 								}
 
+								// Scrolling within a paragraph should not rewrite the fixed counter.
+								if (currentIndex === previousIndex) return;
+								const previousMarker = paragraphs[previousIndex]?.querySelector('.p-num');
+								previousMarker?.classList.remove('is-current');
+								paragraphs[currentIndex].querySelector('.p-num')?.classList.add('is-current');
+								previousIndex = currentIndex;
 								const current = currentIndex + 1;
 
 								if (status) {
@@ -126,10 +133,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									status.removeAttribute('hidden');
 								}
 
-								paragraphs.forEach((paragraph, index) => {
-									const marker = paragraph.querySelector('.p-num');
-									if (marker) marker.classList.toggle('is-current', index === currentIndex);
-								});
 							};
 
 							const onScrollOrResize = () => {

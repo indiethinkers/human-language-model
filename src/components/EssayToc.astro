@@ -48,6 +48,7 @@ if (tocEntries.length < 2) {
 			if (targets.length === 0) return;
 
 			let ticking = false;
+			let previousIndex = -1;
 
 			const updateActive = () => {
 				ticking = false;
@@ -60,10 +61,13 @@ if (tocEntries.length < 2) {
 					}
 				}
 
-				links.forEach((link, index) => {
-					link.classList.toggle('is-active', index === activeIndex);
-					link.closest('.essay-toc-item')?.classList.toggle('is-active', index === activeIndex);
-				});
+				if (activeIndex === previousIndex) return;
+				const previousLink = links[previousIndex];
+				previousLink?.classList.remove('is-active');
+				previousLink?.closest('.essay-toc-item')?.classList.remove('is-active');
+				links[activeIndex].classList.add('is-active');
+				links[activeIndex].closest('.essay-toc-item')?.classList.add('is-active');
+				previousIndex = activeIndex;
 			};
 
 			const onScrollOrResize = () => {

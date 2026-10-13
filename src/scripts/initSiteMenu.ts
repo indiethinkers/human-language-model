@@ -8,6 +8,8 @@ export function initSiteMenu({ closeOnDesktopNav = true }: InitSiteMenuOptions =
 
 	const menuToggle = menuRoot.querySelector('[data-menu-toggle]');
 	const menuPanel = menuRoot.querySelector('[data-menu-panel]');
+	const menuLabel = menuRoot.querySelector('[data-menu-label]');
+	const menuCloseIcon = menuRoot.querySelector('[data-menu-close-icon]');
 	if (!(menuToggle instanceof HTMLButtonElement) || !(menuPanel instanceof HTMLElement)) return;
 
 	const desktopNavQuery = window.matchMedia('(min-width: 1024px)');
@@ -16,9 +18,16 @@ export function initSiteMenu({ closeOnDesktopNav = true }: InitSiteMenuOptions =
 	const setMenuOpen = (open: boolean, { restoreFocus = true }: { restoreFocus?: boolean } = {}) => {
 		menuOpen = open;
 		menuToggle.setAttribute('aria-expanded', String(open));
-		menuToggle.textContent = open ? 'close' : 'menu';
+		menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 		menuPanel.hidden = !open;
 		document.body.classList.toggle('menu-open', open);
+
+		if (menuLabel instanceof HTMLElement) {
+			menuLabel.hidden = open;
+		}
+		if (menuCloseIcon instanceof HTMLElement) {
+			menuCloseIcon.hidden = !open;
+		}
 
 		document.querySelectorAll('[data-menu-inert]').forEach((el) => {
 			el.toggleAttribute('inert', open);
@@ -34,8 +43,14 @@ export function initSiteMenu({ closeOnDesktopNav = true }: InitSiteMenuOptions =
 	menuPanel.addEventListener('click', (event) => {
 		const target = event.target;
 		if (!(target instanceof Element)) return;
-		if (target === menuPanel || target.closest('a')) {
-			setMenuOpen(false, { restoreFocus: target === menuPanel });
+
+		if (target.closest('[data-menu-backdrop]')) {
+			setMenuOpen(false);
+			return;
+		}
+
+		if (target.closest('a')) {
+			setMenuOpen(false, { restoreFocus: false });
 		}
 	});
 

@@ -16,35 +16,49 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		<a href={SUBMIT_HREF} target="_blank" rel="noopener noreferrer" class="muted-link">
 			submit
 		</a>
-		<span class="muted-text">//</span>
+		<span class="muted-text" aria-hidden="true">//</span>
 		<a href={SUBSCRIBE_HREF} target="_blank" rel="noopener noreferrer" class="muted-link">
 			subscribe
 		</a>
 	</nav>
+	<span class="muted-text site-menu-toggle-sep" aria-hidden="true">//</span>
 	<button
 		type="button"
 		class="menu-toggle muted-link"
 		data-menu-toggle
 		aria-expanded="false"
 		aria-controls={menuId}
+		aria-label="Open menu"
 	>
-		menu
+		<span class="menu-toggle-label" data-menu-label>menu</span>
+		<span class="menu-toggle-icon" data-menu-close-icon hidden aria-hidden="true">
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M5 5L15 15M15 5L5 15"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"></path>
+			</svg>
+		</span>
 	</button>
 	<nav id={menuId} class="home-menu site-menu-panel" data-menu-panel hidden aria-label="Site">
-		<a href={ALL_ESSAYS_HREF} class="home-menu-link">view all essays</a>
-		<a href={SUBMIT_HREF} target="_blank" rel="noopener noreferrer" class="home-menu-link">
-			submit
-		</a>
-		<a href={SUBSCRIBE_HREF} target="_blank" rel="noopener noreferrer" class="home-menu-link">
-			subscribe
-		</a>
-		<div class="site-menu-divider" role="presentation"></div>
-		<div class="site-menu-cross-links" data-plain-links>
-			{
-				crossSiteLinks.map((site) => (
-					<a href={site.href} class="home-menu-link">{site.label}</a>
-				))
-			}
+		<div class="site-menu-backdrop" data-menu-backdrop aria-hidden="true"></div>
+		<div class="site-menu-content">
+			<a href={ALL_ESSAYS_HREF} class="home-menu-link">view all essays</a>
+			<a href={SUBMIT_HREF} target="_blank" rel="noopener noreferrer" class="home-menu-link">
+				submit
+			</a>
+			<a href={SUBSCRIBE_HREF} target="_blank" rel="noopener noreferrer" class="home-menu-link">
+				subscribe
+			</a>
+			<div class="site-menu-divider" role="presentation"></div>
+			<div class="site-menu-cross-links" data-plain-links>
+				{
+					crossSiteLinks.map((site) => (
+						<a href={site.href} class="home-menu-link">{site.label}</a>
+					))
+				}
+			</div>
 		</div>
 	</nav>
 </div>
@@ -82,7 +96,14 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		gap: 0.5rem;
 	}
 
+	.site-menu-toggle-sep {
+		display: none;
+	}
+
 	.menu-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		-webkit-appearance: none;
 		appearance: none;
 		margin: 0;
@@ -99,20 +120,48 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		margin: -0.5rem;
 	}
 
+	.menu-toggle-icon {
+		display: inline-flex;
+		line-height: 0;
+	}
+
+	.menu-toggle-icon[hidden] {
+		display: none;
+	}
+
+	.menu-toggle-label[hidden] {
+		display: none;
+	}
+
 	.home-menu {
 		position: fixed;
 		inset: 0;
 		z-index: 40;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 0.25rem;
-		background: var(--shiny-gray-50);
+		padding: 1rem;
 	}
 
 	.home-menu[hidden] {
 		display: none;
+	}
+
+	.site-menu-backdrop {
+		position: absolute;
+		inset: 0;
+		background: color-mix(in srgb, var(--shiny-gray-50, #f8f8f6) 88%, transparent);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+	}
+
+	.site-menu-content {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
 	}
 
 	.home-menu-link {
@@ -148,9 +197,17 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		overflow: hidden;
 	}
 
+	body.menu-open .site-menu-chrome {
+		z-index: 55;
+	}
+
 	@media (min-width: 1024px) {
 		.site-menu-quicklinks {
 			display: flex;
+		}
+
+		.site-menu-toggle-sep {
+			display: inline;
 		}
 	}
 </style>

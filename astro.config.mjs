@@ -1,7 +1,6 @@
 // @ts-check
 
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import { remarkHtmlHeadings } from './src/remark/remark-html-headings.mjs';
 
@@ -18,7 +17,7 @@ export default defineConfig({
 	build: {
 		format: 'file',
 	},
-	integrations: [mdx(), sitemap()],
+	integrations: [mdx()],
 	fonts: [
 		{
 			provider: fontProviders.google(),

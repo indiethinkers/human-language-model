@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import SiteFooter from '../components/SiteFooter.astro';
+import SiteMenu from '../components/SiteMenu.astro';
+import { ALL_ESSAYS_HREF } from '../consts';
 
 const quoteEntries = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -15,10 +16,6 @@ const quoteEntries = (await getCollection('blog'))
 const initialQuote = quoteEntries[0]?.quote ?? '';
 const initialEssayHref = quoteEntries[0]?.href ?? '/essays';
 const hasMultipleEssays = quoteEntries.length > 1;
-const githubHref = 'https://github.com/indiethinkers/human-language-model';
-const submitHref = `${githubHref}?tab=contributing-ov-file`;
-const subscribeHref = 'https://indiethinkers.substack.com/subscribe';
-const allEssaysHref = '/essays';
 ---
 
 <!doctype html>
@@ -30,61 +27,10 @@ const allEssaysHref = '/essays';
 		/>
 	</head>
 	<body class="shiny-dimes-home">
-		<div class="mobile-nav" data-home-menu>
-			<button
-				type="button"
-				class="menu-toggle muted-link"
-				data-menu-toggle
-				aria-expanded="false"
-				aria-controls="home-menu"
-			>
-				menu
-			</button>
-			<nav id="home-menu" class="home-menu" data-menu-panel hidden aria-label="Site">
-				<a href={allEssaysHref} class="home-menu-link">
-					view all essays
-				</a>
-				<a
-					href={submitHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="home-menu-link"
-				>
-					submit
-				</a>
-				<a
-					href={subscribeHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="home-menu-link"
-				>
-					subscribe
-				</a>
-			</nav>
-		</div>
+		<SiteMenu menuId="home-menu" />
 
 		<main class="dime-page">
-			<div class="nav-actions desktop-nav">
-				<a
-					href={submitHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="muted-link"
-				>
-					submit
-				</a>
-				<span class="muted-text">//</span>
-				<a
-					href={subscribeHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="muted-link"
-				>
-					subscribe
-				</a>
-			</div>
-
-			<div class="card-shell">
+			<div class="card-shell" data-menu-inert>
 				<div class="site-label">
 					<a href="/" class="muted-link">indie thinkers</a>
 				</div>
@@ -102,8 +48,8 @@ const allEssaysHref = '/essays';
 					</div>
 				</div>
 
-				<div class="credit desktop-nav">
-					<a href={allEssaysHref} class="credit-link">
+				<div class="credit desktop-nav" data-menu-inert>
+					<a href={ALL_ESSAYS_HREF} class="credit-link">
 						view all essays
 					</a>
 				</div>
@@ -111,7 +57,7 @@ const allEssaysHref = '/essays';
 
 			{
 				hasMultipleEssays && (
-					<div class="shortcut-hint">
+					<div class="shortcut-hint" data-menu-inert>
 						<span class="desktop-hint">hit the spacebar for another essay</span>
 						<span class="mobile-hint">double tap for the next essay</span>
 					</div>
@@ -119,18 +65,13 @@ const allEssaysHref = '/essays';
 			}
 		</main>
 
-		<SiteFooter />
-
 		<script>
 			const quoteCard = document.querySelector('[data-quote-card]');
 			const quoteElement = document.querySelector('[data-quote]');
 			const quoteText = document.querySelector('[data-quote-text]');
 			const cursor = document.querySelector('[data-type-cursor]');
 			const essayLink = document.querySelector('.essay-link');
-			const menuToggle = document.querySelector('[data-menu-toggle]');
-			const menuPanel = document.querySelector('[data-menu-panel]');
 			const quoteEntries = JSON.parse(quoteCard?.getAttribute('data-quote-entries') ?? '[]');
-			const desktopNavQuery = window.matchMedia('(min-width: 1024px)');
 
 			let typeTimeout = 0;
 			let blinkInterval = 0;
@@ -138,46 +79,8 @@ const allEssaysHref = '/essays';
 			let isTransitioning = false;
 			let lastTap = 0;
 			let currentQuoteIndex = 0;
-			let menuOpen = false;
 
-			const setMenuOpen = (open, { restoreFocus = true } = {}) => {
-				menuOpen = open;
-				if (!menuToggle || !menuPanel) return;
-
-				menuToggle.setAttribute('aria-expanded', String(open));
-				menuToggle.textContent = open ? 'close' : 'menu';
-				menuPanel.hidden = !open;
-				document.body.classList.toggle('menu-open', open);
-
-				document.querySelectorAll('.card-shell, .nav-actions, .shortcut-hint, .site-footer').forEach((el) => {
-					el.toggleAttribute('inert', open);
-				});
-
-				if (!open && restoreFocus) menuToggle.focus();
-			};
-
-			menuToggle?.addEventListener('click', () => {
-				setMenuOpen(!menuOpen);
-			});
-
-			menuPanel?.addEventListener('click', (event) => {
-				const target = event.target;
-				if (!(target instanceof Element)) return;
-				if (target === menuPanel || target.closest('a')) {
-					setMenuOpen(false, { restoreFocus: target === menuPanel });
-				}
-			});
-
-			document.addEventListener('keydown', (event) => {
-				if (event.key === 'Escape' && menuOpen) {
-					event.preventDefault();
-					setMenuOpen(false);
-				}
-			});
-
-			desktopNavQuery.addEventListener('change', (event) => {
-				if (event.matches && menuOpen) setMenuOpen(false, { restoreFocus: false });
-			});
+			const isMenuOpen = () => document.body.classList.contains('menu-open');
 
 			const getCurrentQuoteEntry = () =>
 				quoteEntries[currentQuoteIndex] ?? { href: '/essays', quote: '' };
@@ -260,13 +163,13 @@ const allEssaysHref = '/essays';
 			};
 
 			window.addEventListener('keydown', (event) => {
-				if (event.code !== 'Space' || menuOpen) return;
+				if (event.code !== 'Space' || isMenuOpen()) return;
 				event.preventDefault();
 				replayQuote();
 			});
 
 			window.addEventListener('touchend', (event) => {
-				if (menuOpen || event.target.closest?.('[data-home-menu]')) return;
+				if (isMenuOpen() || event.target.closest?.('[data-site-menu]')) return;
 
 				const currentTime = Date.now();
 				const tapLength = currentTime - lastTap;
@@ -388,40 +291,17 @@ const allEssaysHref = '/essays';
 		background: var(--shiny-gray-50);
 	}
 
-	/* Keep quote centered in the viewport; footer is overlaid, not in the flex column flow. */
-	body.shiny-dimes-home .site-footer {
-		position: fixed;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: 1;
-	}
-
 	.card-shell {
 		position: relative;
 	}
 
 	.site-label,
-	.nav-actions,
 	.shortcut-hint,
-	.credit,
-	.menu-toggle {
+	.credit {
 		position: fixed;
 		color: var(--shiny-gray-500);
 		font-size: 0.875rem;
 		line-height: calc(1.25 / 0.875);
-	}
-
-	/* Above the fixed homepage footer (z-index: 1) so corner chrome stays visible. */
-	.site-label,
-	.nav-actions,
-	.shortcut-hint,
-	.credit {
-		z-index: 2;
-	}
-
-	.desktop-nav {
-		display: none;
 	}
 
 	.site-label {
@@ -429,60 +309,8 @@ const allEssaysHref = '/essays';
 		left: 1rem;
 	}
 
-	.nav-actions {
-		top: 1rem;
-		right: 1rem;
-		gap: 0.5rem;
-	}
-
-	.menu-toggle {
-		top: max(1rem, env(safe-area-inset-top));
-		right: max(1rem, env(safe-area-inset-right));
-		z-index: 50;
-		-webkit-appearance: none;
-		appearance: none;
-		background: transparent;
-		border: none;
-		padding: 0.5rem;
-		margin: -0.5rem;
-		color: inherit;
-		font: inherit;
-		cursor: pointer;
-	}
-
-	.home-menu {
-		position: fixed;
-		inset: 0;
-		z-index: 40;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 0.25rem;
-		background: var(--shiny-gray-50);
-	}
-
-	.home-menu[hidden] {
+	.desktop-nav {
 		display: none;
-	}
-
-	.home-menu-link {
-		padding: 0.75rem 1rem;
-		color: var(--shiny-gray-500);
-		font-weight: 500;
-		text-align: center;
-		transition-duration: 0.15s;
-		transition-property: color;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	}
-
-	.home-menu-link:hover,
-	.home-menu-link:focus-visible {
-		color: var(--shiny-gray-800);
-	}
-
-	body.shiny-dimes-home.menu-open {
-		overflow: hidden;
 	}
 
 	.shortcut-hint {
@@ -613,14 +441,6 @@ const allEssaysHref = '/essays';
 
 		.mobile-hint {
 			display: none;
-		}
-
-		.mobile-nav {
-			display: none;
-		}
-
-		.nav-actions.desktop-nav {
-			display: flex;
 		}
 
 		.credit.desktop-nav {

@@ -122,11 +122,11 @@ See `LICENSE` and the full license texts in `LICENSES/` for details.
 
 ## Deployment
 
-The site is configured for `https://indiethinkers.com` in `astro.config.mjs`, uses file-format static builds, and is ready for Vercel. `vercel.json` enables clean URLs and disables trailing slashes.
+The site is configured for `https://www.indiethinkers.com` in `astro.config.mjs`, uses file-format static builds, and is ready for Vercel. `vercel.json` enables clean URLs and disables trailing slashes.
 
 ## Links
 
-- Production site: `https://indiethinkers.com`
+- Production site: `https://www.indiethinkers.com`
 - Essays: `/essays`
 - RSS: `/rss.xml`
 - Submit: `https://indiethinkers.dfos.com/`

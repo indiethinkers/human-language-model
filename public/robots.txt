@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://indiethinkers.com/sitemap.xml
+Sitemap: https://www.indiethinkers.com/sitemap.xml

@@ -79,7 +79,7 @@ Writing isn’t just thinking or self-expression. A screenplay becomes a film. A
 
 <aside class="sidenote"><span class="sidenote-kind">// post</span> <a href="https://x.com/karpathy/status/1617979122625712128">x.com/karpathy ↗</a></aside>
 
-The intersection of code and prose is where [indiethinkers.com](https://indiethinkers.com/) was born and the larger experiment behind the [human language model](https://github.com/indiethinkers/human-language-model) project: a literary publication built in public, with the same care people bring to open-source software. While the writer-builder label does fit me well, there’s something deeper about journalism.
+The intersection of code and prose is where [indiethinkers.com](https://www.indiethinkers.com/) was born and the larger experiment behind the [human language model](https://github.com/indiethinkers/human-language-model) project: a literary publication built in public, with the same care people bring to open-source software. While the writer-builder label does fit me well, there’s something deeper about journalism.
 
 <aside class="sidenote"><span class="sidenote-kind">// source</span> <span class="sidenote-title">human-language-model</span> <a href="https://github.com/indiethinkers/human-language-model">github.com/indiethinkers ↗</a></aside>
 

@@ -1,18 +1,8 @@
 // @ts-check
 
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import { remarkHtmlHeadings } from './src/remark/remark-html-headings.mjs';
-import { getEssayLastModBySlug } from './src/utils/essay-lastmods.mjs';
-
-const essayLastModBySlug = getEssayLastModBySlug();
-
-/** Permanent redirect sources — static HTML exists for cleanUrls but must not be indexed. */
-const SITEMAP_EXCLUDED_PATHS = new Set([
-	'/essays/intrinsic-motivation-a83',
-	'/essays/the-internet-in-multi-player-mode',
-]);
 
 export default defineConfig({
 	markdown: {
@@ -27,26 +17,7 @@ export default defineConfig({
 	build: {
 		format: 'file',
 	},
-	integrations: [
-		mdx(),
-		sitemap({
-			filter: (page) => {
-				const { pathname } = new URL(page);
-				if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
-				if (pathname.startsWith('/og/')) return false;
-				if (pathname === '/rss.xml') return false;
-				return true;
-			},
-			serialize(item) {
-				const { pathname } = new URL(item.url);
-				const essaySlug = pathname.match(/^\/essays\/([^/]+)$/)?.[1];
-				if (!essaySlug) return item;
-
-				const lastmod = essayLastModBySlug.get(essaySlug);
-				return lastmod ? { ...item, lastmod } : item;
-			},
-		}),
-	],
+	integrations: [mdx()],
 	fonts: [
 		{
 			provider: fontProviders.google(),

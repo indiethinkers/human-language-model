@@ -412,6 +412,14 @@ const allEssaysHref = '/essays';
 		line-height: calc(1.25 / 0.875);
 	}
 
+	/* Above the fixed homepage footer (z-index: 1) so corner chrome stays visible. */
+	.site-label,
+	.nav-actions,
+	.shortcut-hint,
+	.credit {
+		z-index: 2;
+	}
+
 	.desktop-nav {
 		display: none;
 	}

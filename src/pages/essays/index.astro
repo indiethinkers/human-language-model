@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
-import SiteFooter from '../../components/SiteFooter.astro';
+import SiteMenu from '../../components/SiteMenu.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
@@ -15,28 +15,10 @@ const posts = (await getCollection('blog')).sort(
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body class="shiny-dimes-home">
-		<main class="dime-page">
-			<div class="nav-actions">
-				<a
-					href="https://github.com/indiethinkers/human-language-model?tab=contributing-ov-file"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="muted-link"
-				>
-					submit
-				</a>
-				<span class="muted-text">//</span>
-				<a
-					href="https://indiethinkers.substack.com/subscribe"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="muted-link"
-				>
-					subscribe
-				</a>
-			</div>
+		<SiteMenu menuId="essays-menu" />
 
-			<div class="card-shell">
+		<main class="dime-page">
+			<div class="card-shell" data-menu-inert>
 				<div class="site-label">
 					<a href="/" class="muted-link">indie thinkers</a>
 				</div>
@@ -62,7 +44,6 @@ const posts = (await getCollection('blog')).sort(
 				</div>
 			</div>
 		</main>
-		<SiteFooter />
 	</body>
 </html>
 
@@ -179,7 +160,6 @@ const posts = (await getCollection('blog')).sort(
 	}
 
 	.site-label,
-	.nav-actions,
 	.shortcut-hint,
 	.credit {
 		position: fixed;
@@ -191,13 +171,6 @@ const posts = (await getCollection('blog')).sort(
 	.site-label {
 		top: 1rem;
 		left: 1rem;
-	}
-
-	.nav-actions {
-		top: 1rem;
-		right: 1rem;
-		display: flex;
-		gap: 0.5rem;
 	}
 
 	.shortcut-hint {

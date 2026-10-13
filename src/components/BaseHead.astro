@@ -6,6 +6,7 @@ import FallbackImage from '../assets/the-internet-in-multiplayer-mode/indie-thin
 import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
 import '../styles/global.css';
+import { canonicalHref } from '../utils/canonical-url.mjs';
 
 interface Props {
 	title: string;
@@ -13,9 +14,7 @@ interface Props {
 	image?: ImageMetadata | string;
 }
 
-const canonicalPath =
-	Astro.url.pathname === '/' ? Astro.url.pathname : Astro.url.pathname.replace(/\/$/, '');
-const canonicalURL = new URL(canonicalPath, Astro.site);
+const canonicalURL = canonicalHref(Astro.site, Astro.url.pathname);
 
 const { title, description, image = FallbackImage } = Astro.props;
 const imageUrl = typeof image === 'string' ? new URL(image, Astro.site) : new URL(image.src, Astro.url);
@@ -42,7 +41,7 @@ const imageUrl = typeof image === 'string' ? new URL(image, Astro.site) : new UR
 	is:inline
 	defer
 	data-website-id="dfid_kINptsdjE6lJMZsb8NWl7"
-	data-domain="indiethinkers.com"
+	data-domain="www.indiethinkers.com"
 	src="https://datafa.st/js/script.js"></script>
 
 <link

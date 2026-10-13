@@ -8,7 +8,7 @@ export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkHtmlHeadings],
 	},
-	site: 'https://indiethinkers.com',
+	site: 'https://www.indiethinkers.com',
 	trailingSlash: 'never',
 	redirects: {
 		'/essays/the-internet-in-multi-player-mode': '/essays/the-internet-in-multiplayer-mode',

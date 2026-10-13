@@ -13,10 +13,11 @@ export function shouldIncludePathname(pathname) {
 	return true;
 }
 
+import { canonicalHref } from './canonical-url.mjs';
+
 /** @param {URL} site @param {string} pathname */
 export function pathnameToLoc(site, pathname) {
-	if (pathname === '/') return site.origin;
-	return new URL(pathname, site).href;
+	return canonicalHref(site, pathname);
 }
 
 /** @param {string} a @param {string} b */

@@ -9,7 +9,7 @@ import {
 } from '../utils/sitemap.mjs';
 
 export const GET: APIRoute = async ({ site }) => {
-	const base = site ?? new URL('https://indiethinkers.com');
+	const base = site ?? new URL('https://www.indiethinkers.com');
 	const posts = await getCollection('blog');
 	const essayLastModBySlug = new Map(
 		posts.map((post) => [

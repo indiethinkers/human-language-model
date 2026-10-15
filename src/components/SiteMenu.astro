@@ -12,15 +12,6 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 ---
 
 <div class:list={['site-menu-chrome', `site-menu-chrome--${layout}`]} data-site-menu>
-	<nav class="nav-actions site-menu-quicklinks" aria-label="Site actions" data-menu-inert>
-		<a href={SUBMIT_HREF} target="_blank" rel="noopener noreferrer" class="muted-link">
-			submit
-		</a>
-		<span class="muted-text" aria-hidden="true">//</span>
-		<a href={SUBSCRIBE_HREF} target="_blank" rel="noopener noreferrer" class="muted-link">
-			subscribe
-		</a>
-	</nav>
 	<nav id={menuId} class="home-menu site-menu-panel" data-menu-panel hidden aria-label="Site">
 		<div class="site-menu-backdrop" data-menu-backdrop aria-hidden="true"></div>
 		<div class="site-menu-content">
@@ -42,7 +33,6 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		</div>
 	</nav>
 	<div class="site-menu-toggle-row">
-		<span class="muted-text site-menu-toggle-sep" aria-hidden="true">//</span>
 		<button
 			type="button"
 			class="menu-toggle muted-link"
@@ -92,19 +82,10 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		white-space: nowrap;
 	}
 
-	.site-menu-quicklinks {
-		display: none;
-		gap: 0.5rem;
-	}
-
 	.site-menu-toggle-row {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-	}
-
-	.site-menu-toggle-sep {
-		display: none;
 	}
 
 	.menu-toggle {
@@ -132,11 +113,6 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 			margin: -0.625rem;
 			padding: 0.625rem;
 		}
-	}
-
-	body.menu-open .site-menu-quicklinks,
-	body.menu-open .site-menu-toggle-sep {
-		visibility: hidden;
 	}
 
 	body.menu-open .menu-toggle {
@@ -235,13 +211,4 @@ const { layout = 'fixed', menuId = 'site-menu' } = Astro.props;
 		z-index: 60;
 	}
 
-	@media (min-width: 1024px) {
-		.site-menu-quicklinks {
-			display: flex;
-		}
-
-		.site-menu-toggle-sep {
-			display: inline;
-		}
-	}
 </style>

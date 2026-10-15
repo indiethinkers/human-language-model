@@ -1,6 +1,6 @@
 /**
  * Normalize Astro/Vercel pathnames for public canonical URLs.
- * Strips `index.html` from file-format builds and trailing slashes (except homepage).
+ * Strips file-format `.html` / `index.html` segments and trailing slashes (except homepage).
  * @param {string} pathname
  */
 export function normalizeCanonicalPathname(pathname) {
@@ -8,6 +8,9 @@ export function normalizeCanonicalPathname(pathname) {
 	if (path === '/index.html') return '/';
 	if (path.endsWith('/index.html')) {
 		path = path.slice(0, -'/index.html'.length) || '/';
+	}
+	if (path.endsWith('.html')) {
+		path = path.slice(0, -'.html'.length) || '/';
 	}
 	if (path !== '/' && path.endsWith('/')) {
 		path = path.replace(/\/+$/, '');

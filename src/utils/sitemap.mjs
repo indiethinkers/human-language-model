@@ -4,10 +4,16 @@ export const SITEMAP_EXCLUDED_PATHS = new Set([
 	'/essays/the-internet-in-multi-player-mode',
 ]);
 
+/** IndexNow / Bing key file at the site root. Not a page. */
+export const SITEMAP_EXCLUDED_VERIFICATION_PATHS = new Set([
+	'/bb31846371e2a7dbc8ea8d78095ecea8.txt',
+]);
+
 /** @param {string} pathname */
 export function shouldIncludePathname(pathname) {
 	const normalized = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
 	if (SITEMAP_EXCLUDED_PATHS.has(normalized)) return false;
+	if (SITEMAP_EXCLUDED_VERIFICATION_PATHS.has(normalized)) return false;
 	if (normalized.startsWith('/og/')) return false;
 	if (normalized === '/rss.xml') return false;
 	return true;

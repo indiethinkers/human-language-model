@@ -105,6 +105,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 
 							const pad = (value) => String(value).padStart(2, '0');
 							let ticking = false;
+							let previousIndex = -1;
 
 							const updatePosition = () => {
 								ticking = false;
@@ -119,6 +120,12 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									}
 								}
 
+								// Scrolling within a paragraph should not rewrite the fixed counter.
+								if (currentIndex === previousIndex) return;
+								const previousMarker = paragraphs[previousIndex]?.querySelector('.p-num');
+								previousMarker?.classList.remove('is-current');
+								paragraphs[currentIndex].querySelector('.p-num')?.classList.add('is-current');
+								previousIndex = currentIndex;
 								const current = currentIndex + 1;
 
 								if (status) {
@@ -126,10 +133,6 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 									status.removeAttribute('hidden');
 								}
 
-								paragraphs.forEach((paragraph, index) => {
-									const marker = paragraph.querySelector('.p-num');
-									if (marker) marker.classList.toggle('is-current', index === currentIndex);
-								});
 							};
 
 							const onScrollOrResize = () => {
@@ -1581,6 +1584,7 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		letter-spacing: -0.02em;
 		line-height: 1.06;
 		text-wrap: balance;
+		anchor-name: --source-essay-title;
 	}
 
 	.presentation-source .source-title em {
@@ -1659,6 +1663,10 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 		text-wrap: pretty;
 	}
 
+	.presentation-source .essay-body .sentence-space {
+		word-spacing: 0.12em;
+	}
+
 	.presentation-source .essay-body a:not(:has(img)) {
 		color: var(--source-accent);
 		font-weight: inherit;
@@ -1680,6 +1688,10 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 
 	.presentation-source .essay-body :is(h2, h3) {
 		scroll-margin-top: 6rem;
+	}
+
+	.presentation-source .essay-toc-rail {
+		display: none;
 	}
 
 	.presentation-source .essay-toc {
@@ -2075,20 +2087,8 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 			max-width: calc(76rem + 2rem);
 		}
 
-		.presentation-source .essay-toc {
-			display: block;
-			grid-column: notes;
-			grid-row: 1;
-			position: sticky;
-			top: 7rem;
-			z-index: 1;
-			align-self: start;
-			max-height: calc(100vh - 8rem);
-			overflow-y: auto;
-			padding-top: 7px;
-		}
-
 		.presentation-source .essay-detail {
+			position: relative;
 			display: grid;
 			grid-template-columns:
 				[gutter-start] 15rem
@@ -2097,6 +2097,37 @@ const isoUpdatedDate = updatedDate ? toLocalIsoDate(updatedDate) : undefined;
 				[notes-end];
 			column-gap: 3rem;
 			row-gap: 0;
+		}
+
+		.presentation-source .essay-toc-rail {
+			display: block;
+			position: absolute;
+			top: anchor(--source-essay-title top);
+			right: 0;
+			width: 15rem;
+			bottom: 0;
+			z-index: 1;
+			pointer-events: none;
+		}
+
+		.presentation-source .essay-toc {
+			display: block;
+			position: sticky;
+			top: 7rem;
+			max-height: calc(100vh - 8rem);
+			overflow-y: auto;
+			padding-top: 0;
+			pointer-events: auto;
+		}
+
+		@supports not (top: anchor(--source-essay-title top)) {
+			.presentation-source .essay-toc-rail {
+				top: 44px;
+			}
+
+			.presentation-source .essay-detail:has(.series-kicker) .essay-toc-rail {
+				top: 98px;
+			}
 		}
 
 		.presentation-source .source-header {

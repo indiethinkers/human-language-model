@@ -14,18 +14,20 @@ if (tocEntries.length < 2) {
 }
 ---
 
-<nav class="essay-toc" aria-label="Contents">
-	<p class="essay-toc-label"><b>// contents</b></p>
-	<ol class="essay-toc-list">
-		{
-			tocEntries.map((heading) => (
-				<li class:list={['essay-toc-item', { 'is-depth-3': heading.depth === 3 }]}>
-					<a class="essay-toc-link" href={`#${heading.slug}`}>{heading.text}</a>
-				</li>
-			))
-		}
-	</ol>
-</nav>
+<div class="essay-toc-rail">
+	<nav class="essay-toc" aria-label="Table of contents">
+		<p class="essay-toc-label"><b>// table of contents</b></p>
+		<ol class="essay-toc-list">
+			{
+				tocEntries.map((heading) => (
+					<li class:list={['essay-toc-item', { 'is-depth-3': heading.depth === 3 }]}>
+						<a class="essay-toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+					</li>
+				))
+			}
+		</ol>
+	</nav>
+</div>
 
 <script>
 	(() => {
@@ -46,6 +48,7 @@ if (tocEntries.length < 2) {
 			if (targets.length === 0) return;
 
 			let ticking = false;
+			let previousIndex = -1;
 
 			const updateActive = () => {
 				ticking = false;
@@ -58,10 +61,13 @@ if (tocEntries.length < 2) {
 					}
 				}
 
-				links.forEach((link, index) => {
-					link.classList.toggle('is-active', index === activeIndex);
-					link.closest('.essay-toc-item')?.classList.toggle('is-active', index === activeIndex);
-				});
+				if (activeIndex === previousIndex) return;
+				const previousLink = links[previousIndex];
+				previousLink?.classList.remove('is-active');
+				previousLink?.closest('.essay-toc-item')?.classList.remove('is-active');
+				links[activeIndex].classList.add('is-active');
+				links[activeIndex].closest('.essay-toc-item')?.classList.add('is-active');
+				previousIndex = activeIndex;
 			};
 
 			const onScrollOrResize = () => {

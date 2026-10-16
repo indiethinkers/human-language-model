@@ -3,10 +3,12 @@
 import mdx from '@astrojs/mdx';
 import { defineConfig, fontProviders } from 'astro/config';
 import { remarkHtmlHeadings } from './src/remark/remark-html-headings.mjs';
+import { rehypeSentenceBreaks } from './src/remark/rehype-sentence-spacing.mjs';
 
 export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkHtmlHeadings],
+		rehypePlugins: [rehypeSentenceBreaks],
 	},
 	site: 'https://www.indiethinkers.com',
 	trailingSlash: 'never',
